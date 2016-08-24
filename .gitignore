@@ -1,0 +1,5 @@
+.idea
+node_modules
+/public-html
+/public/css/core.css
+/public/css/core.css.map

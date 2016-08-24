@@ -1,0 +1,25 @@
+{
+  "name": "crossbow-website",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "scripts": {
+    "watch": "crossbow watch"
+  },
+  "devDependencies": {
+    "ansispan": "0.0.4",
+    "browser-sync": "2.13.0",
+    "bs-console-info": "1.0.2",
+    "bs-fullscreen-message": "1.1.0",
+    "bs-html-injector": "3.0.2",
+    "bs-latency": "1.0.0",
+    "crossbow": "^3.6.5",
+    "crossbow-sass": "4.0.3",
+    "crossbow-sites": "^1.0.0",
+    "easy-svg": "1.0.5",
+    "merkle-dir": "0.0.0",
+    "normalize.css": "4.1.1",
+    "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll.git#dd0553ff80213e42c47500f2e47843f53eebf289",
+    "vinyl-fs": "2.4.3"
+  }
+}
