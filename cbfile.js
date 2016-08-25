@@ -58,7 +58,12 @@ cb.task('commit', [
     '@sh git push origin master'
 ]);
 
-cb.task('deploy', ['build-all', 'rsync', 'docker-restart']);
+cb.task('deploy', [
+    'build-all',
+    'rsync',
+    'docker-restart',
+    '@sh open $LIVE_URL'
+]);
 
 cb.task('rsync', {
     description: 'Copy files from local to remote server',
@@ -70,6 +75,7 @@ cb.task('rsync', {
 cb.env({
     AUTH: 'root@178.62.56.143',
     DO_IP: '178.62.56.143',
+    LIVE_URL: 'http://178.62.56.143',
     DO_USER: 'root',
     DOCKER_NAME: 'crossbow'
 });
