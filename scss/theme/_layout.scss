@@ -3,6 +3,11 @@
     width: 100%;
     padding-top: $half-spacing;
     padding-bottom: $half-spacing;
+
+    @include media-query(min, $lap-start) {
+        padding-top: $base-spacing;
+        padding-bottom: $base-spacing;
+    }
 }
 
 .container {

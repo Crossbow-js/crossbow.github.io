@@ -1,1 +1,9 @@
-<p>Documentation</p>
+<ul>
+    {{#pages}}
+    {{#if_not_eq this.url '/docs'}}
+        {{#if_not_eq this.url '/'}}
+        <li><a href="{{this.url}}">{{this.url}}</a></li>
+        {{/if_not_eq}}
+    {{/if_not_eq}}
+    {{/pages}}
+</ul>

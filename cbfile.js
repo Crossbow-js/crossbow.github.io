@@ -26,7 +26,11 @@ cb.task('html', {
         data: {
             $$: 'all:data'
         },
-        input: '_src/*.hbs',
+        input: [
+            '_src/*.hbs',
+            '_src/docs/**/*.md',
+            '_src/docs/**/*.hbs',
+        ],
         output: 'public-html'
     }
 });
