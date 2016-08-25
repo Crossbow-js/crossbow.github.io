@@ -39,6 +39,7 @@ cb.task('icons', function svgIcons () {
 
 cb.task('sass', {
     tasks: 'crossbow-sass',
+    ifChanged: 'scss',
     description: 'Compile sass -> css',
     options: {
         input: 'scss/core.scss',
