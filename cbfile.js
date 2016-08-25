@@ -53,3 +53,27 @@ cb.task('commit', [
     '@sh git commit -m "$CB_CLI_TRAILING"',
     '@sh git push origin master'
 ]);
+
+cb.task('deploy', ['build-all', 'rsync', 'docker-restart']);
+
+cb.task('rsync', {
+    description: 'Copy files from local to remote server',
+    tasks: [
+        '@sh rsync -rav public public-html docker-compose.yaml nginx.conf $AUTH:~/$DOCKER_NAME --delete'
+    ]
+});
+
+cb.env({
+    AUTH: 'root@178.62.56.143',
+    DO_IP: '178.62.56.143',
+    DO_USER: 'root',
+    DOCKER_NAME: 'crossbow'
+});
+
+cb.task('docker-start', [
+    '@sh ssh $AUTH "docker run -d --name crossbow -p 80:80 -v $(pwd):/usr/share/nginx/html -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf donbeave/nginx-pagespeed:1.8.0-1"'
+]);
+
+cb.task('docker-restart', [
+    '@sh ssh $AUTH "docker restart crossbow"'
+]);
