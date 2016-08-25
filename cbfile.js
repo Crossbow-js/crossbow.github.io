@@ -8,8 +8,9 @@ cb.task('serve', ['build-all', function () {
         server: ['public-html', 'public'],
         logFileChanges: false
     });
-    cb.watch('scss/*.scss', ['sass', () => bs.reload('core.css')]);
+    cb.watch('scss', ['sass', () => bs.reload('core.css')]);
     cb.watch('_src', ['html', () => bs.reload()]);
+    cb.watch('public/img/svg', ['icons', 'html', () => bs.reload()]);
 }]);
 
 cb.task('build-all', ['html', 'icons', 'sass']);
@@ -21,6 +22,9 @@ cb.task('html', {
             base: '_src',
             prettyUrls: true,
             defaultLayout: 'default.hbs'
+        },
+        data: {
+            $$: 'all:data'
         },
         input: '_src/*.hbs',
         output: 'public-html'
@@ -41,3 +45,10 @@ cb.task('sass', {
         output: 'public/css'
     }
 });
+
+cb.task('commit', [
+    'build-all',
+    '@sh git add .',
+    '@sh git commit -m "$CB_CLI_TRAILING"',
+    '@sh git push origin master'
+]);

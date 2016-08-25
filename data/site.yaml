@@ -1,0 +1,9 @@
+links:
+  github: https://github.com/Crossbow-js/crossbow
+  twitter: https://github.com/Crossbow-js/crossbow
+
+nav:
+  docs:
+    label: 'Documentation'
+    url:   '/docs'
+

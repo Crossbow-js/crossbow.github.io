@@ -1,0 +1,24 @@
+.wrapper {
+    clear: both;
+    width: 100%;
+    padding-top: $half-spacing;
+    padding-bottom: $half-spacing;
+}
+
+.container {
+    margin: 0 auto;
+    padding-right: $half-spacing;
+    padding-left: $half-spacing;
+    width: auto;
+    max-width: $page-width;
+    list-style: none;
+
+    @include media-query(min, $lap-start) {
+        padding-right: $base-spacing;
+        padding-left: $base-spacing;
+    }
+}
+
+.container--skinny {
+    max-width: 800px;
+}
