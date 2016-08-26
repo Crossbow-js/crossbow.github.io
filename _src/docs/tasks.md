@@ -116,3 +116,84 @@ cb.task('sass', {
     runMode: 'parallel'
 });
 ```
+
+## gulp-style streaming tasks
+
+If you are currently using Gulp and would prefer to use a more developer friendly Task runner, you can
+for the most part just find/replace `gulp.task` -> `cb.task`.
+
+**Gulp task example**
+
+```js
+const gulp = require('gulp');
+const easysvg = require('easy-svg');
+
+gulp.task('icons', function svgIcons () {
+    return gulp.src('public/img/svg/*.svg')
+        .pipe(easysvg.stream())
+        .pipe(gulp.dest('public/svg'));
+});
+```
+
+Converting this to Crossbow couldn't be simpler.
+
+```js
+const vfs = require('vinyl-fs');
+const crossbow = require('crossbow');
+const easysvg = require('easy-svg');
+
+crossbow.task('icons', function svgIcons () {
+    return vfs.src('public/img/svg/*.svg')
+        .pipe(easysvg.stream())
+        .pipe(vfs.dest('public/svg'));
+});
+```
+
+Note how we need to bring in `vinyl-fs` here as a separate dependency
+as Crossbow does not include any file-handling libraries. This is deliberate
+as I designed it to be the best generic task runner available and the
+streaming-files, gulp-style workflow is just 1 use case.
+
+** Where Crossbow differs from Gulp **
+
+First, because Gulp was designed to be simple, with a tiny API, it makes
+some things related to task-running either awkward to manage, or just
+impossible.
+
+- easier composition
+    - If you wanted to run 2 tasks in sequence, but the second task
+    was actually a group of tasks you wanted to run in parallel - you
+    can model this much easier than in Gulp. Eg:
+
+    ```js
+    // Define a plain function as a task
+    cb.task('my-fun', function () {
+        // Some task
+    });
+
+    // Now define 2 tasks to run in parallel
+    cb.task('my-parallel-tasks', {
+        runMode: 'parallel',
+        tasks: ['tasks/file1.js', '@npm webpack']
+    });
+
+    // Finally compose them together.
+    // Note how there's no need to addition syntax or method calls
+    cb.task('build', ['my-fun', 'my-parallel-tasks']);
+    ```
+    There's even a short hand for running a sub-set of tasks in parallel
+    that can be applied either at the task definition or at the call-site
+
+    ```js
+    // Define a plain function as a task
+    cb.task('my-fun', function () {
+        // Some task
+    });
+
+    // Now define 2 tasks using @p shorthand
+    // to make them run in parallel
+    cb.task('my-parallel-tasks@p', ['tasks/file1.js', '@npm webpack']);
+
+    cb.task('build', ['my-fun', 'my-parallel-tasks']);
+    ```
+
