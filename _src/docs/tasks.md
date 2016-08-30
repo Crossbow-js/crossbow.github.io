@@ -181,8 +181,8 @@ impossible.
     // Note how there's no need to addition syntax or method calls
     cb.task('build', ['my-fun', 'my-parallel-tasks']);
     ```
-    There's even a short hand for running a sub-set of tasks in parallel
-    that can be applied either at the task definition or at the call-site
+    There's even a short hand for running a sub-set of tasks in parallel, just
+    used a nested array.
 
     ```js
     // Define a plain function as a task
@@ -190,10 +190,8 @@ impossible.
         // Some task
     });
 
-    // Now define 2 tasks using @p shorthand
-    // to make them run in parallel
-    cb.task('my-parallel-tasks@p', ['tasks/file1.js', '@npm webpack']);
-
-    cb.task('build', ['my-fun', 'my-parallel-tasks']);
+    // Here, my-fun MUST complete before the following two tasks
+    // are executed in parallel
+    cb.task('build', ['my-fun', ['tasks/file1.js', '@npm webpack']]);
     ```
 

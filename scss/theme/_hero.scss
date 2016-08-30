@@ -1,0 +1,53 @@
+.hero {
+    color: $white;
+    text-shadow: 1px 1px 3px black;
+
+    .highlight {
+        border-radius: 0;
+        background: rgba($black, .8);
+        border: 0;
+        margin-top: $base-spacing*2;
+
+        code {
+            background: none;
+        }
+    }
+}
+.hero__title {
+    text-align: center;
+    font-weight: normal;
+    @include font-size(30px);
+    margin-bottom: 0;;
+}
+.hero__summary {
+    text-align: center;
+    font-weight: normal;
+}
+
+.hero__content {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.hero__cta {
+    text-align: center;
+}
+
+.hero__cta__link {
+    color: $white;
+    &:hover, &:focus {
+        color: $orange;
+    }
+}
+
+.value {
+
+}
+.value__items {
+    @include list-reset;
+}
+
+.value__item {
+    text-align: center;
+    @include font-size(20px);
+}

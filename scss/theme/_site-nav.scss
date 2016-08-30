@@ -9,11 +9,9 @@
         justify-content: flex-end;
     }
 }
+
 .site-nav__item {
-    svg {
-        display: block;
-        width: 150px;
-    }
+
 }
 
 .site-nav__item--logo {
@@ -46,6 +44,10 @@
 .site-nav__link {
     display: block;
     color: $white;
+
+    &:hover {
+        color: $orange;
+    }
 }
 
 .site-nav__link--text {

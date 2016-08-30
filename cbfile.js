@@ -87,3 +87,5 @@ cb.task('docker-start', [
 cb.task('docker-restart', [
     '@sh ssh $AUTH "docker restart crossbow"'
 ]);
+
+cb.task('open', ['@sh open $LIVE_URL']);
