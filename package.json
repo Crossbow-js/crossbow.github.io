@@ -15,7 +15,7 @@
     "bs-latency": "1.0.0",
     "crossbow": "^3.6.12",
     "crossbow-sass": "4.0.3",
-    "crossbow-sites": "^1.0.0",
+    "crossbow-sites": "1.0.1",
     "easy-svg": "1.0.5",
     "merkle-dir": "0.0.0",
     "normalize.css": "4.1.1",
