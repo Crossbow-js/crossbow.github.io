@@ -80,12 +80,15 @@ cb.env({
     DOCKER_NAME: 'crossbow'
 });
 
+cb.task('ssh', '@sh ssh $AUTH');
+
 cb.task('docker-start', [
     '@sh ssh $AUTH "docker run -d --name crossbow -p 80:80 -v $(pwd)/crossbow:/usr/share/nginx/html -v $(pwd)/crossbow/nginx.conf:/etc/nginx/conf.d/default.conf donbeave/nginx-pagespeed:1.8.0-1"'
 ]);
 
 cb.task('docker-restart', [
-    '@sh ssh $AUTH "docker restart crossbow"'
+    '@sh ssh $AUTH "docker exec crossbow rm -rf /var/ngx_pagespeed_cache"',
+    '@sh ssh $AUTH "docker restart crossbow"',
 ]);
 
 cb.task('open', ['@sh open $LIVE_URL']);
