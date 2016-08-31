@@ -15,4 +15,4 @@ your functions and you'll the name in the CLI output :)
 cb.task('task', ['some-other-task', function myFn() {
     // your task code
 }]);
-`{``
+```

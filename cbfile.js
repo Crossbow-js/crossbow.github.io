@@ -8,8 +8,8 @@ cb.task('serve', ['build-all', function () {
         server: ['public-html', 'public'],
         logFileChanges: false
     });
-    cb.watch('scss', ['sass', () => bs.reload('core.css')]);
-    cb.watch('_src', ['html', () => bs.reload()]);
+    cb.watch('scss', ['sass', () => bs.reload('core.css')], {debounce: 500});
+    cb.watch(['_src', 'data'], ['html', () => bs.reload()], {debounce: 500});
     cb.watch('public/img/svg', ['icons', 'html', () => bs.reload()]);
 }]);
 
@@ -81,7 +81,7 @@ cb.env({
 });
 
 cb.task('docker-start', [
-    '@sh ssh $AUTH "docker run -d --name crossbow -p 80:80 -v $(pwd):/usr/share/nginx/html -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf donbeave/nginx-pagespeed:1.8.0-1"'
+    '@sh ssh $AUTH "docker run -d --name crossbow -p 80:80 -v $(pwd)/crossbow:/usr/share/nginx/html -v $(pwd)/crossbow/nginx.conf:/etc/nginx/conf.d/default.conf donbeave/nginx-pagespeed:1.8.0-1"'
 ]);
 
 cb.task('docker-restart', [

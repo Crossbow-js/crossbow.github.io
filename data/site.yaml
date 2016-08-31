@@ -5,5 +5,31 @@ links:
 nav:
   docs:
     label: 'Documentation'
-    url:   '/docs'
+    url:   '/docs/installation'
+
+sidebar:
+  sections:
+    - title: 'Getting Started'
+      items:
+        - label: 'Installation'
+          url:   '/docs/installation'
+        - label: 'Configuration'
+          url:   '/docs/configuration'
+        - label: 'Files and Directories'
+          url:   '/docs/files-and-directories'
+    - title: 'Examples'
+      items:
+        - label: In the style of Gulp
+          url:   '/docs/examples/gulp'
+        - label: With YAML config file
+          url:   '/docs/examples/yaml'
+        - label: With module.exports
+          url:   '/docs/examples/module-exports'
+    - title: 'Tasks'
+      items:
+        - label: How it works
+          url:   /docs/tasks/how-it-works
+        - label: Task Types
+          url:   /docs/tasks/types
+
 

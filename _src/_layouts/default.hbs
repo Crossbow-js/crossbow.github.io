@@ -26,11 +26,27 @@
 <body id="page-top">
     {{ inc src="header.hbs" }}
     {{ inc src="public/svg/icons.svg" }}
-    <div class="wrapper site-body" role="main">
+
+    {{#if_eq page.url '/'}}
+    <div class="wrapper site-body layout-1col" role="main">
         <div class="container">
             {{ content }}
         </div>
     </div>
+    {{else}}
+
+    <div class="wrapper site-body layout-2col" role="main">
+        <div class="container">
+            <section class="sidebar">
+                {{ inc src="sidebar.hbs" }}
+            </section>
+            <main class="content">
+                {{ content }}
+            </main>
+        </div>
+    </div>
+    {{/if_eq}}
+
     {{ inc src="footer.hbs" }}
 </body>
 </html>

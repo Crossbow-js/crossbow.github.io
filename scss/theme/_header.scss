@@ -8,6 +8,14 @@
     background-repeat: no-repeat;
     background-position: center bottom;
 
+    padding-top: $half-spacing;
+    padding-bottom: $half-spacing;
+
+    @include media-query(min, $lap-start) {
+        padding-top: $base-spacing;
+        padding-bottom: $base-spacing;
+    }
+
     > * {
         position: relative;
         z-index: 1;

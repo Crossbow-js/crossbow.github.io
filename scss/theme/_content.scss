@@ -1,0 +1,8 @@
+.content {
+
+    @include media-query(min, $lap-start) {
+        width: 70%;
+        float: right;
+        padding-left: $base-spacing;
+    }
+}

@@ -1,0 +1,39 @@
+.sidebar {
+    //outline: 1px solid blue;
+
+    @include media-query(min, $lap-start) {
+        float: left;
+        width: 30%;
+        padding-right: $base-spacing;
+    }
+}
+
+.sidebar__list {
+    @include list-reset;
+}
+
+.sidebar__heading {
+    font-weight: bold;
+    @include font-size(20px);
+    border-bottom: 1px dashed $silver;
+}
+
+.sidebar__link {
+
+    display: block;
+    padding: $half-spacing/2 $half-spacing;
+    
+    &:hover {
+        background: lighten($silver-lt, 5%);
+    }
+}
+
+.sidebar__link--current {
+    background: lighten($silver-lt, 7%);
+    color: $silver-dk;
+    cursor: default;
+    &:hover {
+        background: lighten($silver-lt, 7%);
+        color: $silver-dk;
+    }
+}
