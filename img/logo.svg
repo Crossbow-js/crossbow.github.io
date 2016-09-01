@@ -3,7 +3,6 @@
         <style>
             .cls-1{
                 fill:#fff;
-                filter: drop-shadow( -5px -5px 10px #000);
             }
         </style>
     </defs>
