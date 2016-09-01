@@ -28,8 +28,7 @@ cb.task('html', {
         },
         input: [
             '_src/*.hbs',
-            '_src/docs/**/*.md',
-            '_src/docs/**/*.hbs',
+            '_src/docs/**/*.{md,html,hbs}',
         ],
         output: 'public-html'
     }
