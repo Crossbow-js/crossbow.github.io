@@ -9,7 +9,7 @@ $ crossbow run <taskname>
 ```
 |Task name|Description|
 |---|---|
-|<pre>`serve`</pre>|**Alias for:**<br>- `build-all`<br>- `_inline_fn_0_`|
+|<pre>`serve`</pre>|Build all HTML + assets and start Browsersync|
 |<pre>`build-all`</pre>|**Alias for:**<br>- `html`<br>- `icons`<br>- `sass`|
 |<pre>`html`</pre>|**Alias for:**<br>- `tasks/templates`|
 |<pre>`icons`</pre>|undefined|

@@ -4,7 +4,7 @@ const easysvg = require('easy-svg');
 const html    = require('bs-html-injector');
 const bs      = require('browser-sync').create();
 
-cb.task('serve', ['build-all', function () {
+function serveStatic() {
     bs.init({
         server: ['public-html', 'public'],
         logFileChanges: false,
@@ -15,7 +15,12 @@ cb.task('serve', ['build-all', function () {
         debounce: 500
     });
     cb.watch('public/img/svg', ['icons', 'html', () => bs.reload()]);
-}]);
+}
+
+cb.task('serve', {
+    description: 'Build all HTML + assets and start Browsersync',
+    tasks: ['build-all', serveStatic]
+});
 
 cb.task('build-all', ['html', 'icons', 'sass']);
 
