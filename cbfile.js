@@ -1,15 +1,19 @@
 const cb      = require('crossbow');
 const vfs     = require('vinyl-fs');
 const easysvg = require('easy-svg');
+const html    = require('bs-html-injector');
 const bs      = require('browser-sync').create();
 
 cb.task('serve', ['build-all', function () {
     bs.init({
         server: ['public-html', 'public'],
-        logFileChanges: false
+        logFileChanges: false,
+        plugins: ['bs-html-injector']
     });
     cb.watch('scss', ['sass', () => bs.reload('core.css')], {debounce: 500});
-    cb.watch(['_src', 'data'], ['html', () => bs.reload()], {debounce: 500});
+    cb.watch(['_src', 'data'], ['html', () => {html()}], {
+        debounce: 500
+    });
     cb.watch('public/img/svg', ['icons', 'html', () => bs.reload()]);
 }]);
 
