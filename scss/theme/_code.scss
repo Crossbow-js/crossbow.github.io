@@ -13,7 +13,7 @@ code, samp {
 
     padding: $half-spacing $half-spacing*1.5; // compensate for line height
     line-height: 1.4;
-    //background: $code-bg;
+    background: $code-bg;
     overflow: auto;
 
     /* reset previous inline code styles */
@@ -25,10 +25,8 @@ code, samp {
 
     margin-bottom: $base-spacing;
     margin-top: $base-spacing;
-    //border: 1px solid darken($code-bg, 5%);
     border-radius: 3px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+    border: 1px solid rgba($black, .04);
 
     @include media-query(min, $lap-start) {
 

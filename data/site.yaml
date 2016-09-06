@@ -13,8 +13,8 @@ sidebar:
       items:
         - label: 'Installation'
           url:   '/docs/installation'
-        - label: 'Configuration'
-          url:   '/docs/configuration'
+        - label: 'Options'
+          url:   '/docs/options'
         - label: 'Files and Directories'
           url:   '/docs/files-and-directories'
     - title: 'Examples'

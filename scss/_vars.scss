@@ -7,11 +7,11 @@ $blue-lt: #89BAF4;
 $teal: $blue-lt;
 $bg: #da4453;
 $lime: #D3ED13;
-$code-bg: #FCFCFC;
-
-// Neutrals
 $white: #fff;
 $black: #000;
+
+
+// Neutrals
 $grey-dk: lighten($black, 10%); // 1a1a1a
 $grey: lighten($black, 20%); // 333333
 $grey-lt: lighten($black, 40%); // 666666
@@ -28,6 +28,7 @@ $success: #00cc66;
 $failure: #cc0000;
 $facebook: #3B5999;
 $twitter: #00ACEE;
+$code-bg: rgba($black, .03);
 
 $sans: "Rokkitt", "Lucida Grande", "Lucida Sans",sans-serif;
 $serif: Georgia, serif;

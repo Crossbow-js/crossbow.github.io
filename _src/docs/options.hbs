@@ -1,0 +1,102 @@
+<h1>{{page.title}}</h1>
+
+<h2>Global options</h2>
+
+{{#data src="node_modules/crossbow/opts/global-common.json" as="json"}}
+<table>
+{{#each json}}
+    <tr>
+    <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+    <td>
+        {{this.desc}}
+    </td>
+    </tr>
+{{/each}}
+{{/data}}
+
+{{#data src="node_modules/crossbow/opts/common.json" as="json"}}
+{{#each json}}
+    <tr>
+        <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+        <td>
+            {{this.desc}}
+        </td>
+    </tr>
+{{/each}}
+{{/data}}
+</table>
+
+<h3>Global options examples</h3>
+{{inc src="snippets/options/global.md"    filter="md"}}
+
+<h2>Run specific options</h2>
+
+{{#data src="node_modules/crossbow/opts/run-common.json" as="json"}}
+    <table>
+    {{#each json}}
+            <tr>
+                <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+                <td>
+                    {{this.desc}}
+                </td>
+            </tr>
+    {{/each}}
+    </table>
+{{/data}}
+
+<h3>Run options examples</h3>
+{{inc src="snippets/options/run.md"    filter="md"}}
+
+<h2>Watch specific options</h2>
+
+{{#data src="node_modules/crossbow/opts/command.watch.opts.json" as="json"}}
+    <table>
+    {{#each json}}
+            <tr>
+                <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+                <td>
+                    {{this.desc}}
+                </td>
+            </tr>
+    {{/each}}
+    </table>
+{{/data}}
+
+<h3>Watch options examples</h3>
+{{inc src="snippets/options/watch.md"    filter="md"}}
+
+
+<h2>Init specific options</h2>
+
+{{#data src="node_modules/crossbow/opts/command.init.opts.json" as="json"}}
+    <table>
+    {{#each json}}
+            <tr>
+                <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+                <td>
+                    {{this.desc}}
+                </td>
+            </tr>
+    {{/each}}
+    </table>
+{{/data}}
+
+<h3>Init options examples</h3>
+{{inc src="snippets/options/init.md"    filter="md"}}
+
+<h2>Docs specific options</h2>
+{{#data src="node_modules/crossbow/opts/command.docs.opts.json" as="json"}}
+    <table>
+    {{#each json}}
+            <tr>
+                <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+                <td>
+                    {{this.desc}}
+                </td>
+            </tr>
+    {{/each}}
+    </table>
+{{/data}}
+
+<h3>Docs options examples</h3>
+{{inc src="snippets/options/docs.md"    filter="md"}}
