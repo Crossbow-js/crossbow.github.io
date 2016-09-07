@@ -17,6 +17,7 @@ sidebar:
           url:   '/docs/options'
         - label: 'Files and Directories'
           url:   '/docs/files-and-directories'
+
     - title: 'Input files'
       items:
         - label: <code>cbfile.js</code> (Gulp style)
@@ -31,5 +32,17 @@ sidebar:
           url:   /docs/tasks/how-it-works
         - label: Task Types
           url:   /docs/tasks/types
+    - title: 'Commands'
+      items:
+        - label: 'init'
+          url: '/docs/commands/init'
+        - label: 'run'
+          url: '/docs/commands/run'
+        - label: 'watch'
+          url: '/docs/commands/watch'
+        - label: 'tasks'
+          url: '/docs/commands/tasks'
+        - label: 'docs'
+          url: '/docs/commands/docs'
 
 
