@@ -33,9 +33,10 @@ Now, to invoke `some-task`, you would run the following command
 crossbow some-task
 ```
 
-Composing tasks is much simpler than in Gulp, whilst also being more powerful.
 
 ### Running tasks in series
+
+Composing tasks is much simpler than in Gulp, whilst also being more powerful.
 
 **NO** special syntax is needed to ensure sequential execution of your tasks, just provide
 an array, and they will execute in that exact order, each waiting for the previous to complete.
@@ -105,3 +106,133 @@ gulp.task('race', gulp.series(
 
 ```
 
+## crossbow.yaml
+
+Crossbow loves yaml. Provide a top-level `tasks` property,
+and it's keys become the task names.
+
+This defines 3 tasks, `clean`, `webpack` & `build`. Where the
+first 2 are NPM scripts & the third is a composition of of those.
+Remember though, every runs in sequence by default, so in the following,
+you can guarantee that `clean` will have completed before `webpack` starts.
+
+
+```yml
+# crossbow.yaml
+tasks:
+  clean:   '@npm rimraf ./app'
+  webpack: '@npm webpack'
+  build:
+    - clean
+    - webpack
+```
+
+### Parallel
+
+To min-n-match series + parallel tasks, you can provide the `runMode`
+property as seen before
+
+```yml
+# crossbow.yaml
+tasks:
+  clean:
+    runMode: 'parallel'
+    tasks:
+      - '@npm rimraf ./dist/css'
+      - '@npm rimraf ./dist/js'
+  webpack: '@npm webpack'
+  build:
+    tasks:
+       - clean
+       - webpack
+```
+
+Alternatively, you can provide nested arrays
+
+```yml
+tasks:
+  webpack: '@npm webpack'
+  build:
+    runMode: 'parallel'
+    tasks:
+       - ['@npm rimraf ./dist/css', '@npm rimraf ./dist/js']
+       - webpack
+
+```
+
+## crossbow.js
+We also support providing a JS input file, you just need to use `module.exports`
+to export your input.
+
+```js
+// crossbow.js
+module.exports = {
+  tasks: {
+    clean: '@npm rimraf ./app'
+    webpack: '@npm webpack',
+    build: ['clean', 'webpack']
+  }
+}
+```
+
+It gets crazy cool when you use this technique, as it allows you to build your
+input dynamically using string interpolation, variables etc.
+
+### Parallel
+
+As always, you can provide an object for each task which allows you to specify
+`runMode` & `tasks` properties.
+
+```js
+// crossbow.js
+ module.exports = {
+   tasks: {
+     clean: {
+       description: 'Clean 2 directories in parallel',
+       runMode: 'parallel',
+       tasks: [
+         '@npm rimraf ./app',
+         '@npm rimraf ./css',
+       ]
+     },
+     webpack: '@npm webpack',
+     build: ['clean', 'webpack']
+   }
+ }
+```
+
+Or, again you can use inline nested arrays to specific parallel tasks.
+```js
+// crossbow.js
+// -> rimraf ./app -> webpack
+// -> rimraf ./css
+module.exports = {
+  tasks: {
+    webpack: '@npm webpack',
+    build: [
+      ['@npm rimraf ./app', '@npm rimraf ./css'],
+      'webpack'
+    ]
+  }
+}
+```
+
+### Inline functions
+
+Another benefit to using a JS input file, is that you can provide inline functions
+too. So if you wanted to do something after a webpack build for example, you
+could provide a function directly in your tasks definition.
+
+```js
+// crossbow.js
+module.exports = {
+  tasks: {
+    webpack: '@npm webpack',
+    after: function () {
+      // This is so cool!
+      console.log('Webpack completed');
+    },
+    build: ['webpack', 'after']
+  }
+}
+```

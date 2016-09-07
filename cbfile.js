@@ -91,7 +91,12 @@ cb.env({
 cb.task('ssh', '@sh ssh $AUTH');
 
 cb.task('docker-start', [
-    '@sh ssh $AUTH "docker run -d --name crossbow -p 80:80 -v $(pwd)/crossbow:/usr/share/nginx/html -v $(pwd)/crossbow/nginx.conf:/etc/nginx/conf.d/default.conf donbeave/nginx-pagespeed:1.8.0-1"'
+    [
+        '@sh ssh $AUTH "docker run -d --name crossbow -p 80:80',
+        '-v $(pwd)/crossbow:/usr/share/nginx/html',
+        '-v $(pwd)/crossbow/nginx.conf:/etc/nginx/conf.d/default.conf',
+        'donbeave/nginx-pagespeed:1.8.0-1"'
+    ].join(' ')
 ]);
 
 cb.task('docker-restart', [
