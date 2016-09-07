@@ -1,4 +1,4 @@
-# Gulp Style
+# cbfile.js (Gulp style)
 
 Crossbow loves Gulp! We just have slightly different goals which
 means Crossbow can do everything Gulp can + a whole bunch more.
@@ -22,7 +22,7 @@ gulp.task('sass', function() {
 
 ## 1 task (crossbow)
 ```js
-// crossbow
+// cbfile.js
 const vfs  = require('vinyl-fs');
 const cb   = require('crossbow');
 const sass = require('gulp-sass');
@@ -40,7 +40,7 @@ cb.task('sass', function() {
 // gulp
 gulp.task('build', gulp.series(['task1', 'task2']));
 
-// crossbow
+// crossbow 
 cb.task('build', ['task1', 'task2']);
 ```
 

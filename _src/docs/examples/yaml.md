@@ -1,7 +1,9 @@
-# YAML
+# crossbow.yaml
 
 Many workflows & tasks can be defined with YAML data only - which is 
 great for those already familiar with the format.
+
+Provide a top-level `tasks` property, and it's keys become the task names.
   
 By default, Crossbow will look for a `crossbow.yaml` file in the current
 directory. If you've placed it elsewhere, you can provide the --cbfile flag

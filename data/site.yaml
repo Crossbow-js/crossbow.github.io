@@ -17,13 +17,13 @@ sidebar:
           url:   '/docs/options'
         - label: 'Files and Directories'
           url:   '/docs/files-and-directories'
-    - title: 'Examples'
+    - title: 'Input files'
       items:
-        - label: In the style of Gulp
+        - label: <code>cbfile.js</code> (Gulp style)
           url:   '/docs/examples/gulp'
-        - label: With YAML config file
+        - label: <code>crossbow.yaml</code>
           url:   '/docs/examples/yaml'
-        - label: With module.exports (<code>.js</code> file)
+        - label: <code>crossbow.js</code> (module.exports)
           url:   '/docs/examples/module-exports'
     - title: 'Tasks'
       items:
