@@ -8,15 +8,23 @@ The goal of Crossbow is to unify the use & configuration of the following:
 - shell scripts
 - NPM scripts.
 
+## What's different
+
 There is **no need** for a new ecosystems of `crossbow-<plugin-name>` plugins
 as it's possible (and recommended) for you to use the existing gulp plugin
-ecosystem right along side a shell script or NPM script.
+ecosystem right along side any number of shell script, plain functions or even NPM scripts.
+
+We enable this by having a **powerful task resolution system**, **an extremely reliable 
+execution technique**, by offering **best-in-game error handling** and finally by offering features
+that are simply **not possible in other tools**.
+  
 
 ## How it works
 
-Crossbow is an advanced task orchestration system - it thinks of a plain function
- call in the exact same way as something more complicated, like spawning a child
-  process.
+Crossbow is an advanced task orchestration system - it thinks of a plain function 
+call in the exact same way as something more complicated, like spawning a child
+process. By unifying maybe types of tasks in this way, we're able to offer a composition model
+far superior to anything you've used in the past.
 
 ## Plain Functions
 
