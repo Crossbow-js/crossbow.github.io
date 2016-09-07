@@ -3,7 +3,7 @@
     <li><p class="sidebar__heading">{{this.title}}</p>
         <ul class="sidebar__list sidebar__list--nested">
         {{#each this.items}}
-            <li><a href="{{this.url}}" class="sidebar__link {{#current this.url}}sidebar__link--current{{/current}}">{{this.label}}</a></li>
+            <li><a href="{{this.url}}" class="sidebar__link {{#current this.url}}sidebar__link--current{{/current}}">{{{this.label}}}</a></li>
         {{/each}}
         </ul>
     </li>

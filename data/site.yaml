@@ -23,7 +23,7 @@ sidebar:
           url:   '/docs/examples/gulp'
         - label: With YAML config file
           url:   '/docs/examples/yaml'
-        - label: With module.exports
+        - label: With module.exports (<code>.js</code> file)
           url:   '/docs/examples/module-exports'
     - title: 'Tasks'
       items:

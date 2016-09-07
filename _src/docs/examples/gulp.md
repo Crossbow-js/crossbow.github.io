@@ -233,25 +233,81 @@ cb.task('build', [
 
 ## Inline options
 
-Crossbow supports the concept of publishing 'Task' modules to NPM.
+Crossbow supports the concept of publishing 'tasks' to NPM.
 the idea is that what you'd normally place within a gulp task,
- you could instead publish that function as an NPM module. The problem
- here is that how do you use it with your own file paths/variables?
+you could instead publish that function as an NPM module. The problem
+here is that how do you use it with your own file paths/variables?
 
-This is where crossbow excels, because each task can be called with options
+This is where Crossbow excels, because each task can be called with options
 this type of idea (publishing tasks) is now possible.
 
-** using the example `crossbow-sass` task. Here `crossbow-sass` will be
-used from the local `node_modules` directory. It takes 2 options, `input`
-and `output`.
+Let's look at an example. There's a module published on NPM
+ called `crossbow-sass`. It looks something like:
+
+```js
+var sourcemaps = require('gulp-sourcemaps');
+var post       = require('gulp-postcss');
+var cssnano    = require('cssnano');
+var pre        = require('autoprefixer');
+var sass       = require('gulp-sass');
+var imp        = require('postcss-import');
+var vfs        = require('vinyl-fs');
+var rename     = require('gulp-rename');
+
+module.exports = function processSass (options, ctx, done) {
+    var productionPlugins = [imp, pre, cssnano];
+    var devPlugins = [imp, pre];
+
+    return vfs.src(options.input)
+        .pipe(sourcemaps.init())
+        .pipe(sass().on('error', done))
+        .pipe(post(options.production ? productionPlugins : devPlugins))
+        .pipe(rename(function (path) {
+            if (options.production) {
+                if (path.extname === '.css') {
+                    return path.basename += '.min';
+                }
+            }
+            return path;
+        }))
+        .pipe(sourcemaps.write('.'))
+        .pipe(vfs.dest(options.output || process.cwd));
+};
+```
+
+As you can see, it looks very similar to what you'd typically see in a gulp file. But there is 
+one **major** difference - the `options` that are passed in. In this case there's `input`, `output` 
+and `production`. 
+
+This means across many projects this task setup can be re-used and the only thing that 
+changes between each are the options, which you can define in the following way
 
 ```js
 cb.task('sass', {
-    tasks: 'crossbow-sass',
-    description: 'Compile sass -> css',
+    tasks: 'crossbow-sass', // use an npm-installed 'task'
     options: {
         input: 'scss/core.scss',
         output: 'public/css'
     }
 });
+```
+
+One final thing, how do we call this sometimes with `options.production = true`? Juts as we 
+saw before with either a query or flag. This is especially useful for doing multiple builds.
+
+```js
+// utilise an npm-installed 'task' by passing options
+cb.task('sass', {
+    tasks: 'crossbow-sass',
+    options: {
+        input: 'scss/core.scss',
+        output: 'public/css'
+    }
+});
+
+// Even pass additional flags to re-use the same task 
+cb.task('build-css', [
+    'sass',
+    'sass --production'
+]);
 ```
