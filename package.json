@@ -13,7 +13,7 @@
     "bs-fullscreen-message": "1.1.0",
     "bs-html-injector": "^3.0.3",
     "bs-latency": "1.0.0",
-    "crossbow": "^3.6.15",
+    "crossbow": "4.0.1",
     "crossbow-sass": "4.0.3",
     "crossbow-sites": "1.0.1",
     "easy-svg": "1.0.5",
