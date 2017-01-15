@@ -1,10 +1,8 @@
 const cb      = require('crossbow');
-const vfs     = require('vinyl-fs');
-const easysvg = require('easy-svg');
-const html    = require('bs-html-injector');
-const bs      = require('browser-sync').create();
 
 function serveStatic() {
+    const bs      = require('browser-sync').create();
+    const html    = require('bs-html-injector');
     bs.init({
         server: ['public-html', 'public'],
         logFileChanges: false,
@@ -44,8 +42,9 @@ cb.task('html', {
 });
 
 cb.task('icons', function svgIcons () {
+    const vfs = require('vinyl-fs');
     return vfs.src('public/img/svg/*.svg')
-        .pipe(easysvg.stream())
+        .pipe(require('easy-svg').stream())
         .pipe(vfs.dest('public/svg'));
 });
 
