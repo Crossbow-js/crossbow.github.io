@@ -17,9 +17,11 @@
     "crossbow-sass": "4.0.3",
     "crossbow-sites": "1.0.1",
     "easy-svg": "1.0.5",
+    "highlight.js": "^9.9.0",
     "merkle-dir": "0.0.0",
     "normalize.css": "4.1.1",
     "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll.git#dd0553ff80213e42c47500f2e47843f53eebf289",
     "vinyl-fs": "2.4.3"
-  }
+  },
+  "dependencies": {}
 }

@@ -4,7 +4,7 @@ function serveStatic() {
     const bs      = require('browser-sync').create();
     const html    = require('bs-html-injector');
     bs.init({
-        server: ['public-html', 'public'],
+        server: ['public-html', 'public', 'node_modules'],
         logFileChanges: false,
         plugins: ['bs-html-injector']
     });
