@@ -24,11 +24,9 @@ code, samp {
     }
 
     margin-bottom: $base-spacing;
-    //border-radius: 3px;
     border: 1px solid rgba($black, .04);
 
     @include media-query(min, $lap-start) {
-
         margin-left: 0;
         margin-right: 0;
     }

@@ -4,6 +4,18 @@ config:
 env:
   IMAGE: shakyshane/crossbow-web
 
+watch:
+  default:
+    before:
+      - build-all
+      - '@bg browser-sync start --server public --ss public-html'
+    '_src:data:public/js':
+      - build-html
+      - bs:reload
+    'scss':
+      - build-css
+      - bs:inject
+
 tasks:
   (docker):
     push: '@sh docker push $IMAGE'
@@ -17,6 +29,10 @@ tasks:
 
   (clean):
     docker-images:  '@sh docker rmi $(docker images -f "dangling=true" -q)'
+
+  (bs):
+    reload: '@npm browser-sync reload'
+    inject: '@npm browser-sync reload --files core.css'
 
   build-all:
     - build-html

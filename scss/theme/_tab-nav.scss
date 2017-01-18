@@ -1,17 +1,41 @@
+.tab-content {
+    display: none;
+}
+.tab-content--active {
+    display: block;
+}
+
 .tab-nav {
-    //outline: 1px solid red;
+    display: flex;
+    margin-bottom: -1px;
 }
 
 .tab-nav__button {
+    //flex: 1;
+    display: inline-block;
     background: transparent;
-    border: 1px solid $blue-lt;
-    border-bottom: 0;
+    border: 1px solid rgba($black, .04);
     text-transform: uppercase;
-    padding: .2em .8em 0;
+    padding: 1em 2em;
+    text-align: center;
+    font-family: monospace, monospace;
+    font-size: 0.8em;
+    margin-right: 4px;
+    border-bottom: 0;
+    transform: scale(0.9);
+
+    //border-left-width: 0;
+    //&:first-child {
+    //    border-left-width: 1px;
+    //}
 }
 
 .tab-nav__button--active {
-    background: $blue-lt;
-    //color: $white;
-
+    background: $code-bg;
+    color: $orange;
+    z-index: 1;
+    transform: scale(1);
+    &:hover, &:focus, &:active {
+        color: $orange;
+    }
 }

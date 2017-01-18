@@ -3,11 +3,19 @@
     <h2 class="hero__summary">Uniting the ecosytem of front-end tooling</h2>
     <div class="hero__content">
         <div class="tab-nav">
-            <button type="button" class="tab-nav__button tab-nav__button--active">cbfile.js</button>
-            <button type="button" class="tab-nav__button">yml</button>
-            <button type="button" class="tab-nav__button">js</button>
+            <a href="#intro-cbfile" class="tab-nav__button tab-nav__button--active">cbfile.js</a>
+            <a href="#intro-yml" class="tab-nav__button">yml</a>
+            <a href="#intro-js" class="tab-nav__button">js</a>
         </div>
-        {{hl src="snippets/hero.js"}}
+        <div class="tab-content tab-content--active" id="intro-cbfile">
+            {{hl src="snippets/cbfile.js"}}
+        </div>
+        <div class="tab-content" id="intro-yml">
+            {{hl src="snippets/hero.yaml"}}
+        </div>
+        <div class="tab-content" id="intro-js">
+            {{hl src="snippets/hero.js"}}
+        </div>
     </div>
     <div class="hero__cta">
         <p class="perspective">
