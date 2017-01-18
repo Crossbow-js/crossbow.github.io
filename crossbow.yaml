@@ -1,0 +1,43 @@
+config:
+  progress: true
+
+env:
+  IMAGE: shakyshane/crossbow-web
+
+tasks:
+  (docker):
+    push: '@sh docker push $IMAGE'
+    build: '@sh docker build -t $IMAGE .'
+    up-dev: '@sh docker-compose up -d'
+    up-prod: '@sh docker-compose -f docker-compose.prod.yaml up -d'
+    prod:
+      - build-all
+      - docker:build
+      - docker:up-prod
+
+  (clean):
+    docker-images:  '@sh docker rmi $(docker images -f "dangling=true" -q)'
+
+  build-all:
+    - build-html
+    - build-css
+
+  build-css:
+    tasks: crossbow-sass
+    options:
+      input: scss/core.scss
+      output: public/css
+
+  build-html:
+    tasks: ['tasks/templates.js']
+    options:
+      config:
+        base: _src
+        prettyUrls: true
+        defaultLayout: default.hbs
+      data:
+        '$$': 'all:data'
+      output: 'public-html'
+      input:
+        - '_src/*.hbs'
+        - '_src/docs/**/*.{md,html,hbs}'

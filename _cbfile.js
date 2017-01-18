@@ -72,13 +72,6 @@ cb.task('deploy', [
     '@sh open $LIVE_URL'
 ]);
 
-cb.task('rsync', {
-    description: 'Copy files from local to remote server',
-    tasks: [
-        '@sh rsync -rav public public-html docker-compose.yaml nginx.conf $AUTH:~/$DOCKER_NAME --delete'
-    ]
-});
-
 cb.env({
     AUTH: 'root@178.62.56.143',
     DO_IP: '178.62.56.143',
@@ -89,14 +82,13 @@ cb.env({
 
 cb.task('ssh', '@sh ssh $AUTH');
 
-cb.task('docker-start', [
-    [
-        '@sh ssh $AUTH "docker run -d --name crossbow -p 80:80',
-        '-v $(pwd)/crossbow:/usr/share/nginx/html',
-        '-v $(pwd)/crossbow/nginx.conf:/etc/nginx/conf.d/default.conf',
-        'donbeave/nginx-pagespeed:1.8.0-1"'
-    ].join(' ')
-]);
+cb.group('docker', {
+    'prod': [
+        'build-all',
+        'docker:build'
+    ],
+    build: '@sh docker build -t crossbow-web .'
+});
 
 cb.task('docker-restart', [
     '@sh ssh $AUTH "docker exec crossbow rm -rf /var/ngx_pagespeed_cache"',
