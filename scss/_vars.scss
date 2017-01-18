@@ -4,6 +4,7 @@ $navy: #0F2634;
 $yellow: #e9ac00;
 $orange: #ef990e;
 $blue-lt: #89BAF4;
+$blue: #56779e;
 $teal: $blue-lt;
 $bg: #da4453;
 $lime: #D3ED13;
@@ -21,7 +22,7 @@ $silver-lt: lighten($black, 90%); // e6e6e6
 $smoke: #FBFBFB; // f2f2f2
 
 // Special
-$link: $black;
+$link: $blue-lt;
 $link-hover: $black;
 $alert: #cccc00;
 $success: #00cc66;

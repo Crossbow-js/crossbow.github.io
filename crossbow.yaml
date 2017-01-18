@@ -3,17 +3,19 @@ config:
 
 env:
   IMAGE: shakyshane/crossbow-web
+  DO_AUTH: root@139.59.169.6
 
 watch:
   default:
     before:
-      - build-all
+      - build-css
+      - build-html --dev
       - '@bg browser-sync start --server public --ss public-html'
     '_src:data:public/js':
-      - build-html
+      - build-html --dev
       - bs:reload
     'scss':
-      - build-css
+      - crossbow-sass
       - bs:inject
 
 tasks:
@@ -22,23 +24,42 @@ tasks:
     build: '@sh docker build -t $IMAGE .'
     up-dev: '@sh docker-compose up -d'
     up-prod: '@sh docker-compose -f docker-compose.prod.yaml up -d'
+    release:
+      - build-all
+      - docker:build
+      - docker:push
+      - '@cb delay 5'
+      - server:pull
+      - server:stop
+      - server:up
     prod:
       - build-all
       - docker:build
       - docker:up-prod
 
+  (server):
+    pull: '@sh ssh $DO_AUTH docker pull shakyshane/crossbow-web'
+    stop: '@sh ssh $DO_AUTH docker stop crossbow-web'
+    up:   '@sh ssh $DO_AUTH docker start crossbow-web'
+
   (clean):
-    docker-images:  '@sh docker rmi $(docker images -f "dangling=true" -q)'
+    docker-images: '@sh docker rmi $(docker images -f "dangling=true" -q)'
+    css:  '@sh rm -rf public/css/*'
 
   (bs):
     reload: '@npm browser-sync reload'
     inject: '@npm browser-sync reload --files core.css'
 
   build-all:
-    - build-html
     - build-css
+    - build-html
 
   build-css:
+    - clean:css
+    - crossbow-sass
+    - crossbow-sass --production --rev --manifest
+
+  sass:
     tasks: crossbow-sass
     options:
       input: scss/core.scss
@@ -57,3 +78,8 @@ tasks:
       input:
         - '_src/*.hbs'
         - '_src/docs/**/*.{md,html,hbs}'
+
+options:
+  crossbow-sass:
+    input: scss/core.scss
+    output: public/css

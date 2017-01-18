@@ -24,4 +24,3 @@ cb.task('default', [
     ['lint', 'html', 'scripts', 'images', 'copy'],
     'generate-service-worker'
 ]);
-

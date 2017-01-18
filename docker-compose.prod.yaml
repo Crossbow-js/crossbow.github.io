@@ -2,6 +2,6 @@ version: '2'
 services:
   nginx:
     container_name: crossbow
-    image: crossbow-web
+    image: shakyshane/crossbow-web
     ports:
-      - 8080:80
+      - 80:80

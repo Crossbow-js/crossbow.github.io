@@ -13,6 +13,8 @@ sidebar:
       items:
         - label: 'Installation'
           url:   '/docs/installation'
+        - label: 'Run your first task'
+          url:   '/docs/run-your-first-task'
         - label: 'Options'
           url:   '/docs/options'
         - label: 'Files and Directories'

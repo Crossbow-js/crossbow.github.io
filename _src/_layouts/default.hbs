@@ -15,7 +15,15 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- CSS Includes (PRODUCTION) -->
-    <link rel="stylesheet" href="/css/core.css"/>
+
+    {{#if dev}}
+        <link rel="stylesheet" href="/css/core.css"/>
+    {{else}}
+        {{#data src="public/css/css-manifest.json" as="manifest"}}
+            <link rel="stylesheet" href="/css/{{manifest.[core.min.css]}}"/>
+        {{/data}}
+    {{/if}}
+
 
 </head>
 <body id="page-top">

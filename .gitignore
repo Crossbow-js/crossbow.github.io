@@ -1,8 +1,7 @@
 .idea
 node_modules
 /public-html
-/public/css/core.css
-/public/css/core.css.map
+/public/css/*
 /.crossbow
 .DS_Store
 /public/CreativeButtons
