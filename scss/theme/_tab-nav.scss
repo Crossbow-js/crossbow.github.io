@@ -1,0 +1,17 @@
+.tab-nav {
+    //outline: 1px solid red;
+}
+
+.tab-nav__button {
+    background: transparent;
+    border: 1px solid $blue-lt;
+    border-bottom: 0;
+    text-transform: uppercase;
+    padding: .2em .8em 0;
+}
+
+.tab-nav__button--active {
+    background: $blue-lt;
+    //color: $white;
+
+}

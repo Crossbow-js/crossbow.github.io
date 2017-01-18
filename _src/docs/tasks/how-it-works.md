@@ -23,7 +23,7 @@ that are simply **not possible in other tools**.
 
 Crossbow is an advanced task orchestration system - it thinks of a plain function 
 call in the exact same way as something more complicated, like spawning a child
-process. By unifying maybe types of tasks in this way, we're able to offer a composition model
+process. By unifying many types of tasks in this way, we're able to offer a composition model
 far superior to anything you've used in the past.
 
 ## Plain Functions
@@ -202,4 +202,3 @@ impossible.
     // are executed in parallel
     cb.task('build', ['my-fun', ['tasks/file1.js', '@npm webpack']]);
     ```
-
