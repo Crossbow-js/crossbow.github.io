@@ -8,6 +8,7 @@
 .tab-nav {
     display: flex;
     margin-bottom: -1px;
+    justify-content: center;
 }
 
 .tab-nav__button {
@@ -23,6 +24,9 @@
     margin-right: 4px;
     border-bottom: 0;
     transform: scale(0.9);
+    transform-origin: bottom;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
 
     //border-left-width: 0;
     //&:first-child {

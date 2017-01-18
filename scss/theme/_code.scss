@@ -2,10 +2,8 @@ code, samp {
 
     @include font-size(16px);
     font-family: $mono-font-family;
-    //background: $code-bg;
+    background: lighten(#ccc, 15%);
     padding: 2px 4px;
-    margin: 0 2px;
-    border: 1px solid darken($code-bg, 5%);
     border-radius: 3px;
 }
 
@@ -14,13 +12,17 @@ code, samp {
     padding: $half-spacing $half-spacing*1.5; // compensate for line height
     line-height: 1.4;
     background: $code-bg;
+    border-radius: 3px;
+    color: #ccc;
     overflow: auto;
+    text-shadow: 1px 1px 1px rgba($black, .5);
 
     /* reset previous inline code styles */
     code {
         border: 0;
         padding: 0;
         margin: 0;
+        background: $code-bg;
     }
 
     margin-bottom: $base-spacing;

@@ -292,7 +292,7 @@ cb.task('sass', {
 });
 ```
 
-One final thing, how do we call this sometimes with `options.production = true`? Juts as we 
+One final thing, how do we call this sometimes with `options.production = true`? Just as we
 saw before with either a query or flag. This is especially useful for doing multiple builds.
 
 ```js

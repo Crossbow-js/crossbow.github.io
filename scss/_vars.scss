@@ -28,9 +28,10 @@ $success: #00cc66;
 $failure: #cc0000;
 $facebook: #3B5999;
 $twitter: #00ACEE;
-$code-bg: rgba($black, .03);
+$code-bg: #343a47;
+$body-bg: darken(#343a47, 15%);
 
-$sans: "Rokkitt", "Lucida Grande", "Lucida Sans",sans-serif;
+$sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 $serif: Georgia, serif;
 $mono: monospace;
 
