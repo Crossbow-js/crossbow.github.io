@@ -15,6 +15,12 @@ sidebar:
           url:   '/docs/installation'
         - label: 'Run your first task'
           url:   '/docs/run-your-first-task'
+        - label: Define tasks in files
+          url:   /docs/define-tasks-in-files
+        - label: Use task aliases
+          url:   /docs/use-task-aliases
+        - label: Other ways to define tasks
+          url:   /docs/other-ways-of-defining-tasks
         - label: 'Options'
           url:   '/docs/options'
         - label: 'Files and Directories'
@@ -32,8 +38,8 @@ sidebar:
       items:
         - label: How it works
           url:   /docs/tasks/how-it-works
-        - label: Task Types
-          url:   /docs/tasks/types
+#        - label: Task Types
+#          url:   /docs/tasks/types
     - title: 'Commands'
       items:
         - label: 'init'

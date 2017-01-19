@@ -1,32 +1,36 @@
 (function () {
-    const $ = (selector) => [].slice.call(document.querySelectorAll(selector));
+    const $ = (selector, context) => [].slice.call((context||document).querySelectorAll(selector));
+    const navs    = $('.tab-nav');
 
-    const nav = $('.tab-nav')[0];
-    const buttons = $('.tab-nav__button');
-    const targets = $('.tab-content');
+    navs.forEach(function (nav) {
 
-    if (nav) {
-        nav.addEventListener('click', function (e) {
-            const trigger = e.target.closest('.tab-nav__button');
-            if (!trigger) {
-                return;
-            }
+        const context = nav.parentNode;
+        const buttons = $('.tab-nav__button', context);
+        const targets = $('.tab-content', context);
 
-            const target = $(trigger.hash)[0];
-            if (!target) {
-                return
-            }
+        if (nav) {
+            nav.addEventListener('click', function (e) {
+                const trigger = e.target.closest('.tab-nav__button');
+                if (!trigger) {
+                    return;
+                }
 
-            e.preventDefault();
-            target.classList.add('tab-content--active');
-            targets
-                .filter(x => x !== target)
-                .forEach(x => x.classList.remove('tab-content--active'))
+                const target = $(trigger.hash, context)[0];
+                if (!target) {
+                    return
+                }
 
-            trigger.classList.add('tab-nav__button--active');
-            buttons
-                .filter(x => x !== trigger)
-                .forEach(x => x.classList.remove('tab-nav__button--active'));
-        })
-    }
+                e.preventDefault();
+                target.classList.add('tab-content--active');
+                targets
+                    .filter(x => x !== target)
+                    .forEach(x => x.classList.remove('tab-content--active'))
+
+                trigger.classList.add('tab-nav__button--active');
+                buttons
+                    .filter(x => x !== trigger)
+                    .forEach(x => x.classList.remove('tab-nav__button--active'));
+            })
+        }
+    })
 })();
