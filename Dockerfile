@@ -1,5 +1,12 @@
-FROM nginx:1.10-alpine
+FROM shakyshane/nginx-yarn
+
+WORKDIR /usr/share/nginx/html
+
+COPY package.json yarn.lock /usr/share/nginx/html/
+
+RUN yarn
 
 COPY nginx.conf /etc/nginx/conf.d/default.conf
-COPY public-html /usr/share/nginx/html/public-html
-COPY public /usr/share/nginx/html/public
+COPY . /usr/share/nginx/html
+
+RUN ./node_modules/.bin/cb build-all
