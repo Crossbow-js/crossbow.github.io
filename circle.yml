@@ -6,4 +6,4 @@ deployment:
 
 test:
   override:
-    - ./node_modules/.bin cb build-all
+    - ./node_modules/.bin/cb build-all
