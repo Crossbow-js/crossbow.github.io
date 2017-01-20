@@ -1,5 +1,3 @@
-## Other ways to define tasks.
-
 You're starting to get a taste of Crossbow can do for you. It was designed from the ground
 up to solve complicated task composition problems, whilst also being easier to use and provide 
 better error reports that any other tools out there.
@@ -11,8 +9,9 @@ possible before. Want to run a shell script, followed by an inline gulp-plugin, 
  
 ### External files.
 
-The amount of times I've been using other build systems and thought 'geez, I wish I could just write a 
+The amount of times I've been using other task systems and thought 'geez, I wish I could just write a 
 small JS function to handle this next bit for me'... No problem with Crossbow! 
+
 Let's say you had a super-amazing function like this in a file called `my-task.js`
   
 
@@ -24,14 +23,14 @@ module.exports = function myTask() {
 }
 ```
 
-Now you have 2 ways to execute this function with Crossbow. You can run it directly
-from the CLI
+There are 2 ways to execute this function with Crossbow. You can run it directly
+from the CLI...
 
 ```bash
 cb my-task.js
 ```
 
-Or you can reference it anywhere in one of your input files
+... or you can reference it anywhere in one of your input files
 
 {{inc 
     src="three.hbs"
@@ -49,7 +48,7 @@ Crossbow will grab the returned `function` from your file and
 ### Inline Functions
 
 If your input file is Javascript, such as a `cbfile.js` or `crossbow.js`, 
- then you can just place function directly into task definitions. 
+then you can just place your functions directly into task definitions. 
  
  
 ```js
@@ -62,15 +61,23 @@ cb.task('clean', [
 ]);
 ```
 
-In that example, 3 tasks are defined, the first 2 are shell commands
- and when both are complete, the function provided will be called.
- This is not to be mistaken for a regular 'callback' signalling completion.
- To prove this, you can provide multiple functions and even place them 
- anywhere in the task definition. The order will always be preserved.
+In that example, **3** separate tasks are defined.
+
+The first 2 are regular shell commands - when both of these complete (without error),
+ the function `myInlineFunction` will be called.
  
- Another example of this, would be a situation in which you wanted
- to do something before **and** after a bunch of tasks... (note the arrow
- functions make this super clean)
+ This is not to be mistaken for a regular callback that is often
+ used to signal completion - rather, when you provide a function inline 
+ like this, you're actually creating a brand new task, one that Crossbow will
+ treat exactly the same as any other type of task.
+ 
+ Why does this matter? Because when once you know that, you'll realise
+ that you can actually provide multiple functions and even place them 
+ anywhere in the task definition. Either way they'll run in the exact 
+ order that you intended.
+ 
+ Here's a concrete example - imagine you wanted to do something both ***before**
+ and then **after** a bunch of other tasks. This becomes trivial with Crossbow.
  
  ```js
  cb.task('clean', [
@@ -80,6 +87,7 @@ In that example, 3 tasks are defined, the first 2 are shell commands
     () => console.log('Tasks completed!'),
  ]);
  ```
+---
  
 Getting excited yet? Next up we'll see how to [Pass options to tasks](/docs/pass-options-to-tasks) 
  
