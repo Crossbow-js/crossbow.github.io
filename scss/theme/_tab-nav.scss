@@ -8,7 +8,7 @@
 .tab-nav {
     display: flex;
     margin-bottom: -1px;
-    justify-content: center;
+    padding-left: $half-spacing;
 }
 
 .tab-nav__button {
