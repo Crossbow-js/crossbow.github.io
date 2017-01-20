@@ -1,5 +1,3 @@
-# Run your first task
-
 Did you know you can run tasks & watchers without any configuration at all?
 This works for Javascript files, shell scripts, NPM scripts and more!
 

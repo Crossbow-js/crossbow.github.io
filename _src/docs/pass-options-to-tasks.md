@@ -1,5 +1,3 @@
-# Passing options to tasks.
-
 There are always situations in which you'll want to re-use a task. Perhaps you've crafted a nice
  pipeline of transformations to take `.scss` files and compile them into CSS. It could be a multi-step process
  such as 

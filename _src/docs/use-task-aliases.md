@@ -1,7 +1,9 @@
-## Use task aliases
 Crossbow will always try to resolve aliases *first* which allows
 you to re-use the same task over and over again whilst also making
 for cleaner composition.
+
+Any top-level task you define can be used as an alias, which means you 
+don't have to configure anything - it just works!
 
 {{inc 
     src="three.hbs"
@@ -12,8 +14,9 @@ for cleaner composition.
 }}
 
 ## Getting fancy with aliases
-An area in which Crossbow leap-frogs the competition is with its strong composition features. It will
- recursively resolve tasks & aliases allowing things such at the following:
+An area in which Crossbow leap-frogs the competition is with its strong composition features.
+It will recursively resolve all of your task aliases, no matter how deep they go. This allows
+you build up declarative pipe-lines of tasks that are very easy to understand  
 
 {{inc 
     src="three.hbs"
@@ -25,7 +28,8 @@ An area in which Crossbow leap-frogs the competition is with its strong composit
 
 With this example, if we then ran `cb build` on the command line, both of the scripts
 defined under the `clean` task would have to successfully complete before the `webpack`
-task begins.
+task begins - furthermore should any task defined in `clean` fail, then the `webpack` task
+would not execute at all!
 
 --- 
 

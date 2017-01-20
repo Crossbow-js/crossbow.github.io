@@ -1,5 +1,3 @@
-## Define tasks in files
-
 Of course, it would be rather tedious if you had to remember these long command
 chains for every task you wanted to run. 
 
