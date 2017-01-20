@@ -1,9 +1,39 @@
 .sidebar {
-
     @include media-query(min, $lap-start) {
         float: left;
         width: 30%;
-        //padding-right: $base-spacing;
+    }
+}
+
+.sidebar__toggle {
+
+    display: block;
+    text-align: center;
+    padding: .5em;
+    //margin-bottom: 1em;
+    border-radius: 3px;
+    border: 1px solid darken(#e7e7e7, 10%);
+    color: $black;
+    //background: $silver-dk;
+
+    @include media-query(min, $lap-start) {
+        display: none;
+    }
+
+    &.active {
+        background: lighten($silver-lt, 7%);
+        border-color: lighten($silver-lt, 7%);
+        color: $silver-dk;
+    }
+}
+
+.sidebar__lists {
+    padding-top: $base-spacing;
+
+    display: none;
+
+    &.active {
+        display: block;
     }
 }
 
@@ -32,6 +62,7 @@
     background: lighten($silver-lt, 7%);
     color: $silver-dk;
     cursor: default;
+
     &:hover {
         background: lighten($silver-lt, 7%);
         color: $silver-dk;

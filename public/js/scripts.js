@@ -1,6 +1,18 @@
 (function () {
     const $ = (selector, context) => [].slice.call((context||document).querySelectorAll(selector));
     const navs    = $('.tab-nav');
+    const triggers = $('[href="#sidebar"]');
+    const toggles = $('[data-toggle]');
+
+    toggles.forEach(function (toggle) {
+        const target    = $(toggle.hash)[0];
+        toggle.addEventListener('click', function (e) {
+            e.preventDefault();
+            toggle.classList.toggle('active');
+            target.classList.toggle('active');
+        });
+    });
+
 
     navs.forEach(function (nav) {
 

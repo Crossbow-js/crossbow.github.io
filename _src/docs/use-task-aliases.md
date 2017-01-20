@@ -29,4 +29,4 @@ task begins.
 
 --- 
 
-Next up, let's see how we can move beyond simple scripts and onto [other ways of defining tasks]()
+Next up, let's see how we can move beyond simple scripts and onto [other ways of defining tasks](/docs/other-ways-of-defining-tasks)

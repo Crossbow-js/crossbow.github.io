@@ -10,9 +10,15 @@ watch:
     before:
       - build-css
       - build-html --dev
-      - '@bg browser-sync start --server public --ss public-html'
-    '_src:data:public/js':
+      - >
+        @bg browser-sync start
+        --server public
+        --ss public-html
+        --reloadDebounce 500
+        --plugins bs-html-injector?files=_src
+    '_src:data':
       - build-html --dev
+    'public/js':
       - bs:reload
     'scss':
       - crossbow-sass
