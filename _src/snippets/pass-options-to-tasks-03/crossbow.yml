@@ -1,0 +1,6 @@
+options:
+  my-npm-module:
+    input:
+      - ./app/global.scss
+      - ./app/home.scss
+      - ./app/product.scss

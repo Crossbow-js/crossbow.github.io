@@ -40,3 +40,14 @@ img {
     display: block;
     max-width: 100%;
 }
+
+blockquote p {
+    display: block;
+    border-left: 3px solid $code-bg;
+    padding-left: $half-spacing;
+    font-style: italic;
+    color: rgba($black, .5);
+    padding-top: $half-spacing/2;
+    padding-bottom: $half-spacing/2;
+    margin-bottom: $base-spacing;
+}

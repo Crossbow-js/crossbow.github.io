@@ -23,6 +23,8 @@ sidebar:
           url:   /docs/other-ways-of-defining-tasks
         - label: Pass options to tasks
           url:   /docs/pass-options-to-tasks
+        - label: Sub Tasks
+          url:   /docs/sub-tasks
         - label: 'Options'
           url:   '/docs/options'
         - label: 'Files and Directories'

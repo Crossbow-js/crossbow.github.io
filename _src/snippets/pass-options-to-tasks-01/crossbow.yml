@@ -1,0 +1,5 @@
+tasks:
+  css:
+    - my-npm-module --input ./app/global.scss
+    - my-npm-module --input ./app/home.scss
+    - my-npm-module --input ./app/product.scss

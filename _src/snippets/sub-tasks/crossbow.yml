@@ -1,0 +1,12 @@
+tasks:
+  css:
+    tasks: my-npm-module
+    options:
+      dev:
+        input: './app/scss'
+        output: './app/css'
+      prod:
+        input: './app/scss'
+        output: './dist'
+        minify: true
+        rev: true
