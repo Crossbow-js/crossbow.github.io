@@ -21,6 +21,8 @@ sidebar:
           url:   /docs/use-task-aliases
         - label: Other ways to define tasks
           url:   /docs/other-ways-of-defining-tasks
+        - label: Pass options to tasks
+          url:   /docs/pass-options-to-tasks
         - label: 'Options'
           url:   '/docs/options'
         - label: 'Files and Directories'

@@ -10,11 +10,10 @@
     display: block;
     text-align: center;
     padding: .5em;
-    //margin-bottom: 1em;
     border-radius: 3px;
     border: 1px solid darken(#e7e7e7, 10%);
     color: $black;
-    //background: $silver-dk;
+    text-transform: uppercase;
 
     @include media-query(min, $lap-start) {
         display: none;
@@ -29,8 +28,11 @@
 
 .sidebar__lists {
     padding-top: $base-spacing;
-
     display: none;
+
+    @include media-query(min, $lap-start) {
+        display: block;
+    }
 
     &.active {
         display: block;

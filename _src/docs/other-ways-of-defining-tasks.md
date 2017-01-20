@@ -81,5 +81,7 @@ In that example, 3 tasks are defined, the first 2 are shell commands
  ]);
  ```
  
+Getting excited yet? Next up we'll see how to [Pass options to tasks](/docs/pass-options-to-tasks) 
+ 
  
  
