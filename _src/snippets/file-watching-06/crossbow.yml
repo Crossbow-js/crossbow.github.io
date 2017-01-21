@@ -1,0 +1,9 @@
+watch:
+  css:
+    watchers:
+      - patterns: ['./app/scss', './legacy/scss']
+        tasks: [css, autoprefixer]
+    options:
+      debounce: 500 # <-- this will ONLY affect the `css` watcher
+  php:
+    './app/\*\*/\*.php': browser:reload

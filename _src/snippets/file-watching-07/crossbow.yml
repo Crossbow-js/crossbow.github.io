@@ -1,0 +1,12 @@
+watch:
+  html:
+    before: markdown
+    watchers:
+      - patterns: './app/\*.md'
+        tasks: markdown
+
+tasks:
+  markdown:
+    tasks: my-md-module
+    options:
+      input: 'app/\*\*/\*.md'

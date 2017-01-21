@@ -1,4 +1,6 @@
-# cbfile.js (Gulp style)
+---
+title: cbfile.js (Gulp style)
+---
 
 Crossbow loves Gulp! We just have slightly different goals which
 means Crossbow can do everything Gulp can + a whole bunch more.
@@ -6,7 +8,7 @@ means Crossbow can do everything Gulp can + a whole bunch more.
 Here are some basic comparisons to show how you'd migrate from Gulp
  to Crossbow when you're ready for a better UX.
 
-## 1 task (gulp)
+## Run 1 task (gulp)
 
 ```js
 // gulp
@@ -20,7 +22,9 @@ gulp.task('sass', function() {
 });
 ```
 
-## 1 task (crossbow)
+## Run 1 task (Crossbow)
+Note how we need to bring in the `vinyl-fs` (which gulp uses) as Crossbow does 
+not include any file-handling systems by design
 ```js
 // cbfile.js
 const vfs  = require('vinyl-fs');
@@ -34,8 +38,9 @@ cb.task('sass', function() {
 });
 ```
 
-## 2 tasks in sequence
-
+## Run 2 tasks in sequence
+Note how in the Crossbow example, there's no need for extra function calls or special syntax because
+tasks are always sequentially by default.
 ```js
 // gulp
 gulp.task('build', gulp.series(['task1', 'task2']));
@@ -44,8 +49,8 @@ gulp.task('build', gulp.series(['task1', 'task2']));
 cb.task('build', ['task1', 'task2']);
 ```
 
-## 2 tasks in sequence, where 2nd is 2 tasks in parallel
-
+## Run 2 tasks in sequence, where 2nd is 2 tasks in parallel
+Again notice how in the Crossbow example, things just work as you expect them to.
 ```js
 // gulp
 gulp.task('build', gulp.series(
@@ -59,25 +64,9 @@ cb.task('build', [
     ['task2', 'task3']
 ]);
 
-// crossbow alt
-cb.task('build', [
-    'task1',
-    {
-        tasks: ['task2', 'task3'],
-        runMode: 'parallel'
-    }
-]);
-
-// crossbow separate
-cb.task('others', {
-    tasks: ['task2', 'task3'],
-    runMode: 'parallel'
-});
-
-cb.task('build', ['task1', 'others']);
 ```
 
-## Inline functions
+## Run Inline functions as tasks
 
 ```js
 // x not possible in gulp
@@ -93,7 +82,7 @@ cb.task('js', [
 ]);
 ```
 
-## NPM scripts
+## Combine regular functions with NPM scripts
 
 ```js
 // x not possible in gulp

@@ -31,8 +31,8 @@ sidebar:
           url:   /docs/task-groups
         - label: File Watching
           url:   /docs/file-watching
-        - label: 'Options'
-          url:   '/docs/options'
+        - label: 'CLI Options'
+          url:   '/docs/cli-options'
         - label: 'Files and Directories'
           url:   '/docs/files-and-directories'
 
