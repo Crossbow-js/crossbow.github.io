@@ -1,16 +1,28 @@
 <div class="context">
     <div class="tab-nav">
+        {{#if yml}}
         <a href="#{{name}}-yml" class="tab-nav__button tab-nav__button--active">crossbow.yml</a>
+        {{/if}}
+        {{#if cbfile}}
         <a href="#{{name}}-cbfile" class="tab-nav__button">cbfile.js</a>
+        {{/if}}
+        {{#if js}}
         <a href="#{{name}}-js" class="tab-nav__button">crossbow.js</a>
+        {{/if}}
     </div>
+    {{#if cbfile}}
     <div class="tab-content" id="{{name}}-cbfile">
         {{hl src=cbfile}}
     </div>
+    {{/if}}
+    {{#if yml}}
     <div class="tab-content tab-content--active" id="{{name}}-yml">
         {{hl src=yml}}
     </div>
+    {{/if}}
+    {{#if js}}
     <div class="tab-content" id="{{name}}-js">
         {{hl src=js}}
     </div>
+    {{/if}}
 </div>

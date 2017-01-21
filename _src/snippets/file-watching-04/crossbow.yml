@@ -1,0 +1,5 @@
+watch:
+  css:
+    './app/scss:./legacy/scss': [css, autoprefixer]
+  php:
+    './app/\*\*/\*.php': browser:reload

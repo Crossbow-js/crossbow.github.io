@@ -1,0 +1,11 @@
+watch:
+  default:
+    './app/scss:./legacy/scss': [css, autoprefixer]
+    './app/\*\*/\*.php': browser:reload
+
+tasks:
+  css:
+    tasks: my-scss-module
+    options:
+      input: './app/scss/core.scss'
+      output: './dist/css'
