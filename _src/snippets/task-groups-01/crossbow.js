@@ -1,0 +1,14 @@
+module.exports = {
+    tasks: {
+        '(build)': { // <-- parens create a group
+            css: [
+                '@sh rm -rf ./dist/css',
+                'sass'
+            ],
+            js: [
+                '@sh webpack',
+                '@sh webpack --config webpack.prod.config.js'
+            ]
+        }
+    }
+};

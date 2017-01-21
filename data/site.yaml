@@ -29,6 +29,8 @@ sidebar:
           url:   /docs/running-tasks-in-parallel
         - label: Task Groups
           url:   /docs/task-groups
+        - label: File Watching
+          url:   /docs/file-watching
         - label: 'Options'
           url:   '/docs/options'
         - label: 'Files and Directories'
