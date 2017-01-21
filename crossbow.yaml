@@ -3,6 +3,7 @@ config:
 
 env:
   IMAGE: shakyshane/crossbow-web
+  PROD_FILE: docker-compose.prod.yaml
   DO_AUTH: root@139.59.169.6
 
 watch:
@@ -29,7 +30,7 @@ tasks:
     push: '@sh docker push $IMAGE'
     build: '@sh docker build -t $IMAGE .'
     up-dev: '@sh docker-compose up -d'
-    up-prod: '@sh docker-compose -f docker-compose.prod.yaml up -d'
+    up-prod: '@sh docker-compose -f $PROD_FILE up -d'
     release:
       - build-all
       - docker:build
