@@ -45,5 +45,7 @@ cb build:*
  
 ---
  
-Now you've seen many ways to define & run tasks in Crossbow, it's time to move onto
- [File Watching](/docs/file-watching)
+We've seen a lot now relating to defining and running tasks, and we'll soon move on to learning about 
+file-watching, before that though, there's 1 more feature that can help you
+create really good task definitions, that feature is the way in which Crossbow handles 
+[Environment Variables](/docs/environment-variables).

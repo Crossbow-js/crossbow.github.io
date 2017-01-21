@@ -4,9 +4,24 @@ title: Crossbow - finally a task runner done right
 <div class="hero">
     <h1 class="hero__title">Finally, a task runner done right!</h1>
     <h2 class="hero__summary">Uniting the ecosytem of front-end tooling</h2>
-    <div class="hero__cta">
-        <p class="perspective">
-            <a href="{{$$.site.nav.docs.url}}" class="btn btn-8 btn-8f">Get Started</a>
-        </p>
-    </div>
+
+    {{#md}}
+The goal of Crossbow is to unify the use & configuration of the following:
+
+- plain functions
+- gulp-style streaming tasks
+- tasks splits into separate files
+- shell scripts
+- NPM scripts.
+
+## What's different
+
+There is **no need** for a new ecosystems of `crossbow-<plugin-name>` plugins
+as it's possible (and recommended) for you to use the existing gulp plugin
+ecosystem right along side any number of shell script, plain functions or even NPM scripts.
+
+We enable this by having a **powerful task resolution system**, **an extremely reliable
+execution technique**, by offering **best-in-game error handling** and finally by offering features
+that are simply **not possible in other tools**.
+    {{/md}}
 </div>

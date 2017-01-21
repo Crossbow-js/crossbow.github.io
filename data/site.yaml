@@ -29,6 +29,8 @@ sidebar:
           url:   /docs/running-tasks-in-parallel
         - label: Task Groups
           url:   /docs/task-groups
+        - label: Environment Variables
+          url:   /docs/environment-variables
         - label: File Watching
           url:   /docs/file-watching
         - label: 'CLI Options'
@@ -46,10 +48,8 @@ sidebar:
           url:   '/docs/examples/module-exports'
     - title: 'Tasks'
       items:
-        - label: How it works
-          url:   /docs/tasks/how-it-works
-#        - label: Task Types
-#          url:   /docs/tasks/types
+        - label: How to write tasks
+          url:   /docs/tasks/how-to-write-tasks
     - title: 'Commands'
       items:
         - label: 'init'

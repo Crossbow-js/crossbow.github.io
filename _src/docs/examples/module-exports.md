@@ -1,4 +1,6 @@
-# crossbow.js `module.exports`
+---
+title: crossbow.js
+---
 
 We also support providing a JS input file, you just need to use `module.exports`
 to export your input.
@@ -40,7 +42,7 @@ As always, you can provide an object for each task which allows you to specify
  }
 ```
 
-Or, again you can use inline nested arrays to specific parallel tasks.
+Or, again you can use inline nested arrays to specify parallel tasks.
 ```js
 // crossbow.js
 // -> rimraf ./app -> webpack
