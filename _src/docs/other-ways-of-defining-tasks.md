@@ -76,8 +76,9 @@ The first 2 are regular shell commands - when both of these complete (without er
  anywhere in the task definition. Either way they'll run in the exact 
  order that you intended.
  
- Here's a concrete example - imagine you wanted to do something both ***before**
- and then **after** a bunch of other tasks. This becomes trivial with Crossbow.
+ Here's a concrete example - imagine you wanted to do something both **before**
+ and then **after** a bunch of other tasks. This becomes trivial with Crossbow (note this is
+ especially nice with the use of arrow functions!)
  
  ```js
  cb.task('clean', [

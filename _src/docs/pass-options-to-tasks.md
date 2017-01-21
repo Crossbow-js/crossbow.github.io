@@ -1,13 +1,13 @@
 There are always situations in which you'll want to re-use a task. Perhaps you've crafted a nice
  pipeline of transformations to take `.scss` files and compile them into CSS. It could be a multi-step process
- such as 
+ such as:
  
 ```js
 module.exports = function compileSass() {
     return vfs.src('./app/scss')
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', console.error))
-        .pipe(post([plugin1, plugin2]))
+        .pipe(postCSS([plugin1, plugin2]))
         .pipe(vfs.dest('./dest/'));
 }
 ```
@@ -18,11 +18,11 @@ files each time you begin.
 
 Or how about a situation where, on the same project, you wish you could provide one
 or more of the the values used in the function? Like the `./app/scss` string for example - this 
-would allow you to specify different entry file each time. 
+would allow you to specify a different entry file each time it runs. 
 
 Or maybe you have different plugins that run for a production build versus a development build - 
- for this, it would be super hand to re-use 90% of the code and pass a `--production`
-flag...
+ for this, it would be super handy to re-use 90% of the code and pass a `--production`
+flag right...?
 
 Both of these problems (and many more) are solved if you have a task system that 
 accepts options. Back in the day Grunt had a good solution for this and Crossbow uses a 
@@ -47,35 +47,37 @@ Crossbow will chop this command into pieces, so it sees:
 - `--input` as a flag name
 - `./app/scss` as the value passed to `--input`
 
-With this, Crossbow will execute the function in `my-task.js` as normal, but it will 
+The flag name and value will only be associated with the current task and
+Crossbow will execute the function in `my-task.js` as normal, but it will 
 pass an object containing the values you set as the first parameter.
  
-It would be equivalent to you calling the function in the following way 
+It would be equivalent to you calling the function in the following way: 
 
 ```js
 compileSass({input: './app/scss'});
 ```
 
-So that now in the actual task, you can use that value.
-
+So that now in the actual task, you can use theses values from the first argument: 
 
 ```js
+/**
+ * Crossbow provides the `options` here based on your flags 
+ */
 module.exports = function compileSass(options) {
     return vfs.src(options.input) // <-- options.input
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', console.error))
-        .pipe(post([plugin1, plugin2]))
+        .pipe(postCSS([plugin1, plugin2]))
         .pipe(vfs.dest(options.output)); // <-- options.output
 }
 ```
 
 ## Passing options via flags in input files
 
-
 As mentioned before, although you *can* do everything from the CLI
 with Crossbow, most of the time you'll want to define how tasks are called
 via the input files - especially so that your other team members don't 
-have to remember about which flags to use where.
+have to remember about which flags to use and where.
 
 So let's imagine you have a module published to NPM called `my-npm-module` and it
 has the CSS tasks from above. You would install it as normal, and then from your input 
@@ -89,12 +91,6 @@ see how to execute the task 3 times, each with a different `input` value:
     cbfile="snippets/pass-options-to-tasks-01/cbfile.js"
     js="snippets/pass-options-to-tasks-01/crossbow.js"
 }}
-
----
-
-Ok, so now things are really starting to look interesting, but wouldn't it be nice if there
-was a less verbose way of achieving what we just did in that last example? There is, we call it 
-[Sub Tasks](/docs/sub-tasks)
 
 
 ## Passing options inline
@@ -117,10 +113,10 @@ cause the function exported from `my-npm-module` to be executed with the input k
 ## Auto options
 
 Another way to define options for a task, is to use the top-level `options`
-key in your input. Then, each time a task is run, the options object will be checked for 
+key in your input file. Then, each time a task is run, the options object will be checked for 
 a matching name, and the values from it passed into the task. 
 
-This means the following is exactly equivalent to the example above:
+This means the following the following snippet would be all you'd need.
 
 {{inc 
     src="three.hbs"
@@ -130,7 +126,7 @@ This means the following is exactly equivalent to the example above:
     js="snippets/pass-options-to-tasks-03/crossbow.js"
 }}
 
-Which means all you'd need to do is run the following command...
+With that, you'd just run the following the following command... 
  
 ```bash
 cb my-npm-module

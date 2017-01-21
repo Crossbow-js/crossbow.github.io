@@ -1,14 +1,17 @@
-Sub Tasks allow us to re-use a single task, but to call it with a separate 
-set of options each time. Think back to our examples of compiling SCSS
-files into CSS. 
+Sub Tasks allow you to re-use a single task, but to call it with a separate
+set of options each time. 
 
-It's likely that you'll want to execute this task with different options based 
-on whether or not you're in development or production mode. When compiling CSS,
-things such as minification can be very slow and you may want to only do that 
-particular step in 'production' mode. The same goes for version revving your files,
-you probably don't want that bit to run in development ...  
+Using the previous example of compiling SCSS files into CSS, it's likely that 
+you'll want to execute this task with different 
+options based on whether or not you're in development or production mode. You'll want to 
+minify your production CSS code, but being a slow process, it would be nice if this could
+be skipped in development...
 
-So this is where you get to *design your own build system* as seen below
+The same goes for versioning your files (adding hashes to filename) - this probably something 
+you only want to happen in the 'production' build.
+
+Both are examples of where we want to re-use a single task, but run it with slightly different options each time.
+In Crossbow this is solved by Sub Tasks. 
 
 {{inc 
     src="three.hbs"
@@ -93,12 +96,12 @@ cb css:dev:prod
 cb css:dev css:prod
 ``` 
 
-The result is the same, but you just have less to type! It's not limited to 2 tasks however, feel free to 
-chain as many of these together as you like. 
+The result is the same, but you just have less to type! It's not limited to 2 tasks however, so feel free to 
+chain as many of these together as you like!
 
 ## Calling all Sub Tasks
 
-Crossbow supports using a `*` wildcard when calling tasks. When it sees `<taskname>:*`, it will translate it
+Crossbow also supports using a `*` wildcard when calling tasks. When it sees `<taskname>:*`, it will translate it
 into 1 call for each key of the options. So sticking with the examples above, to run the `css` task first 
 with the options from `dev` and then with the options from `prod`, you can run:
 
@@ -108,7 +111,11 @@ cb css:*
 
 ---
 
+
+
 We've seen so much already and for most users you may already have enough information now to understand
-what Crossbow can do for you and why you should switch to it. We need to get into some of the more 
-advanced features now and we'll kick it off with [Running Tasks in Parallel](/docs/running-tasks-in-parallel)
+what Crossbow can do for you and why you should switch to it.
+
+We're far from done though, next we'll get into some of the more 
+advanced features, starting with [Running Tasks in Parallel](/docs/running-tasks-in-parallel)
  

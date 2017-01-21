@@ -10,8 +10,9 @@ you would with NPM scripts)
 cb '@npm webpack'
 ```
 
-Notice the `'` single quotes around the task. This is important
-as this allows you to chain multiple tasks together. For example,
+Notice the `'` single quotes around the task. This is only needed
+when you have a task definition that contains spaces 
+as it allows you to chain multiple tasks together. For example,
 let's say we want to clean the directory into which Webpack places
 the built assets (to stop them building up over time). We can do
 that easily by executing another script before the Webpack one.
@@ -20,10 +21,11 @@ that easily by executing another script before the Webpack one.
 cb '@sh rm -rf ./dist' '@npm webpack'
 ```
 
-Here we've defined 2 tasks (by wrapping in quotes) to be executed sequentially.
-Crossbow also supports running tasks in parallel and other advanced features
-that you can read about when you're comfortable with the basics.
+Here we've defined 2 tasks to be executed sequentially. The second with *not* run 
+unless the first completes without error. This is an important feature of Crossbow as 
+you can guarantee that certain tasks will be skipped if any that come before it fail.
 
 ---
 
-Now you're ready to [Define tasks in files](/docs/define-tasks-in-files)
+It important to know you can run tasks directly on the CLI like this as it can come in handy, 
+but in reality you're going to want to [Define tasks in files](/docs/define-tasks-in-files)
