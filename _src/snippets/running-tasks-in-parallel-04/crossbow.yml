@@ -1,0 +1,6 @@
+tasks:
+  default:
+    - clean
+    - styles
+    - [lint, html, scripts, images, copy]
+    - generate-service-worker

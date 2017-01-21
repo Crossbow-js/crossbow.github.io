@@ -25,6 +25,10 @@ sidebar:
           url:   /docs/pass-options-to-tasks
         - label: Sub Tasks
           url:   /docs/sub-tasks
+        - label: Running tasks in Parallel
+          url:   /docs/running-tasks-in-parallel
+        - label: Task Groups
+          url:   /docs/task-groups
         - label: 'Options'
           url:   '/docs/options'
         - label: 'Files and Directories'

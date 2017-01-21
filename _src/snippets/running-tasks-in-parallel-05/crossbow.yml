@@ -1,0 +1,15 @@
+tasks:
+  default:
+    - clean
+    - styles
+    - assets # <-- use alias name instead
+    - generate-service-worker
+
+  assets:
+    tasks:
+      - lint
+      - html
+      - scripts
+      - images
+      - copy
+    runMode: parallel
