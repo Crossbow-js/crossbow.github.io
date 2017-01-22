@@ -43,14 +43,6 @@ sidebar:
         - label: How to write tasks
           url:   /docs/tasks/how-to-write-tasks
 
-    - title: 'Input files'
-      items:
-        - label: <code>cbfile.js</code> (Gulp style)
-          url:   '/docs/examples/gulp'
-        - label: <code>crossbow.yaml</code>
-          url:   '/docs/examples/yaml'
-        - label: <code>crossbow.js</code> (module.exports)
-          url:   '/docs/examples/module-exports'
     - title: 'Commands'
       items:
         - label: 'init'
@@ -64,4 +56,11 @@ sidebar:
         - label: 'docs'
           url: '/docs/commands/docs'
 
-
+    - title: 'Input files'
+      items:
+        - label: <code>cbfile.js</code> (Gulp style)
+          url:   '/docs/examples/gulp'
+        - label: <code>crossbow.yaml</code>
+          url:   '/docs/examples/yaml'
+        - label: <code>crossbow.js</code> (module.exports)
+          url:   '/docs/examples/module-exports'
