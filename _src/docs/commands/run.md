@@ -115,3 +115,6 @@ tasks:
 ```bash
 $ crossbow run build --dryRun
 ```
+
+--- 
+Remember that the [global options](/docs/cli-options) apply to this command also.   

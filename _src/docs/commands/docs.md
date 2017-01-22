@@ -1,15 +1,11 @@
 ---
-title: 'Command: docs'
+title: Crossbow CLI - docs
 ---
 
-## Command: Docs `$ crossbow docs [...options]`
+`$ crossbow docs [...options]`
 
 Crossbow can automatically create documenation based on your input files.
 Simply run the following command in a directory that has an input file.
-
-```sh
-$ crossbow docs
-```
 
 If your project has a `readme.md`, the documentation **will be added to the 
 end of it**.
@@ -32,19 +28,21 @@ We all know that project docs can go out of date really quickly, but with
 Crossbow if you add new tasks, or delete/modify something - just run the 
 command again and the docs will be **updated automatically!**
 
-<h2>Docs specific options</h2>
-{{#data src="node_modules/crossbow/opts/command.docs.opts.json" as="json"}}
-    <table>
-    {{#each json}}
-            <tr>
-                <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
-                <td>
-                    {{this.desc}}
-                </td>
-            </tr>
-    {{/each}}
-    </table>
-{{/data}}
+## Options
 
-<h3>Docs options examples</h3>
-{{inc src="snippets/options/docs.md" filter="md"}}
+{{inc src="opts-table.hbs" json="node_modules/crossbow/opts/command.docs.opts.json" }}
+
+## Examples
+
+Create a new file for auto-documentation
+
+```sh
+$ crossbow docs --output 'myfile.md'
+```
+---
+
+Use an existing file
+
+```sh
+$ crossbow docs --file 'my-readme.md'
+```

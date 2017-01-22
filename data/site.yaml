@@ -33,8 +33,6 @@ sidebar:
           url:   /docs/environment-variables
         - label: File Watching
           url:   /docs/file-watching
-        - label: 'CLI Options'
-          url:   '/docs/cli-options'
         - label: 'Files and Directories'
           url:   '/docs/files-and-directories'
 
@@ -43,8 +41,10 @@ sidebar:
         - label: How to write tasks
           url:   /docs/tasks/how-to-write-tasks
 
-    - title: 'Commands'
+    - title: 'CLI Commands'
       items:
+        - label: 'Global Options'
+          url:   '/docs/cli-options'
         - label: 'init'
           url: '/docs/commands/init'
         - label: 'run'

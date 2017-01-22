@@ -1,0 +1,12 @@
+{{#data src=json as="json"}}
+<table>
+    {{#each json}}
+    <tr>
+        <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+        <td>
+            {{this.desc}}
+        </td>
+    </tr>
+    {{/each}}
+</table>
+{{/data}}
