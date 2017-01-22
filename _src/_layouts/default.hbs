@@ -71,7 +71,7 @@
         <script src="/js/scripts.js?rel={{hash src="public/js/scripts.js"}}"></script>
     {{else}}
         {{#data src="public/js/manifest.json" as="manifest"}}
-            <script src="public/js/{{manifest.[scripts.js]}}"></script>
+            <script src="/js/{{manifest.[scripts.js]}}"></script>
         {{/data}}
     {{/if}}
 
