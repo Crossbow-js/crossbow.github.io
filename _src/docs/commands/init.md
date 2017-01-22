@@ -1,4 +1,8 @@
-## Command: Init `$ crossbow init [...options]`
+---
+title: Crossbow CLI - init
+---
+
+`$ crossbow init [...options]`
 
 Although Crossbow can run without any configuration files, it's
 recommended that you use one - especially if you are working on a team!
