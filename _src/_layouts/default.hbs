@@ -67,7 +67,14 @@
 
     {{ inc src="footer.hbs" }}
 
-    <script src="/js/scripts.js?rel={{hash src="public/js/scripts.js"}}"></script>
+    {{#if dev}}
+        <script src="/js/scripts.js?rel={{hash src="public/js/scripts.js"}}"></script>
+    {{else}}
+        {{#data src="public/js/manifest.json" as="manifest"}}
+            <script src="public/js/{{manifest.[scripts.js]}}"></script>
+        {{/data}}
+    {{/if}}
+
 </body>
 </html>
 

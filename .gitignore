@@ -1,6 +1,7 @@
 .idea
 node_modules
 /public-html/**/*.html
+/public/js/**
 /public/css/*
 /.crossbow
 .DS_Store

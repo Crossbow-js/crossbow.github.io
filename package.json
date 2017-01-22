@@ -23,5 +23,8 @@
     "smooth-scroll": "git://github.com/cferdinandi/smooth-scroll.git#dd0553ff80213e42c47500f2e47843f53eebf289",
     "vinyl-fs": "2.4.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "typescript": "^2.1.5",
+    "uglify-js": "^2.7.5"
+  }
 }
