@@ -38,6 +38,11 @@ sidebar:
         - label: 'Files and Directories'
           url:   '/docs/files-and-directories'
 
+    - title: 'Tasks'
+      items:
+        - label: How to write tasks
+          url:   /docs/tasks/how-to-write-tasks
+
     - title: 'Input files'
       items:
         - label: <code>cbfile.js</code> (Gulp style)
@@ -46,10 +51,6 @@ sidebar:
           url:   '/docs/examples/yaml'
         - label: <code>crossbow.js</code> (module.exports)
           url:   '/docs/examples/module-exports'
-    - title: 'Tasks'
-      items:
-        - label: How to write tasks
-          url:   /docs/tasks/how-to-write-tasks
     - title: 'Commands'
       items:
         - label: 'init'
