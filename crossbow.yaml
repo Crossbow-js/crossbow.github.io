@@ -87,7 +87,10 @@ tasks:
   ts:
     description: Compile Typescript files
     tasks: >
-      @npm tsc $IN_TS_FILE --allowJs --outFile $OUT_JS_PATH --sourceMap
+      @npm tsc $IN_TS_FILE
+      --outFile $OUT_JS_PATH
+      --allowJs
+      --sourceMap
 
   uglify:
     description: Uglify TS output, create sourcemap + manifest.json
