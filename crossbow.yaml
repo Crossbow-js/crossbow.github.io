@@ -45,10 +45,10 @@ tasks:
       - uglify
 
   (docker):
-    push: '@sh docker push $IMAGE'
-    build: '@sh docker build -t $IMAGE .'
     up-dev: '@sh docker-compose up -d'
     up-prod: '@sh docker-compose -f $PROD_FILE up -d'
+    push: '@sh docker push $IMAGE'
+    build: '@sh docker build -t $IMAGE .'
     release:
       - build:*
       - templates
