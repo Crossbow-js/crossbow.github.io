@@ -1,9 +1,129 @@
 If you provide an object as a task, you have the opportunity to use a handful of special 
 extra properties - some of which you will already seen if you've read any of the getting started pages.
 
-- tasks
-- options
-- description
-- ifChanged
-- env
-- runMode
+## options
+
+As seen in [Pass options to tasks](/docs/pass-options-to-tasks/), you can provide any options that you 
+want your tasks to receive. 
+
+```yaml
+tasks:
+  js:
+    tasks: 'my-function.js'
+    options: 
+      input: 'my-input.js'
+      output: 'my-output.js'
+```
+
+So if you were to now run `cb js` - the function located in `my-function.js` would receive 
+`{input: 'my-input.js', output: 'my-output.js'}` as it's first argument.
+
+-- 
+
+## description
+
+If you provide a description for your task/group of tasks, that description will be used when listing
+your tasks & within the auto-docs feature. Think about yourself returning to this project in 6 months
+time, or working on it with others in your team - having a short, human-readable description will
+be something you'll be thankful for.
+
+```yaml
+tasks:
+  release:
+    description: Create a production release of CSS/JS/HTML assets
+    tasks:
+      - build:*
+      - templates
+      
+  templates:
+    description: Generate HTML from the the Markdown in the `docs` folder
+    tasks: 
+      - '@sh jekyl build'
+  
+  (build):
+    css: '@npm node-sass src/style.scss dest/style.css'
+    js:  '@npm tsc ./app/ts/scripts.ts --outFile ./app/js/scripts.js'
+```
+
+--
+
+## ifChanged
+
+Crossbow can keep track of files/directories and will skip certain tasks if it hasn't seen a 
+change in content between runs.
+
+Everything will always run the very time (whilst it generates the hashes needed to compare), 
+but on subsequent runs you can save a considerable amount of time by limiting which tasks should run.
+
+Using the same example from above, let's say the `build:css` task takes 5 seconds to compile. You can add the 
+`ifChanged` property to instruct Crossbow to skip this if no files (including those in sub-directories) have changed.
+
+```yaml
+tasks:
+  release:
+    description: Create a production release of CSS/JS/HTML assets
+    tasks:
+      - build:*
+      - templates
+      
+  templates:
+    description: Generate HTML from the the Markdown in the `docs` folder
+    tasks: 
+      - '@sh jekyl build'
+  
+  (build):
+    css: 
+      tasks: '@npm node-sass src/style.scss dest/style.css'
+      ifChanged: # <-- files/directories to monitor for changes
+        - src
+    js:  '@npm tsc ./app/ts/scripts.ts --outFile ./app/js/scripts.js'
+```
+
+**Notes:** 
+
+- You can provide multiple files/directories to the `ifChanged` property.
+- Crossbow will create a `.crossbow` directory within this project, be sure to add that to your ignored files in git etc.
+
+
+--
+
+## env
+
+As seen in [Environment Variables](/docs/environment-variables) - `key:value` pairs can be provided on a per-task
+basis and will override any other global ones where the name matches.
+
+```yaml
+tasks:
+  (docker):
+    up: 
+      tasks: '@sh docker-compose -f $FILE up -d'
+      env: 
+        FILE: 'docker-compose.prod.yml'
+```
+ 
+--
+
+## runMode
+
+As seen in [Running Tasks In Parallel](/docs/running-tasks-in-parallel), you can instruct Crossbow to run a sub-set
+of tasks in parallel. In this example, we can run both `js` & `css` tasks as they do not depend on each other.
+
+```yaml
+tasks:
+  release:
+    tasks:
+      - build-assets
+      - '@sh jekyl build'
+  
+  build-assets:
+    tasks: 
+      - js
+      - css
+    runMode: parallel
+    
+  css: '@npm node-sass src/style.scss dest/style.css'
+  js:  '@npm tsc ./app/ts/scripts.ts --outFile ./app/js/scripts.js'
+```
+
+Notice how we get to define the scripts for the `css` and `js` tasks, but then use the aliases to describe how they run 
+in certain situations. This is the beauty of a truly compositional system. 
