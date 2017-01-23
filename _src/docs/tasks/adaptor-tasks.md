@@ -1,0 +1,5 @@
+- @sh
+- @npm
+- @bg
+- @bgnpm
+- @cb
