@@ -96,10 +96,10 @@ tasks:
     description: Uglify TS output, create sourcemap + manifest.json
     tasks: |
       @npm \
-      export JS="`git hash-object $OUT_JS_PATH`.js"
-      export JS_FILE="$OUT_JS_DIR/`git hash-object $OUT_JS_PATH`.js"
-      export JS_MAP="`git hash-object $OUT_JS_MAP`.js.map"
-      export JS_MAP_FILE="$OUT_JS_DIR/`git hash-object $OUT_JS_MAP`.js.map"
+      JS="`git hash-object $OUT_JS_PATH`.js"
+      JS_FILE="$OUT_JS_DIR/`git hash-object $OUT_JS_PATH`.js"
+      JS_MAP="`git hash-object $OUT_JS_MAP`.js.map"
+      JS_MAP_FILE="$OUT_JS_DIR/`git hash-object $OUT_JS_MAP`.js.map"
       uglifyjs $OUT_JS_PATH --mangle --screw-ie8 \
         --in-source-map $OUT_JS_MAP \
         --source-map-url $JS_MAP \
