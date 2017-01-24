@@ -1,3 +1,4 @@
+# crossbow.yaml
 tasks:
 
   build:
@@ -13,4 +14,3 @@ tasks:
     options:
       input: 'app/scss'
       output: 'dist/css'
-

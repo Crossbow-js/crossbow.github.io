@@ -1,24 +1,60 @@
+{{#if_eq page.url '/'}}
 <header class="wrapper site-header" role="banner">
-    <div class="container">
-        <nav class="site-nav">
-            <ul class="site-nav__items">
-                <li class="site-nav__item site-nav__item--logo">
-                    <a href="/" class="site-nav__link logo">
-                        {{inc src="public/img/logo.svg"}}
-                    </a>
-                </li>
-                <li class="site-nav__item site-nav__item--text">
-                    <a href="{{$$.site.nav.docs.url}}" class="site-nav__link site-nav__link--text">Documentation</a>
-                </li>
-                <li class="site-nav__item site-nav__item--icons">
-                    <a href="{{$$.site.links.github}}" class="site-nav__link site-nav__link--icon" title="Crossbow on Github">
-                        {{inc src="icon.hbs" icon="github"}}
-                    </a>
-                    <a href="https://twitter.com/crossbow-js" class="site-nav__link site-nav__link--icon" title="@Browsersync on Twitter">
-                        {{inc src="icon.hbs" icon="twitter"}}
-                    </a>
-                </li>
-            </ul>
-        </nav>
+    <div class="container site-header__items">
+
+        <div class="intro">
+            <a href="/" class="logo">
+                {{inc src="public/img/logo.svg"}}
+            </a>
+            <p class="tagline">Beyond NPM scripts</p>
+            <div class="intro__content">
+                {{#md}}
+The goal of Crossbow is to unify the use & configuration of the following:
+
+- plain functions
+- gulp-style streaming tasks
+- tasks splits into separate files
+- shell scripts
+- NPM scripts.
+
+## What's different?
+We are NOT creating a whole new eco-system of plugins, rather we enable re-use and composition of your **exiting** tools,
+all powerered by a **powerful task resolution system**, **an extremely reliable execution technique**,
+by offering **best-in-game error handling** and finally by offering features that are simply **not possible in other tools**.
+                {{/md}}
+
+                <p>
+            </div>
+        </div>
+
+        <div class="demo">
+            <div class="demo__snippet">
+                <span class="demo__snippet__title">1. Install</span>
+                <code>$ npm install -g crossbow</code>
+            </div>
+            <div class="demo__snippet">
+                <span class="demo__snippet__title">2. Compose existing tasks/tools/plugins/scripts</span>
+                {{hl src="snippets/hero.yaml"}}
+            </div>
+            <div class="demo__snippet">
+                <span class="demo__snippet__title">3. run</span>
+                <code>$ cb build</code>
+            </div>
+        </div>
+
+        <ul class="site-nav__items" hidden>
+            <li class="site-nav__item site-nav__item--text">
+                <a href="{{$$.site.nav.docs.url}}" class="site-nav__link site-nav__link--text">Documentation</a>
+            </li>
+            <li class="site-nav__item site-nav__item--icons">
+                <a href="{{$$.site.links.github}}" class="site-nav__link site-nav__link--icon" title="Crossbow on Github">
+                    {{inc src="icon.hbs" icon="github"}}
+                </a>
+                <a href="https://twitter.com/crossbow-js" class="site-nav__link site-nav__link--icon" title="@Browsersync on Twitter">
+                    {{inc src="icon.hbs" icon="twitter"}}
+                </a>
+            </li>
+        </ul>
     </div>
 </header>
+{{/if_eq}}
