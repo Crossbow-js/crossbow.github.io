@@ -27,17 +27,14 @@
 
 </head>
 <body id="page-top">
-    {{ inc src="header.hbs" }}
+
+
     {{ inc src="public/svg/icons.svg" }}
 
     {{#if_eq page.url '/'}}
-    <div class="wrapper site-body layout-1col" role="main">
-        <div class="container">
-            {{ content }}
-        </div>
-    </div>
+        {{ content }}
     {{else}}
-
+    {{ inc src="header.hbs" }}
     <div class="wrapper site-body layout-2col" role="main">
         <div class="container">
             <section class="sidebar">

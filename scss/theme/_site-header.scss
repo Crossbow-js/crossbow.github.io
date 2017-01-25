@@ -7,21 +7,10 @@
     padding-bottom: $half-spacing;
     background: $blue;
 
-    @include media-query(min, $lap-start) {
-        padding-top: $base-spacing*2;
-        padding-bottom: $base-spacing*2;
-    }
 
     > * {
         position: relative;
         z-index: 1;
-    }
-}
-
-.site-header__items {
-    @include media-query(min, $lap-start) {
-        display: flex;
-
     }
 }
 

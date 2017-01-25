@@ -1,55 +1,9 @@
-.demo {
-  //padding-top: $base-spacing;
-  @include media-query(min, $lap-start) {
-    width: 50%;
-  }
-}
+.cta {
+    padding-top: $base-spacing;
+    text-align: center;
 
-.demo__snippet {
-
-  margin-bottom: $base-spacing;
-  position: relative;
-  text-align: center;
-  @include media-query(min, $lap-start) {
-    text-align: left;
-  }
-
-  code {
-    display: inline-block;
-    background: darken($code-bg, 10%);
-    color: $white;
-    padding: 1em 1.5em;
-  }
-
-  .highlight {
-    border: 0;
-    text-align: left;
-    width: 320px;
-    margin: 0 auto;
     @include media-query(min, $lap-start) {
-      margin-left: 0;
+        padding-top: $base-spacing*2;
+        text-align: left;
     }
-    background: darken($code-bg, 10%);
-    code {
-      background: darken($code-bg, 10%);
-    }
-  }
-
-  //@include media-query(min, $lap-start) {
-  //  margin-left: auto;
-  //  margin-right: auto;
-  //}
-}
-
-.demo__snippet__title {
-  //position: absolute;
-  //top: 0;
-  //max-width: 200px;
-  color: $blue-lt;
-  display: block;
-  text-align: center;
-  margin-bottom: $half-spacing;
-  @include media-query(min, $lap-start) {
-    text-align: left;
-  }
 }
