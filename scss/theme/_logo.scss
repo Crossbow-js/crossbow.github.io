@@ -4,13 +4,15 @@
     max-width: 320px;
     font-size: 0;
     margin: 0 auto;
-    @include media-query(min, $lap-start) {
-        margin-left: 0;
-    }
+
+    //@include media-query(min, $lap-start) {
+    //    margin-left: 0;
+    //}
 
     &:hover {
         color: $white;
     }
+
     svg {
         width: 100%;
     }
@@ -18,7 +20,7 @@
 
 .tagline {
     padding-top: $half-spacing;
-    color: $blue-lt;
+    color: $blue;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
@@ -26,7 +28,7 @@
     font-size: .8em;
 
     @include media-query(min, $lap-start) {
-        text-align: left;
+        //text-align: left;
         font-size: 1.2em;
     }
 }

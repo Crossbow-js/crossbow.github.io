@@ -1,7 +1,9 @@
 .hero {
 
     position: relative;
-    background: $blue;
+    background: $black;
+    color: $white;
+    //outline: 1px solid red;
 
     > * {
         position: relative;
@@ -11,7 +13,6 @@
 
 .hero__items {
     @include media-query(min, $lap-start) {
-        display: flex;
-
+        //display: flex;
     }
 }

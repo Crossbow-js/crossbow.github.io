@@ -3,7 +3,7 @@
     text-align: center;
 
     @include media-query(min, $lap-start) {
-        padding-top: $base-spacing*2;
-        text-align: left;
+        //padding-top: $base-spacing*2;
+        //text-align: left;
     }
 }

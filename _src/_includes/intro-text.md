@@ -1,10 +1,4 @@
-On a mission to unify the use & configuration of the following:
 
-- plain functions
-- gulp-style streaming tasks
-- tasks splits into separate files
-- shell scripts
-- NPM scripts.
 
 ## What's different?
 

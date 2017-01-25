@@ -2,35 +2,39 @@
     <div class="container">
 
         <div class="hero__items">
-
-
             <div class="intro">
                 <a href="/" class="logo">
                     {{inc src="public/img/logo.svg"}}
                 </a>
                 <p class="tagline">Beyond NPM scripts</p>
-                <div class="intro__content">
-                    {{inc src="intro-text.md" filter="md"}}
+                <p class="lede">Unifying the use & configuration of plain functions, gulp-style streaming tasks,
+                    tasks splits into separate files, shell scripts, NPM scripts.</p>
+                <div class="cta">
+                    <a href="/docs/installation" class="button button--bold">Get Started!</a>
                 </div>
             </div>
-
-            <div class="demo">
-                <div class="demo__snippet">
-                    <span class="demo__snippet__title">1. Install</span>
-                    <code>$ npm install -g crossbow</code>
-                </div>
-                <div class="demo__snippet">
-                    <span class="demo__snippet__title">2. Compose existing tasks/tools/plugins/scripts</span>
-                    {{hl src="snippets/hero.yaml"}}
-                </div>
-                <div class="demo__snippet">
-                    <span class="demo__snippet__title">3. run</span>
-                    <code>$ cb build</code>
-                </div>
-            </div>
-        </div>
-        <div class="cta">
-            <a href="/docs/installation" class="button button--bold">Get Started!</a>
         </div>
     </div>
 </header>
+
+<div class="wrapper">
+    <div class="container">
+        <div class="demo">
+            <div class="demo__snippet">
+                <span class="demo__snippet__title">1. Install</span>
+                <code>$ npm install -g crossbow</code>
+            </div>
+            <div class="demo__snippet">
+                <span class="demo__snippet__title">2. Compose existing tasks/tools/plugins/scripts</span>
+                {{hl src="snippets/hero.yaml"}}
+            </div>
+            <div class="demo__snippet">
+                <span class="demo__snippet__title">3. run</span>
+                <code>$ cb build</code>
+            </div>
+        </div>
+        <div>
+            {{inc src="intro-text.md" filter="md"}}
+        </div>
+    </div>
+</div>

@@ -31,10 +31,12 @@
 
     {{ inc src="public/svg/icons.svg" }}
 
+    {{ inc src="header.hbs" }}
+
     {{#if_eq page.url '/'}}
         {{ content }}
     {{else}}
-    {{ inc src="header.hbs" }}
+
     <div class="wrapper site-body layout-2col" role="main">
         <div class="container">
             <section class="sidebar">

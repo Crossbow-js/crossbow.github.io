@@ -1,13 +1,19 @@
 .intro {
+    text-align: center;
     @include media-query(min, $lap-start) {
-        width: 50%;
-        padding-right: 4em;
+        //width: 50%;
+        //padding-right: 4em;
     }
 }
 
 .intro__content {
-    @include media-query(min, $lap-start) {
-        padding-top: 2em;
+    //text-align: left;
+    //@include media-query(min, $lap-start) {
+    //    padding-top: 2em;
+    //}
+    //text-ali
+
+    ul {
+        list-style: none;
     }
-    color: $white;
 }
