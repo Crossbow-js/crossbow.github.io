@@ -14,7 +14,8 @@
 .tab-nav__button {
     display: inline-block;
     background: transparent;
-    border: 1px solid rgba($black, .04);
+    border: 1px solid $code-bg;
+    text-decoration: none;
     padding: 0.5em 1em;
     @include media-query(min, $lap-start) {
         padding: 1em 2em;

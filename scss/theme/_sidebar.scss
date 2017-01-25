@@ -54,6 +54,7 @@
     color: $black;
     display: block;
     padding: $half-spacing/2 $half-spacing;
+    text-decoration: none;
     
     &:hover {
         background: lighten($silver-lt, 5%);

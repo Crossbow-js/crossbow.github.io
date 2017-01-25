@@ -45,8 +45,9 @@
 .site-nav__link {
     display: block;
     color: $white;
+    text-decoration: none;
 
-    &:hover {
+    &:hover, &:focus {
         color: $orange;
     }
 }
