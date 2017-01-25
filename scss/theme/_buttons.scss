@@ -9,8 +9,10 @@
     padding: 1em 2em;
     text-decoration: none;
 
+        color: white;
     &:hover, &:focus {
-        background: lighten($blue, 10%);
-        color: $blue;
+        color: white;
+        background: darken($blue, 40%);
+        //color: lighten($blue, 10%);
     }
 }

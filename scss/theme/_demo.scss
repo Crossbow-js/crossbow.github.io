@@ -1,7 +1,6 @@
 .demo {
-  //padding-top: $base-spacing;
   @include media-query(min, $lap-start) {
-    width: 50%;
+      padding-top: $base-spacing;
   }
 }
 
@@ -17,24 +16,24 @@
 
   code {
     display: inline-block;
-    background: darken($code-bg, 10%);
+    background: $code-bg;
     color: $white;
     padding: 1em 1.5em;
   }
 
-  .highlight {
-    border: 0;
-    text-align: left;
-    max-width: 320px;
-    margin: 0 auto;
-    @include media-query(min, $lap-start) {
-      margin-left: 0;
-    }
-    background: darken($code-bg, 10%);
-    code {
-      background: darken($code-bg, 10%);
-    }
-  }
+  //.highlight {
+  //  border: 0;
+  //  text-align: left;
+  //  max-width: 320px;
+  //  margin: 0 auto;
+  //  @include media-query(min, $lap-start) {
+  //    margin-left: 0;
+  //  }
+  //  background: darken($code-bg, 10%);
+  //  code {
+  //    background: darken($code-bg, 10%);
+  //  }
+  //}
 
   //@include media-query(min, $lap-start) {
   //  margin-left: auto;
@@ -43,10 +42,7 @@
 }
 
 .demo__snippet__title {
-  //position: absolute;
-  //top: 0;
-  //max-width: 200px;
-  color: $blue-lt;
+  color: $blue;
   display: block;
   text-align: center;
   margin-bottom: $half-spacing;

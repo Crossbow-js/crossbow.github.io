@@ -7,8 +7,8 @@
                     {{inc src="public/img/logo.svg"}}
                 </a>
                 <p class="tagline">Beyond NPM scripts</p>
-                <p class="lede">Unifying the use & configuration of plain functions, gulp-style streaming tasks,
-                    tasks splits into separate files, shell scripts, NPM scripts.</p>
+                <p class="lede">Unifying the use & configuration of plain functions, gulp-style streams,
+                    tasks in separate files, shell/NPM scripts plus much more!</p>
                 <div class="cta">
                     <a href="/docs/installation" class="button button--bold">Get Started!</a>
                 </div>
@@ -19,22 +19,32 @@
 
 <div class="wrapper">
     <div class="container">
-        <div class="demo">
-            <div class="demo__snippet">
-                <span class="demo__snippet__title">1. Install</span>
-                <code>$ npm install -g crossbow</code>
+        <div class="home-block">
+            <div class="home-block__text">
+                {{inc src="intro-text.md" filter="md"}}
             </div>
-            <div class="demo__snippet">
-                <span class="demo__snippet__title">2. Compose existing tasks/tools/plugins/scripts</span>
-                {{hl src="snippets/hero.yaml"}}
+            <div class="home-block__media">
+                <div class="demo">
+                    <div class="demo__snippet">
+                        <span class="demo__snippet__title">1. Install</span>
+                        <code>$ npm install -g crossbow</code>
+                    </div>
+                    <div class="demo__snippet">
+                        <span class="demo__snippet__title">2. Compose existing tasks, tools, plugins, scripts</span>
+                        {{inc
+                            src="three.hbs"
+                            name="home-01"
+                            yml="snippets/home-01/crossbow.yml"
+                            cbfile="snippets/home-01/cbfile.js"
+                            js="snippets/home-01/crossbow.js"
+                        }}
+                    </div>
+                    <div class="demo__snippet">
+                        <span class="demo__snippet__title">3. run</span>
+                        <code>$ cb build</code>
+                    </div>
+                </div>
             </div>
-            <div class="demo__snippet">
-                <span class="demo__snippet__title">3. run</span>
-                <code>$ cb build</code>
-            </div>
-        </div>
-        <div>
-            {{inc src="intro-text.md" filter="md"}}
         </div>
     </div>
 </div>

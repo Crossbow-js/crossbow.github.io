@@ -1,4 +1,0 @@
-tasks:
-  build:
-    - '@sh rm -rf ./dist'
-    - '@npm webpack'
