@@ -14,9 +14,10 @@
 .tab-nav__button {
     display: inline-block;
     background: transparent;
-    border: 1px solid $code-bg;
+    border: 1px solid $silver;
     text-decoration: none;
     padding: 0.5em 1em;
+    color: $code-bg;
     @include media-query(min, $lap-start) {
         padding: 1em 2em;
     }
@@ -29,16 +30,11 @@
     transform-origin: bottom;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-
-    //border-left-width: 0;
-    //&:first-child {
-    //    border-left-width: 1px;
-    //}
 }
 
 .tab-nav__button--active {
     background: $code-bg;
-    color: $orange;
+    color: $yellow;
     z-index: 1;
     transform: scale(1);
     &:hover, &:focus, &:active {

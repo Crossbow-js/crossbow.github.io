@@ -18,7 +18,7 @@ watch:
       - build:*
       - templates --dev
       - bs:serve
-    '_src:data':
+    '_src:data:public/img':
       - templates --dev
     'public/js':
       - bs:reload

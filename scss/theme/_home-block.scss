@@ -1,15 +1,18 @@
 .home-block {
-    display: flex;
+    @include media-query(min, $desk-start) {
+        display: flex;
+        //width: 40%;
+    }
 }
 
 .home-block__text {
-    @include media-query(min, $lap-start) {
+    @include media-query(min, $desk-start) {
         width: 40%;
     }
 }
 
 .home-block__media {
-    @include media-query(min, $lap-start) {
+    @include media-query(min, $desk-start) {
         width: 60%;
         padding-left: 10%;
     }

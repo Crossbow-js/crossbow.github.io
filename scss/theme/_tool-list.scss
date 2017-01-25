@@ -1,0 +1,12 @@
+.tool-list {
+    @include list-reset;
+    display: flex;
+}
+.tool-list__item {
+    display: block;
+    width: 25%;
+
+    svg {
+        width:100%;
+    }
+}
