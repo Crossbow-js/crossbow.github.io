@@ -6,6 +6,9 @@
 }
 
 .home-block__text {
+    h2 {
+        color: $blue;
+    }
     @include media-query(min, $desk-start) {
         width: 50%;
     }
