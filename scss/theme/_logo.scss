@@ -14,6 +14,13 @@
     }
 }
 
+.logo--small {
+    width: 30px;
+    svg {
+        max-height: $base-spacing;
+    }
+}
+
 .tagline {
     padding-top: $half-spacing;
     color: $blue;

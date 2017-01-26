@@ -1,4 +1,5 @@
 .demo {
+  padding-top: $base-spacing;
   @include media-query(min, $lap-start) {
       padding-top: $base-spacing;
   }
@@ -21,9 +22,9 @@
     padding: 1em 1.5em;
   }
 
-  //.highlight {
+  .highlight {
   //  border: 0;
-  //  text-align: left;
+    text-align: left;
   //  max-width: 320px;
   //  margin: 0 auto;
   //  @include media-query(min, $lap-start) {
@@ -33,7 +34,7 @@
   //  code {
   //    background: darken($code-bg, 10%);
   //  }
-  //}
+  }
 
   //@include media-query(min, $lap-start) {
   //  margin-left: auto;

@@ -4,11 +4,17 @@
         <nav class="site-nav">
             <ul class="site-nav__items">
                 <li class="site-nav__item site-nav__item--logo">
+                    {{#if_eq page.url '/'}}
+                        <a href="/" class="site-nav__link logo logo--small">
+                            {{inc src="public/img/logo-o.svg"}}
+                        </a>
+                    {{else}}
                     <a href="/" class="site-nav__link logo">
                         {{inc src="public/img/logo.svg"}}
                     </a>
+                    {{/if_eq}}
                 </li>
-                <li class="site-nav__item site-nav__item--text">
+                <li class="site-nav__item site-nav__item--text {{#if_not_eq page.url '/'}}site-nav__item--current{{/if_not_eq}}">
                     <a href="{{$$.site.nav.docs.url}}" class="site-nav__link site-nav__link--text">Documentation</a>
                 </li>
                 <li class="site-nav__item site-nav__item--icons">

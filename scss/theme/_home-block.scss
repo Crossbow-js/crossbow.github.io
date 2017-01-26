@@ -7,13 +7,13 @@
 
 .home-block__text {
     @include media-query(min, $desk-start) {
-        width: 40%;
+        width: 50%;
     }
 }
 
 .home-block__media {
     @include media-query(min, $desk-start) {
-        width: 60%;
+        width: 50%;
         padding-left: 10%;
     }
 }

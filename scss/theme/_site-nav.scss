@@ -10,8 +10,11 @@
     }
 }
 
-.site-nav__item {
-
+.site-nav__item {}
+.site-nav__item--current {
+    > .site-nav__link {
+        color: $blue;
+    }
 }
 
 .site-nav__item--logo {

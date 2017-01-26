@@ -7,8 +7,10 @@
 
 .tab-nav {
     display: flex;
-    margin-bottom: -1px;
-    padding-left: $half-spacing;
+    padding-left: 0;
+    @include media-query(min, $lap-start) {
+        padding-left: $half-spacing;
+    }
 }
 
 .tab-nav__button {
@@ -16,10 +18,10 @@
     background: transparent;
     border: 1px solid $silver;
     text-decoration: none;
-    padding: 0.5em 1em;
+    padding: 0.3em 0.5em;
     color: $code-bg;
     @include media-query(min, $lap-start) {
-        padding: 1em 2em;
+        padding: .6em 1.2em;
     }
     text-align: center;
     font-family: monospace, monospace;
@@ -37,7 +39,8 @@
     color: $yellow;
     z-index: 1;
     transform: scale(1);
+    border-color: $code-bg;
     &:hover, &:focus, &:active {
-        color: $orange;
+        color: $yellow;
     }
 }
