@@ -4,7 +4,7 @@ better error reports that any other tools out there.
 
 Part of the strong composition story is the ability to combine tasks in ways you never thought
 possible before. Want to run a shell script, followed by an inline gulp-plugin, followed by a
- plain Javascript file located in a file somewhere? No problem! Crossbow ultimately thinks
+ plain Javascript function located in a file somewhere? No problem! Crossbow ultimately thinks
  of every supported task type as simply another function call.
  
 ### External files.

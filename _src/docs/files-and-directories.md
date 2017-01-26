@@ -1,4 +1,3 @@
-# File and Directories
 
 ## Input files.
 

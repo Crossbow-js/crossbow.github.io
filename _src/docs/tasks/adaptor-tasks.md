@@ -46,7 +46,77 @@ for details.
 
 ## @npm
 
-- @npm
-- @bg
-- @bgnpm
-- @cb
+The `@npm` adaptor operates almost identically t0 `@sh` - the main difference is that
+your local `node_modules/.bin` directory will be added to the front of your `PATH`. 
+This is how Crossbow can execute your locally installed modules.
+
+This means that you can install tools like Webpack and compose it with any other tasks you 
+have defined or run it multiple times in parallel etc... the possibilities really are endless.
+
+## @bg
+  
+This adaptor, `bg` inherits from `@npm` above, but adds 1 special feature. It will
+signal task completion, but will not exit the child process. This means
+it's perfect for starting a long-running process in the background, especially 
+useful for starting servers when watching files etc.
+
+```yaml
+watch:
+  default:
+    before: 
+      - '@bg browser-sync start --server app'
+    '**/*.php': 
+      - '@sh browser-sync reload'
+```
+
+So in that example, if you now run `cb watch` - it will start a Browsersync server
+in the background, and then immediately begin watching `php` files for changes.
+
+**Notes:** `@bg` is also capable of executing commands from locally installed node_modules
+ as it builds on top of the `@npm` adaptor
+ 
+## @cb
+
+The `@cb` adaptor is used for Crossbow control flow. Currently it supports 2 methods - `exit` and `delay`
+
+### @cb exit
+
+You can call `@cb exit` at any point in a task definition and it will instruct all running tasks to complete
+their teardown - this can be useful when you have a process running in the background, and need to stop it after
+an amount of time, or when some other tasks finish.
+
+```yaml
+tasks:
+  (protractor):
+    start: '@bg webdriver-manager start'
+    run:   '@npm protractor --conf test/config.js'
+    test: 
+      - protractor:start
+      - protractor:run
+      - '@cb exit'
+```
+
+So with this example, if we ran 'cb protractor:test' - it would first start up the selenium webdriver instance
+that always has to be running in the background via `protractor:start`. Then it would execute the tests via 
+`protractor:run` and finally because we want the server to shut down, we use `@cb exit` to accomplish that.
+
+### @cb delay &lt;ms&gt;
+
+If for example you needed to introduce a 1 second delay between two tasks, you can use `@cb delay 1000`. Using the example
+above, it's quite possible that the server would not quite be ready before the tests started to run. Now it's far from 
+ideal to introduce timeouts in this fashion, but it can get you out of sticky situations, so just use it when needed.
+
+```yaml
+tasks:
+  (protractor):
+    start: '@bg webdriver-manager start'
+    run:   '@npm protractor --conf test/config.js'
+    test: 
+      - protractor:start
+      - '@cb delay 1000' 
+      - protractor:run
+      - '@cb exit'
+```
+
+
+

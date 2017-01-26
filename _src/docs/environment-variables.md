@@ -5,8 +5,8 @@ One thing I learned early on in development, is that when defining multiple scri
 be able to set global `ENVIRONMENT` `VARIABLES` (referred to as env vars from here on in) that are accessible to 
 all of the sub-processes that Crossbow will create.
 
-We can use an example from this very website - I have a set of Docker commands that all use the same `image` name also
-a few commands that all need a filepath passing as part of the command. With Crossbow, you can provide a top-level
+We can use an example from this very website - I have a set of Docker commands that all use the same `image` name along
+with a few commands that all need a file path passing as part of the command. With Crossbow, you can provide a top-level
 `env` key and any key-value pairs you place here will be available within all of your scripts
 
 {{inc 

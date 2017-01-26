@@ -16,7 +16,7 @@ don't have to configure anything - it just works!
 ## Getting fancy with aliases
 An area in which Crossbow leap-frogs the competition is with its strong composition features.
 It will recursively resolve all of your task aliases, no matter how deep they go. This allows
-you build up declarative pipe-lines of tasks that are very easy to understand  
+you build up declarative pipe-lines of tasks that are very easy to understand.
 
 {{inc 
     src="three.hbs"
@@ -33,4 +33,4 @@ would not execute at all!
 
 --- 
 
-Next up, let's see how we can move beyond simple scripts and onto [other ways of defining tasks](/docs/other-ways-of-defining-tasks)
+Next up, let's see how we can move beyond simple scripts and onto [Other Ways of Defining Tasks](/docs/other-ways-of-defining-tasks)

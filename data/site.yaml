@@ -19,7 +19,7 @@ sidebar:
           url:   /docs/define-tasks-in-files
         - label: Use task aliases
           url:   /docs/use-task-aliases
-        - label: Other ways to define tasks
+        - label: Other ways of defining tasks
           url:   /docs/other-ways-of-defining-tasks
         - label: Pass options to tasks
           url:   /docs/pass-options-to-tasks

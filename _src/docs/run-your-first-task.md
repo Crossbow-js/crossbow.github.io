@@ -27,5 +27,5 @@ you can guarantee that certain tasks will be skipped if any that come before it 
 
 ---
 
-It important to know you can run tasks directly on the CLI like this as it can come in handy, 
+It important to know you can run tasks directly on the CLI like this, 
 but in reality you're going to want to [Define tasks in files](/docs/define-tasks-in-files)

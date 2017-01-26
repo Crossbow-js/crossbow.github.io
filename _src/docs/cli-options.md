@@ -1,11 +1,11 @@
 ### The following options/flags apply to all Crossbow commands
 
 {{#data src="node_modules/crossbow/opts/global-common.json" as="json"}}
-<table>
+<table class=opts>
 {{#each json}}
     <tr>
-    <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
-    <td>
+    <td class=opts__key><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+    <td class=opts__value>
         {{this.desc}}
     </td>
     </tr>
@@ -15,8 +15,8 @@
 {{#data src="node_modules/crossbow/opts/common.json" as="json"}}
 {{#each json}}
     <tr>
-        <td><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
-        <td>
+        <td class=opts__key><strong>{{@key}}{{#each this.alias}}, -{{this}}{{/each}}</strong></td>
+        <td class=opts__value>
             {{this.desc}}
         </td>
     </tr>
