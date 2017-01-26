@@ -7,7 +7,7 @@
 
 .tab-nav {
     display: flex;
-    padding-left: 0;
+    padding-left: $half-spacing/2;
     @include media-query(min, $lap-start) {
         padding-left: $half-spacing;
     }

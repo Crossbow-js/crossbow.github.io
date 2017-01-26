@@ -18,7 +18,7 @@ tasks:
 So if you were to now run `cb js` - the function located in `my-function.js` would receive 
 `{input: 'my-input.js', output: 'my-output.js'}` as it's first argument.
 
--- 
+---
 
 ## description
 
@@ -27,81 +27,80 @@ your tasks & within the auto-docs feature. Think about yourself returning to thi
 time, or working on it with others in your team - having a short, human-readable description will
 be something you'll be thankful for.
 
-```yaml
-tasks:
-  release:
-    description: Create a production release of CSS/JS/HTML assets
-    tasks:
-      - build:*
-      - templates
-      
-  templates:
-    description: Generate HTML from the the Markdown in the `docs` folder
-    tasks: 
-      - '@sh jekyl build'
-  
-  (build):
-    css: '@npm node-sass src/style.scss dest/style.css'
-    js:  '@npm tsc ./app/ts/scripts.ts --outFile ./app/js/scripts.js'
-```
 
---
+{{inc 
+    src="three.hbs"
+    name="task-properties-desc"
+    yml="snippets/task-properties/desc-crossbow.yml"
+    cbfile="snippets/task-properties/desc-cbfile.js"
+    js="snippets/task-properties/desc-crossbow.js"
+}}
+
+---
 
 ## ifChanged
 
-Crossbow can keep track of files/directories and will skip certain tasks if it hasn't seen a 
+Crossbow can keep track of files/directories and will skip certain tasks if there hasn't been a 
 change in content between runs.
 
 Everything will always run the very time (whilst it generates the hashes needed to compare), 
 but on subsequent runs you can save a considerable amount of time by limiting which tasks should run.
 
-Using the same example from above, let's say the `build:css` task takes 5 seconds to compile. You can add the 
-`ifChanged` property to instruct Crossbow to skip this if no files (including those in sub-directories) have changed.
+Here's an example, we're using the `node-sass` package to compile the file `src/style.scss` - but we don't
+want anything to run unless something has changed within the `src` directory. To solve this we just add
+the property `ifChanged` and provide an array of file/directory paths.
+
+{{inc 
+    src="three.hbs"
+    name="task-properties-if"
+    yml="snippets/task-properties/if-crossbow.yml"
+    cbfile="snippets/task-properties/if-cbfile.js"
+    js="snippets/task-properties/if-crossbow.js"
+}}
+
+This feature works in any valid Crossbow task definition, so you could skip an entire pipeline of tasks by monitoring 
+multiple files/directories if needed.
 
 ```yaml
 tasks:
-  release:
-    description: Create a production release of CSS/JS/HTML assets
+  build: 
     tasks:
-      - build:*
-      - templates
-      
-  templates:
-    description: Generate HTML from the the Markdown in the `docs` folder
-    tasks: 
-      - '@sh jekyl build'
-  
-  (build):
-    css: 
-      tasks: '@npm node-sass src/style.scss dest/style.css'
-      ifChanged: # <-- files/directories to monitor for changes
-        - src
-    js:  '@npm tsc ./app/ts/scripts.ts --outFile ./app/js/scripts.js'
+      - clean
+      - styles
+      - [lint, html, scripts, images, copy]
+      - generate-service-worker
+    ifChanged:
+      - src
+      - package.json
+      - webpack.config.js
 ```
 
 **Notes:** 
 
 - You can provide multiple files/directories to the `ifChanged` property.
 - Crossbow will create a `.crossbow` directory within this project, be sure to add that to your ignored files in git etc.
+- You can always override this feature with the `-f` flag.
 
+```bash
+cb build -f
+```
 
---
+---
 
 ## env
 
 As seen in [Environment Variables](/docs/environment-variables) - `key:value` pairs can be provided on a per-task
 basis and will override any other global ones where the name matches.
 
-```yaml
-tasks:
-  (docker):
-    up: 
-      tasks: '@sh docker-compose -f $FILE up -d'
-      env: 
-        FILE: 'docker-compose.prod.yml'
-```
+{{inc 
+    src="three.hbs"
+    name="task-properties-env"
+    yml="snippets/task-properties/env-crossbow.yml"
+    cbfile="snippets/task-properties/env-cbfile.js"
+    js="snippets/task-properties/env-crossbow.js"
+}}
  
---
+---
 
 ## runMode
 

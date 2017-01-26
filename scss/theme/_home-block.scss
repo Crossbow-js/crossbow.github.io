@@ -1,22 +1,24 @@
 .home-block {
     @include media-query(min, $desk-start) {
-        display: flex;
+        //display: flex;
         //width: 40%;
     }
 }
 
 .home-block__text {
+    text-align: center;
     h2 {
         color: $blue;
     }
     @include media-query(min, $desk-start) {
-        width: 50%;
+        padding-left: $base-spacing*4;
+        padding-right: $base-spacing*4;
     }
 }
 
 .home-block__media {
     @include media-query(min, $desk-start) {
-        width: 50%;
-        padding-left: 10%;
+        width: 100%;
+        //padding-left: 10%;
     }
 }

@@ -2,17 +2,27 @@
 
     outline: 0;
     border: 2px solid $blue;
-    color: $blue;
     text-transform: uppercase;
     font-weight: bold;
     display: inline-block;
     padding: 1em 2em;
     text-decoration: none;
 
-        color: white;
+    color: white;
+
     &:hover, &:focus {
-        color: white;
+        color: $white;
         background: darken($blue, 40%);
+        //color: lighten($blue, 10%);
+    }
+}
+
+.button--invert {
+    color: $blue;
+    &:hover, &:focus {
+        color: $black;
+        background: transparent;
+        border-color: $black;
         //color: lighten($blue, 10%);
     }
 }

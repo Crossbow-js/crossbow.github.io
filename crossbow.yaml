@@ -20,6 +20,7 @@ watch:
       - bs:serve
     '_src:data:public/img':
       - templates --dev
+      - bs:reload
     'public/js':
       - bs:reload
     'scss':
@@ -82,7 +83,6 @@ tasks:
       --server public
       --ss public-html
       --reloadDebounce 500
-      --plugins bs-html-injector?files=_src
 
   ts:
     description: Compile Typescript files
