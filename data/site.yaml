@@ -6,6 +6,9 @@ nav:
   docs:
     label: 'Documentation'
     url:   '/docs/installation'
+  why-crossbow:
+    label: 'Why Crossbow?'
+    url:   '/why-crossbow'
 
 sidebar:
   sections:

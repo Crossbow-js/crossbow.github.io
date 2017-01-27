@@ -127,6 +127,7 @@ tasks:
       output: 'public-html'
       input:
         - '_src/*.hbs'
+        - '_src/*.md'
         - '_src/docs/**/*.{md,html,hbs}'
 
 options:
