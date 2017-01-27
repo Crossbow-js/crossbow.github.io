@@ -46,7 +46,7 @@ for details.
 
 ## @npm
 
-The `@npm` adaptor operates almost identically t0 `@sh` - the main difference is that
+The `@npm` adaptor operates almost identically to `@sh` - the main difference is that
 your local `node_modules/.bin` directory will be added to the front of your `PATH`. 
 This is how Crossbow can execute your locally installed modules.
 
@@ -55,7 +55,7 @@ have defined or run it multiple times in parallel etc... the possibilities reall
 
 ## @bg
   
-This adaptor, `bg` inherits from `@npm` above, but adds 1 special feature. It will
+This adaptor, `@bg` inherits from `@npm` above, but adds 1 special feature. It will
 signal task completion, but will not exit the child process. This means
 it's perfect for starting a long-running process in the background, especially 
 useful for starting servers when watching files etc.
@@ -66,13 +66,13 @@ watch:
     before: 
       - '@bg browser-sync start --server app'
     '**/*.php': 
-      - '@sh browser-sync reload'
+      - '@npm browser-sync reload'
 ```
 
 So in that example, if you now run `cb watch` - it will start a Browsersync server
 in the background, and then immediately begin watching `php` files for changes.
 
-**Notes:** `@bg` is also capable of executing commands from locally installed node_modules
+**Note:** `@bg` is also capable of executing commands from locally installed node_modules
  as it builds on top of the `@npm` adaptor
  
 ## @cb
