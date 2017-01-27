@@ -14,10 +14,10 @@
                     </a>
                     {{/if_eq}}
                 </li>
-                <li class="site-nav__item site-nav__item--text {{#if_not_eq page.url '/'}}site-nav__item--current{{/if_not_eq}}">
+                <li class="site-nav__item site-nav__item--text">
                     <a href="{{$$.site.nav.docs.url}}" class="site-nav__link site-nav__link--text">Documentation</a>
                 </li>
-                <li class="site-nav__item site-nav__item--text {{#if_eq page.url '/why-crossbow'}}site-nav__item--current{{/if_eq}}">
+                <li class="site-nav__item site-nav__item--text">
                     <a href="{{$$.site.nav.why-crossbow.url}}" class="site-nav__link site-nav__link--text">{{$$.site.nav.why-crossbow.label}}</a>
                 </li>
                 <li class="site-nav__item site-nav__item--icons">
