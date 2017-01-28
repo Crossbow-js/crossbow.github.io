@@ -104,3 +104,16 @@ module.exports = function processSass(opts, ctx, done) {
         .pipe(vfs.dest('./dist/css'));
 }
 ```
+
+## Task Context
+
+You may have noticed `ctx` in the function signature in the examples above - I use as short hand for `context`, 
+but basically it's an object that contains run-time specific information.
+
+- `cli` - this contains the parsed command that started Crossbow - you can see input, flags etc.
+- `input` - this is what Crossbow is using to resolve tasks/watchers etc. It's usually just your parsed input file, or a merged
+    version if you provided multiple.
+- `type` - either `watcher` or `command` - with this knowledge you can decide to run your code differently based on whether
+   in watch mode or regular command.
+- `config` - This is the configuration Crossbow is using.
+    
