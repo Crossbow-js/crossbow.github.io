@@ -150,6 +150,32 @@ For something like Webpack, which could take anywhere from a few seconds up to a
 cb watch 'webpack.config.js -> @npm webpack' --block
 ```
 
+## Watch event context in tasks
+
+When authoring your own tasks, it's often very useful to know what triggered the execution of that current task. 
+This bugged me in other systems, and in the case of responding to file-change events it's especially important.
+ 
+In Crossbow we have a simple solution to this. If you provide a Javascript function either inline, or within a 
+separate file, we'll place the information about what trigger the tasks in the current context
+
+So, with the following input
+
+```yaml
+watch: 
+  default:
+    '*.json': my-task.js
+```
+
+Every time a JSON file changes or is added in the current directory, the function exported from `my-task.js` will be
+executed with the second argument containing information in the `watchEvent` and `watcher` properties
+
+```js
+module.exports = function (options, context) {
+    console.log(context.watchEvent); // this will contain file path + event type
+    console.log(context.watcher); // this will contain information about the actual watcher 
+}
+```
+
 --- 
 
 At this point you've seen the core features of Crossbow and some realistic examples of how you'd use it. I now 
