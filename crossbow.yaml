@@ -101,6 +101,16 @@ tasks:
       --allowJs
       --sourceMap
 
+  letsencrypt: >
+    @sh ssh $DO_AUTH docker run -it --rm
+    -p 443:443
+    --name certbot
+    -v /etc/letsencrypt:/etc/letsencrypt
+    -v /var/log/letsencrypt:/var/log/letsencrypt
+    quay.io/letsencrypt/letsencrypt:v0.9.1 certonly
+    --standalone
+    -d crossbow.io -d www.crossbow.io
+
   uglify:
     description: Uglify TS output, create sourcemap + manifest.json
     tasks: |
