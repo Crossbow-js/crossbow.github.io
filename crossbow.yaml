@@ -3,7 +3,7 @@ config:
 
 env:
   CONTAINER:   crossbow-web
-  IMAGE:       shakyshane/crossbow-web
+  IMAGE:       shakyshane/crossbow-website
   PROD_FILE:   docker-compose.prod.yaml
   DO_AUTH:     root@178.62.114.125
   IN_TS_FILE:  public/ts/scripts.ts
@@ -68,9 +68,9 @@ tasks:
       - docker:up-prod
 
   (server):
-    pull: '@sh ssh $DO_AUTH docker pull shakyshane/crossbow-web'
+    pull: '@sh ssh $DO_AUTH docker pull $IMAGE'
     stop: '@sh ssh $DO_AUTH docker stop $CONTAINER'
-    up:   '@sh ssh $DO_AUTH docker run --name $CONTAINER -v /etc/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE'
+    up:   '@sh ssh $DO_AUTH docker run --name $CONTAINER -v /etc/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE -d'
     certs: '@sh scp -r $DO_AUTH:/etc/letsencrypt/live ./certs'
 
   (clean):
