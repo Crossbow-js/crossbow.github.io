@@ -2,15 +2,17 @@ config:
   progress: false
 
 env:
+  CONTAINER:   crossbow-web
   IMAGE:       shakyshane/crossbow-web
   PROD_FILE:   docker-compose.prod.yaml
-  DO_AUTH:     root@139.59.169.6
+  DO_AUTH:     root@178.62.114.125
   IN_TS_FILE:  public/ts/scripts.ts
   OUT_JS_FILE: scripts.js
   OUT_JS_PATH: public/js/scripts.js
   OUT_JS_DIR:  public/js
   OUT_JS_MAP:  public/js/scripts.js.map
   JS_MANIFEST: public/js/manifest.json
+  HTML_TARGET: public-html
 
 watch:
   default:
@@ -34,6 +36,7 @@ tasks:
     tasks:
       - build:*
       - templates
+      - html-min
 
   (build):
     css:
@@ -46,13 +49,12 @@ tasks:
       - uglify
 
   (docker):
-    up-dev: '@sh docker-compose up -d'
-    up-prod: '@sh docker-compose -f $PROD_FILE up -d'
+    up-dev:  '@sh docker run --name $CONTAINER -v `pwd`/certs:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE'
+    up-prod: '@sh docker run --name $CONTAINER -v /etc/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE'
     push: '@sh docker push $IMAGE'
     build: '@sh docker build -t $IMAGE .'
     release:
-      - build:*
-      - templates
+      - release
       - docker:build
       - docker:push
       - '@cb delay 5'
@@ -67,8 +69,9 @@ tasks:
 
   (server):
     pull: '@sh ssh $DO_AUTH docker pull shakyshane/crossbow-web'
-    stop: '@sh ssh $DO_AUTH docker stop crossbow-web'
-    up:   '@sh ssh $DO_AUTH docker start crossbow-web'
+    stop: '@sh ssh $DO_AUTH docker stop $CONTAINER'
+    up:   '@sh ssh $DO_AUTH docker run --name $CONTAINER -v /etc/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE'
+    certs: '@sh scp -r $DO_AUTH:/etc/letsencrypt/live ./certs'
 
   (clean):
     docker-images: '@sh docker rmi $(docker images -f "dangling=true" -q)'
@@ -83,6 +86,12 @@ tasks:
       --server public
       --ss public-html
       --reloadDebounce 500
+
+  html-min: >
+    @npm html-minifier
+    --input-dir  $HTML_TARGET
+    --output-dir $HTML_TARGET
+    --collapse-whitespace
 
   ts:
     description: Compile Typescript files

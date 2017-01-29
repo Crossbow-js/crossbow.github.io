@@ -6,3 +6,4 @@ node_modules
 /.crossbow
 .DS_Store
 /public/CreativeButtons
+/certs

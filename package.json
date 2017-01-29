@@ -24,6 +24,7 @@
     "vinyl-fs": "2.4.3"
   },
   "dependencies": {
+    "html-minifier": "^3.3.0",
     "typescript": "^2.1.5",
     "uglify-js": "^2.7.5"
   }
