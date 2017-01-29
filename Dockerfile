@@ -1,4 +1,4 @@
-FROM shakyshane/crossbow-web-deps
+FROM shakyshane/crossbow-build-deps
 
 COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY . /usr/share/nginx/html
