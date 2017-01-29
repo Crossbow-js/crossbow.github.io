@@ -35,6 +35,7 @@ tasks:
     description: Create a production release of CSS/JS/HTML assets
     tasks:
       - build:*
+      - docs:*
       - templates
       - html-min
 
@@ -86,6 +87,12 @@ tasks:
       --server public
       --ss public-html
       --reloadDebounce 500
+
+  (docs):
+    create-errors:
+      description: Use the Crossbow error files to create documentation pages
+      tasks:
+        - errors.js
 
   html-min: >
     @npm html-minifier
