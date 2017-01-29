@@ -50,8 +50,8 @@ tasks:
       - uglify
 
   (docker):
-    up-dev:  '@sh docker run --name $CONTAINER -v `pwd`/certs:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE'
-    up-prod: '@sh docker run --name $CONTAINER -v /etc/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE'
+    up-dev:  '@sh docker run -d -v `pwd`/certs:/etc/letsencrypt      -p 80:80 -p 443:443 $IMAGE'
+    up-prod: '@sh docker run -d -v /etc/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE'
     push: '@sh docker push $IMAGE'
     build: '@sh docker build -t $IMAGE .'
     release:
@@ -64,9 +64,16 @@ tasks:
       - server:up
     prod:
       - build:*
+      - docs:*
       - templates
       - docker:build
       - docker:up-prod
+    dev:
+      - build:*
+      - docs:*
+      - templates
+      - docker:build
+      - docker:up-dev
 
   (server):
     pull: '@sh ssh $DO_AUTH docker pull $IMAGE'
