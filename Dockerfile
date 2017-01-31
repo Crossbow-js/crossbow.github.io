@@ -1,10 +1,13 @@
 FROM shakyshane/crossbow-build-deps
+MAINTAINER Shane Osbourne "shane.osbourne8@gmail.com"
 
-COPY docker/nginx.conf /etc/nginx/conf.d/default.conf
 COPY . /usr/share/nginx/html
 
 RUN ./node_modules/.bin/cb release
 
-EXPOSE 80
+COPY docker/start.sh /
+COPY docker/nginx.conf /etc/nginx/
+COPY docker/nginx-secure.conf /etc/nginx/
 
-CMD ["nginx", "-g", "daemon off;"]
+COPY docker/dhparams.pem /etc/ssl/private/
+CMD /start.sh
