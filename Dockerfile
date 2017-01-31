@@ -6,6 +6,5 @@ COPY . /usr/share/nginx/html
 RUN ./node_modules/.bin/cb release
 
 EXPOSE 80
-EXPOSE 443
 
 CMD ["nginx", "-g", "daemon off;"]
