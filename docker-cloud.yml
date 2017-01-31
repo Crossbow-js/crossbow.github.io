@@ -33,5 +33,6 @@ letsencrypt:
     - TERM=xterm
 app:
   image: shakyshane/crossbow-website
+  autoredeploy: true
   ports:
     - "80"
