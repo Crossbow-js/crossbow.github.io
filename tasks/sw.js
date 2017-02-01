@@ -14,8 +14,7 @@ function createServiceWorker () {
         ],
         staticFileGlobs: [
             // Add/remove glob patterns to match your directory setup.
-            `${rootDir}/js/*.js`,
-            `${rootDir}/js/dist/*.js`,
+            `${rootDir}/js/**/*.js`,
             `${rootDir}/favicon.ico`
         ],
         dynamicUrlToDependencies: {
