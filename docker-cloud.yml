@@ -32,7 +32,7 @@ letsencrypt:
   environment:
     - TERM=xterm
 app:
-  image: shakyshane/crossbow-web
+  image: shakyshane/crossbow-website
   autoredeploy: true
   ports:
     - "80"
