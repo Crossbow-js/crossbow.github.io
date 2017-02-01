@@ -11,7 +11,7 @@
     {{#if dev}}
     {{else}}
         {{#data src="public/js/manifest.json" as="manifest"}}
-            <link rel="preload" href="/js/{{manifest.[scripts.js]}}" as="script"/>
+            <link rel="preload" href="/js/dist/{{manifest.[scripts.js]}}" as="script"/>
         {{/data}}
     {{/if}}
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -24,12 +24,8 @@
     {{#if dev}}
         <link rel="stylesheet" href="/css/core.css"/>
     {{else}}
-        {{#data src="public/css/css-manifest.json" as="manifest"}}
-
-            <link rel="stylesheet" href="/css/{{manifest.[core.min.css]}}"/>
-        {{/data}}
+        <style>{{inc src="public/css/core.min.css"}}</style>
     {{/if}}
-
 
 </head>
 <body id="page-top">
@@ -73,10 +69,11 @@
     {{ inc src="footer.hbs" }}
 
     {{#if dev}}
-        <script src="/js/scripts.js?rel={{hash src="public/js/scripts.js"}}"></script>
+        <script src="/js/scripts.js"></script>
     {{else}}
+
         {{#data src="public/js/manifest.json" as="manifest"}}
-            <script src="/js/{{manifest.[scripts.js]}}"></script>
+            <script src="/js/dist/{{manifest.[scripts.js]}}"></script>
         {{/data}}
     {{/if}}
 

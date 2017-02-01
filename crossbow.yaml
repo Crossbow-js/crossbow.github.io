@@ -9,7 +9,7 @@ env:
   IN_TS_FILE:  public/ts/scripts.ts
   OUT_JS_FILE: scripts.js
   OUT_JS_PATH: public/js/scripts.js
-  OUT_JS_DIR:  public/js
+  OUT_JS_DIR:  public/js/dist
   OUT_JS_MAP:  public/js/scripts.js.map
   JS_MANIFEST: public/js/manifest.json
   HTML_TARGET: public-html
@@ -23,7 +23,8 @@ watch:
     '_src:data:public/img':
       - templates --dev
       - bs:reload
-    'public/js':
+    'public/ts':
+      - ts
       - bs:reload
     'scss':
       - crossbow-sass
@@ -38,16 +39,21 @@ tasks:
       - docs:*
       - templates
       - html-min
+      - sw:generate
 
   (build):
     css:
       - clean:css
       - crossbow-sass
-      - crossbow-sass --production --rev --manifest
+      - crossbow-sass --production
     js:
       - clean:js
       - ts
       - uglify
+
+  (sw):
+    generate:
+      - tasks/sw.js
 
   (docker):
     up-dev:  '@sh docker run -d -p 80:80 $IMAGE'
@@ -63,15 +69,11 @@ tasks:
       - server:stop
       - server:up
     prod:
-      - build:*
-      - docs:*
-      - templates
+      - release
       - docker:build
       - docker:up-prod
     dev:
-      - build:*
-      - docs:*
-      - templates
+      - release
       - docker:build
       - docker:up-dev
 
@@ -84,7 +86,9 @@ tasks:
   (clean):
     docker-images: '@sh docker rmi $(docker images -f "dangling=true" -q)'
     css:  '@sh rm -rf public/css/*.{css,map,json}'
-    js:   '@sh rm -rf public/js/*.{js,map,json}'
+    js:
+      - '@sh rm -rf public/js/*.{js,map,json}'
+      - '@sh rm -rf public/js/dist/*.{js,map,json}'
 
   (bs):
     reload: '@npm browser-sync reload'
@@ -97,7 +101,7 @@ tasks:
 
   (docs):
     create-errors:
-      description: Use the Crossbow error files to create documentation pages
+      description: Use the C  rossbow error files to create documentation pages
       tasks:
         - errors.js
 

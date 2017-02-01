@@ -25,6 +25,8 @@
   },
   "dependencies": {
     "html-minifier": "^3.3.0",
+    "sw-precache": "^4.3.0",
+    "sw-toolbox": "^3.4.0",
     "typescript": "^2.1.5",
     "uglify-js": "^2.7.5"
   }
