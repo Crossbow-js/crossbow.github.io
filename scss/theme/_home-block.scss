@@ -8,7 +8,7 @@
 .home-block__text {
     text-align: center;
     h2 {
-        color: $blue;
+        //color: $blue;
     }
     @include media-query(min, $desk-start) {
         padding-left: $base-spacing*4;

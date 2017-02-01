@@ -1,4 +1,5 @@
 const cb = require('crossbow');
+const vfs = require('vinyl-fs');
 
 cb.task('build', ['scripts', 'styles']);
 

@@ -18,11 +18,12 @@
 }
 
 .button--invert {
-    color: $blue;
+    color: $black;
+    border: 2px solid $black;
+
     &:hover, &:focus {
-        color: $black;
+        color: $blue;
         background: transparent;
-        border-color: $black;
-        //color: lighten($blue, 10%);
+        border-color: $blue;
     }
 }
