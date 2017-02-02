@@ -37,7 +37,7 @@
 /* eslint-disable indent, no-unused-vars, no-multiple-empty-lines, max-nested-callbacks, space-before-function-paren, quotes, comma-spacing */
 'use strict';
 
-var precacheConfig = [["/","2c44d95b88ec89fb5a091605ab709686"],["/docs","11677c131c8febb067a9f0004b4f8a8d"],["/docs/cli-options","fc6d87bdfc1a2cbfae758f313780b22c"],["/docs/commands/docs","a55977edc91d9d4b6b6c0b3525d619d3"],["/docs/commands/init","72a27bd1098683373e8e475236c5a91e"],["/docs/commands/run","9839ff28c1d428b632e42dd09480311c"],["/docs/commands/tasks","deba9a4716975585593f7f3dad97f1bf"],["/docs/commands/watch","918c1749400c7719a1ceba3db4c5a008"],["/docs/define-tasks-in-files","209077eb0c4af1d1212ca0d592854226"],["/docs/environment-variables","540252405ab2c6c98e26e0ef92b1266b"],["/docs/examples/gulp","59afdb7d3990bfd16e7e45060e7f20a7"],["/docs/examples/module-exports","ca13521ea25ac1150f87f0a7311e7fc9"],["/docs/examples/yaml","39822aebabe23ea3338a0b37a7a45493"],["/docs/file-watching","9b1d042ac27e630cbe3071e5d2dbd628"],["/docs/files-and-directories","306f26b0c1bc7acb507abdbfc81b0983"],["/docs/installation","31fa268f38f36c8db677df594e69c8cc"],["/docs/other-ways-of-defining-tasks","785ae8813b97f3b6268cce09ca8161a9"],["/docs/pass-options-to-tasks","d23f36ea370fb1a1860ba12ae6aa6b43"],["/docs/run-your-first-task","b7c1f06ac06732ca9b067a1631cd9aac"],["/docs/running-tasks-in-parallel","d3514f0dac3a46b55bd642737a7f8a01"],["/docs/sub-tasks","dd0073cacc77708af61a8d5f39e6ecea"],["/docs/task-groups","a87c41d48bb057e8122ae4a214bd27dc"],["/docs/tasks/adaptor-tasks","92e2d966e59c71ee16c69d05c25fe872"],["/docs/tasks/how-to-write-tasks","d7f80a8a5a7dd692a94785e8fd9c3e63"],["/docs/tasks/task-properties","dafdf2f6bd35ad59d58d87e46a8bf492"],["/docs/use-task-aliases","957f3b27dcefad3f88fae442a8919683"],["favicon.ico","438c04ca2f7bdaf86efc463bb8ddaea3"],["js/dist/797b30c4fb7952b7ca8f9f37841bfbaf742d3d16.js","f5e929be2c70a38a3a57139cdbef5fbe"],["js/scripts.js","0d88dc568c369af459c9a6bbf78adf90"]];
+var precacheConfig = [["/","2c44d95b88ec89fb5a091605ab709686"],["/docs","27655cda05add6fe7dbd437e002bfd37"],["/docs/cli-options","fc6d87bdfc1a2cbfae758f313780b22c"],["/docs/commands/docs","a55977edc91d9d4b6b6c0b3525d619d3"],["/docs/commands/init","72a27bd1098683373e8e475236c5a91e"],["/docs/commands/run","9839ff28c1d428b632e42dd09480311c"],["/docs/commands/tasks","deba9a4716975585593f7f3dad97f1bf"],["/docs/commands/watch","918c1749400c7719a1ceba3db4c5a008"],["/docs/define-tasks-in-files","209077eb0c4af1d1212ca0d592854226"],["/docs/environment-variables","540252405ab2c6c98e26e0ef92b1266b"],["/docs/examples/gulp","59afdb7d3990bfd16e7e45060e7f20a7"],["/docs/examples/module-exports","ca13521ea25ac1150f87f0a7311e7fc9"],["/docs/examples/yaml","39822aebabe23ea3338a0b37a7a45493"],["/docs/file-watching","9b1d042ac27e630cbe3071e5d2dbd628"],["/docs/files-and-directories","306f26b0c1bc7acb507abdbfc81b0983"],["/docs/installation","31fa268f38f36c8db677df594e69c8cc"],["/docs/other-ways-of-defining-tasks","785ae8813b97f3b6268cce09ca8161a9"],["/docs/pass-options-to-tasks","d23f36ea370fb1a1860ba12ae6aa6b43"],["/docs/run-your-first-task","b7c1f06ac06732ca9b067a1631cd9aac"],["/docs/running-tasks-in-parallel","d3514f0dac3a46b55bd642737a7f8a01"],["/docs/sub-tasks","dd0073cacc77708af61a8d5f39e6ecea"],["/docs/task-groups","a87c41d48bb057e8122ae4a214bd27dc"],["/docs/tasks/adaptor-tasks","92e2d966e59c71ee16c69d05c25fe872"],["/docs/tasks/how-to-write-tasks","d7f80a8a5a7dd692a94785e8fd9c3e63"],["/docs/tasks/task-properties","dafdf2f6bd35ad59d58d87e46a8bf492"],["/docs/use-task-aliases","957f3b27dcefad3f88fae442a8919683"],["favicon.ico","438c04ca2f7bdaf86efc463bb8ddaea3"],["js/dist/797b30c4fb7952b7ca8f9f37841bfbaf742d3d16.js","af85de6a555b8a4d1fdc98d5c5bf5362"],["js/dist/scripts.js","0d88dc568c369af459c9a6bbf78adf90"],["js/runtime-caching.js","2b8fb8792bf284087f602e98df360aa5"],["js/sw/runtime-caching.js","2b8fb8792bf284087f602e98df360aa5"],["js/sw/sw-toolbox.js","e7e54a466864d42dcccc8c3f80a91d1f"]];
 var cacheName = 'sw-precache-v2-crossbow.io-' + (self.registration ? self.registration.scope : '');
 
 
@@ -226,12 +226,6 @@ self.addEventListener('fetch', function(event) {
     }
   }
 });
-
-
-
-
-
-
 
 importScripts("js/sw/sw-toolbox.js","js/sw/runtime-caching.js");
 
