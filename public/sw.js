@@ -227,5 +227,11 @@ self.addEventListener('fetch', function(event) {
   }
 });
 
+
+
+
+
+
+
 importScripts("js/sw/sw-toolbox.js","js/sw/runtime-caching.js");
 
