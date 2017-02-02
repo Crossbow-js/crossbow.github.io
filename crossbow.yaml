@@ -8,9 +8,9 @@ env:
   DO_AUTH:     root@178.62.114.125
   IN_TS_FILE:  public/ts/scripts.ts
   OUT_JS_FILE: scripts.js
-  OUT_JS_PATH: public/js/scripts.js
+  OUT_JS_PATH: public/js/dist/scripts.js
   OUT_JS_DIR:  public/js/dist
-  OUT_JS_MAP:  public/js/scripts.js.map
+  OUT_JS_MAP:  public/js/dist/scripts.js.map
   JS_MANIFEST: public/js/manifest.json
   HTML_TARGET: public-html
 
@@ -53,6 +53,7 @@ tasks:
 
   (sw):
     generate:
+      - tasks/copy-sw.js
       - tasks/sw.js
 
   (docker):
@@ -87,7 +88,7 @@ tasks:
     docker-images: '@sh docker rmi $(docker images -f "dangling=true" -q)'
     css:  '@sh rm -rf public/css/*.{css,map,json}'
     js:
-      - '@sh rm -rf public/js/*.{js,map,json}'
+      - '@sh rm -rf public/js/manifest.json'
       - '@sh rm -rf public/js/dist/*.{js,map,json}'
 
   (bs):
