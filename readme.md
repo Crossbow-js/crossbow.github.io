@@ -9,16 +9,31 @@ $ crossbow run <taskname>
 ```
 |Task name|Description|
 |---|---|
-|<pre>`serve`</pre>|Build all HTML + assets and start Browsersync|
-|<pre>`build-all`</pre>|**Alias for:**<br>- `html`<br>- `icons`<br>- `sass`|
-|<pre>`html`</pre>|**Alias for:**<br>- `tasks/templates`|
-|<pre>`icons`</pre>|undefined|
-|<pre>`sass`</pre>|Compile sass -> css|
-|<pre>`commit`</pre>|**Alias for:**<br>- `build-all`<br>- `@sh git add .`<br>- `@sh git commit -m "$CB_CLI_TRAILING"`<br>- `@sh git push origin master`|
-|<pre>`deploy`</pre>|**Alias for:**<br>- `build-all`<br>- `rsync`<br>- `docker-restart`<br>- `@sh open $LIVE_URL`|
-|<pre>`rsync`</pre>|Copy files from local to remote server|
-|<pre>`ssh`</pre>|**Alias for:**<br>- `@sh ssh $AUTH`|
-|<pre>`docker-start`</pre>|**Alias for:**<br>- `@sh ssh $AUTH "docker run -d --name crossbow -p 80:80 -v $(pwd)/crossbow:/usr/share/nginx/html -v $(pwd)/crossbow/nginx.conf:/etc/nginx/conf.d/default.conf donbeave/nginx-pagespeed:1.8.0-1"`|
-|<pre>`docker-restart`</pre>|**Alias for:**<br>- `@sh ssh $AUTH "docker exec crossbow rm -rf /var/ngx_pagespeed_cache"`<br>- `@sh ssh $AUTH "docker restart crossbow"`|
-|<pre>`open`</pre>|**Alias for:**<br>- `@sh open $LIVE_URL`|
+|<pre>`release`</pre>|Create a production release of CSS/JS/HTML assets|
+|<pre>`html-min`</pre>|**Alias for:**<br>- `@npm html-minifier --input-dir  $HTML_TARGET --output-dir $HTML_TARGET --collapse-whitespace`|
+|<pre>`ts`</pre>|Compile Typescript files|
+|<pre>`letsencrypt`</pre>|**Alias for:**<br>- `@sh ssh $DO_AUTH docker run -it --rm -p 443:443 --name certbot -v /etc/letsencrypt:/etc/letsencrypt -v /var/log/letsencrypt:/var/log/letsencrypt quay.io/letsencrypt/letsencrypt:v0.9.1 certonly --standalone -d crossbow.io -d www.crossbow.io`|
+|<pre>`uglify`</pre>|Uglify TS output, create sourcemap + manifest.json|
+|<pre>`sass`</pre>|use the 'crossbow-sass' module to compile SCSS files into css|
+|<pre>`templates`</pre>|**Alias for:**<br>- `@sh rm -rf public-hml/**`<br>- `tasks/templates.js`|
+|<pre>`build:css`</pre>|**Alias for:**<br>- `clean:css`<br>- `crossbow-sass`<br>- `crossbow-sass --production --rev --manifest`|
+|<pre>`build:js`</pre>|**Alias for:**<br>- `clean:js`<br>- `ts`<br>- `uglify`|
+|<pre>`docker:up-dev`</pre>|**Alias for:**<br>- `@sh docker run -d -v `pwd`/certs:/etc/letsencrypt      -p 80:80 -p 443:443 $IMAGE`|
+|<pre>`docker:up-prod`</pre>|**Alias for:**<br>- `@sh docker run -d -v /etc/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE`|
+|<pre>`docker:push`</pre>|**Alias for:**<br>- `@sh docker push $IMAGE`|
+|<pre>`docker:build`</pre>|**Alias for:**<br>- `@sh docker build -t $IMAGE .`|
+|<pre>`docker:release`</pre>|Create a production release of CSS/JS/HTML assets|
+|<pre>`docker:prod`</pre>|**Alias for:**<br>- `build:*`<br>- `docs:*`<br>- `templates`<br>- `docker:build`<br>- `docker:up-prod`|
+|<pre>`docker:dev`</pre>|**Alias for:**<br>- `build:*`<br>- `docs:*`<br>- `templates`<br>- `docker:build`<br>- `docker:up-dev`|
+|<pre>`server:pull`</pre>|**Alias for:**<br>- `@sh ssh $DO_AUTH docker pull $IMAGE`|
+|<pre>`server:stop`</pre>|**Alias for:**<br>- `@sh ssh $DO_AUTH docker stop $CONTAINER`|
+|<pre>`server:up`</pre>|**Alias for:**<br>- `@sh ssh $DO_AUTH docker run --name $CONTAINER -v /etc/letsencrypt:/etc/letsencrypt -p 80:80 -p 443:443 $IMAGE -d`|
+|<pre>`server:certs`</pre>|**Alias for:**<br>- `@sh scp -r $DO_AUTH:/etc/letsencrypt/live ./certs`|
+|<pre>`clean:docker-images`</pre>|**Alias for:**<br>- `@sh docker rmi $(docker images -f "dangling=true" -q)`|
+|<pre>`clean:css`</pre>|**Alias for:**<br>- `@sh rm -rf public/css/*.{css,map,json`|
+|<pre>`clean:js`</pre>|**Alias for:**<br>- `@sh rm -rf public/js/*.{js,map,json`|
+|<pre>`bs:reload`</pre>|**Alias for:**<br>- `@npm browser-sync reload`|
+|<pre>`bs:inject`</pre>|**Alias for:**<br>- `@npm browser-sync reload --files core.css`|
+|<pre>`bs:serve`</pre>|**Alias for:**<br>- `@bg browser-sync start --server public --ss public-html --reloadDebounce 500`|
+|<pre>`docs:create-errors`</pre>|Use the Crossbow error files to create documentation pages|
 <!--crossbow-docs-end-->

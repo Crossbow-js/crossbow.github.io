@@ -1,4 +1,4 @@
-If you've seen any of the 'getting started' pages already, you'll be used to seeing tasks such as `@npm webpack`
+If you've seen any of the 'getting started' pages already, you'll be used to seeing tasks such as `@npm webpack`.
 When Crossbow encounters a `string` beginning with a `@` character it will not parse anything after the first space 
 & instead it will pass along the remainder of the string to whichever 'adaptor' it belongs to.
  

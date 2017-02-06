@@ -2,6 +2,8 @@
 title: Crossbow Errors
 ---
 - [AdaptorNotFound](/docs/errors/AdaptorNotFound)
+- [BinDirectoryNotFound](/docs/errors/BinDirectoryNotFound)
+- [BinPathNotADirectory](/docs/errors/BinPathNotADirectory)
 - [CBFlagNotProvided](/docs/errors/CBFlagNotProvided)
 - [CircularReference](/docs/errors/CircularReference)
 - [DocsInputFileNotFound](/docs/errors/DocsInputFileNotFound)
