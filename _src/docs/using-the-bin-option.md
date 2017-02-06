@@ -52,5 +52,5 @@ tasks:
 config:
   bin: 
     - node_modules/.bin # <-- NPM scripts
-    - vendor/.bin # <-- Composer scripts
+    - vendor/bin # <-- Composer scripts
 ```
