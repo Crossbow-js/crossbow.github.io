@@ -47,6 +47,8 @@ sidebar:
           url:   /docs/tasks/task-properties
         - label: Adaptor Tasks (@npm, @sh etc)
           url:   /docs/tasks/adaptor-tasks
+        - label: Using the `bin` option
+          url:   /docs/using-the-bin-option
 
     - title: 'CLI Commands'
       items:
