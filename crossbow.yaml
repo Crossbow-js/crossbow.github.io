@@ -102,7 +102,7 @@ tasks:
 
   (docs):
     create-errors:
-      description: Use the C  rossbow error files to create documentation pages
+      description: Use the Crossbow error files to create documentation pages
       tasks:
         - errors.js
 

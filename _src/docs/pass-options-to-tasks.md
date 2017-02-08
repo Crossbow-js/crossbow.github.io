@@ -1,3 +1,19 @@
+---
+videos:
+  1: 
+    - id: 4_jJp6roIL4
+      title: Crossbow - Passing options via flags (CLI) 
+    - id: F7OFFgQvImA
+      title: Crossbow - Passing options via query string (CLI) 
+  2: 
+    - id: h2hZnvSJGXs
+      title: Crossbow - Passing options via flags in input files (crossbow.yaml)
+    - id: mfbJ-5zf3WU
+      title: Crossbow - Passing options via flags in input files (cbfile.js)
+    - id: apd83k-rfro
+      title: Crossbow - Passing options via flags in input files (crossbow.js) 
+---
+
 There are always situations in which you'll want to re-use a task. Perhaps you've crafted a nice
  pipeline of transformations to take `.scss` files and compile them into CSS. It could be a multi-step process
  such as:
@@ -40,6 +56,8 @@ and use flags
 ```bash
 cb 'my-task.js --input ./app/scss'
 ```
+
+{{inc src="video-list.hbs" videos=page.videos.[1]}}
 
 Crossbow will chop this command into pieces, so it sees:
 
@@ -92,6 +110,7 @@ see how to execute the task 3 times, each with a different `input` value:
     js="snippets/pass-options-to-tasks-01/crossbow.js"
 }}
 
+{{inc src="video-list.hbs" videos=page.videos.[2]}}
 
 ## Passing options inline
 Having the ability to pass flags/queries to tasks at run time is an 
