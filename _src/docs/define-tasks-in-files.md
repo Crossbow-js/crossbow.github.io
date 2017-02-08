@@ -1,3 +1,13 @@
+---
+videos: 
+ - id: 4QET8ZU15oE
+   title: Crossbow - define tasks in files (YAML) 
+ - id: P9Wxe8tVfHs
+   title: Crossbow - define tasks in files (cbfile.js)
+ - id: tXzvaRNYCNU
+   title: Crossbow - define tasks in files (crossbow.js)  
+---
+
 Of course, it would be rather tedious if you had to remember these long command
 chains for every task you wanted to run. 
 
@@ -18,6 +28,7 @@ Now, with this in place, you can simply run
 cb build
 ```
 
+{{inc src="video-list.hbs" videos=page.videos}}
 
 ---
 
