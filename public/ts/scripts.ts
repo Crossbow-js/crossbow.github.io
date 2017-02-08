@@ -6,7 +6,7 @@ interface Navigator {
     const $ = (selector, context?) => [].slice.call((context||document).querySelectorAll(selector));
 
     if (navigator.serviceWorker) {
-        registerServiceWorker();
+        // registerServiceWorker();
     } else {
         console.log('nope!');
     }
@@ -101,5 +101,23 @@ interface Navigator {
                 }
             });
         });
+    }
+
+    const embed = (id) => `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}?rel=0&showinfo=false" frameborder="0" allowfullscreen></iframe>`;
+
+    $('[data-video]').forEach(function(elem: HTMLElement) {
+        const listener = function(e) {
+            e.preventDefault();
+            const vid = document.createElement('DIV');
+            vid.classList.add('video-list__video');
+            vid.innerHTML = embed(elem.getAttribute('data-video'));
+            insertAfter(vid, elem);
+            elem.removeEventListener('click', listener);
+        };
+        elem.addEventListener('click', listener);
+    });
+
+    function insertAfter(newNode, referenceNode) {
+        referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
     }
 })();

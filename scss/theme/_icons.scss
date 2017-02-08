@@ -5,3 +5,27 @@
   width: 1em;
   vertical-align: middle;
 }
+
+.video-list {
+  @include list-reset;
+}
+
+.video-list__video {
+  padding: $half-spacing;
+  margin-top: $half-spacing;
+  margin-bottom: $base-spacing;
+
+  iframe {
+    max-width: 100%;
+  }
+}
+
+.youtube-icon {
+  display: inline-block;
+  width: 20px;
+  position: relative;
+  top: 1px;
+  svg {
+    max-width: 100%;
+  }
+}

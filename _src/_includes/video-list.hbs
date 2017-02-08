@@ -1,0 +1,7 @@
+{{#if videos}}
+<ul class="video-list">
+    {{#each videos}}
+        <li>{{inc src="youtube.hbs"}}<a href="https://www.youtube.com/watch?v={{this.id}}" data-video="{{this.id}}">{{this.title}}</a></li>
+    {{/each}}
+</ul>
+{{/if}}

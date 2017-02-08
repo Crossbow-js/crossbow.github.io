@@ -1,3 +1,11 @@
+---
+videos: 
+ - id: aEVYBMyeyNU
+   title: Install globally with YARN
+ - id: IIG1bD8ZzSs
+   title: Install globally with NPM
+---
+
 Install this package with the `-g` flag to enable the CLI
 
 ```bash
@@ -10,6 +18,8 @@ If you're using a `cbfile.js` (in the style of Gulp.js), you'll
 ```bash
 $ npm install crossbow
 ```
+
+{{inc src="video-list.hbs" videos=page.videos}}
 
 ---
 
