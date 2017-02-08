@@ -1,3 +1,13 @@
+---
+videos: 
+ - id: IlFcIpowI4A
+   title: Crossbow - Task aliases (YAML) 
+ - id: QP45339fVWI
+   title: Crossbow - Task aliases (cbfile.js)
+ - id: wpD-U2gtMWA
+   title: Crossbow - Task aliases (crossbow.js)  
+---
+
 Crossbow will always try to resolve aliases *first* which allows
 you to re-use the same task over and over again whilst also making
 for cleaner composition.
@@ -12,6 +22,8 @@ don't have to configure anything - it just works!
     cbfile="snippets/use-task-aliases/cbfile.js"
     js="snippets/use-task-aliases/crossbow.js"
 }}
+
+{{inc src="video-list.hbs" videos=page.videos}}
 
 ## Getting fancy with aliases
 An area in which Crossbow leap-frogs the competition is with its strong composition features.
