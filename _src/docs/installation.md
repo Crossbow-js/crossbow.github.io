@@ -1,8 +1,8 @@
 ---
 videos: 
- - id: aEVYBMyeyNU
+ - id: oicvYtlg9OI
    title: Install globally with YARN
- - id: IIG1bD8ZzSs
+ - id: CAEBMLhvlsk
    title: Install globally with NPM
 ---
 
