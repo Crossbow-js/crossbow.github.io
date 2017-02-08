@@ -103,7 +103,7 @@ interface Navigator {
         });
     }
 
-    const embed = (id) => `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}?rel=0&showinfo=false" frameborder="0" allowfullscreen></iframe>`;
+    const embed = (id) => `<iframe width="560" height="315" src="https://www.youtube.com/embed/${id}?rel=0&showinfo=false&autoplay=true" frameborder="0" allowfullscreen></iframe>`;
 
     $('[data-video]').forEach(function(elem: HTMLElement) {
         const listener = function(e) {
