@@ -1,3 +1,27 @@
+---
+videos:
+  1: 
+    - id: kjRPXGLfsQc
+      title: Crossbow - Calling external files from the CLI 
+  2: 
+    - id: QfNjP5TV_U4
+      title: Crossbow - Tasks in external files (crossbow.yaml) 
+    - id: 1Q5uW6X6O6w
+      title: Crossbow - Tasks in external files (cbfile.js)
+    - id: dLNRHG68AdY
+      title: Crossbow - Tasks in external files (crossbow.js) 
+  3: 
+    - id: 5Yxv7mxffso
+      title: Crossbow - inline function (cbfile.js) 
+    - id: 6U4I_6313T0
+      title: Crossbow - inline function (crossbow.js) 
+  4: 
+    - id: u9iuLVEoiy8
+      title: Crossbow - multiple inline functions (cbfile.js) 
+    - id: js0GykNgCyA
+      title: Crossbow - multiple inline functions (crossbow.js) 
+---
+
 You're starting to get a taste of Crossbow can do for you. It was designed from the ground
 up to solve complicated task composition problems, whilst also being easier to use and provide 
 better error reports that any other tools out there.
@@ -30,6 +54,8 @@ from the CLI...
 cb my-task.js
 ```
 
+{{inc src="video-list.hbs" videos=page.videos.[1]}}
+
 ... or you can reference it anywhere in one of your input files
 
 {{inc 
@@ -39,6 +65,8 @@ cb my-task.js
     cbfile="snippets/external-tasks/cbfile.js"
     js="snippets/external-tasks/crossbow.js"
 }}
+
+{{inc src="video-list.hbs" videos=page.videos.[2]}}
 
 Crossbow will grab the returned `function` from your file and 
  queue it up just like any other task. Now you can organise
@@ -60,6 +88,7 @@ cb.task('clean', [
     }
 ]);
 ```
+{{inc src="video-list.hbs" videos=page.videos.[3]}}
 
 In that example, **3** separate tasks are defined.
 
@@ -88,6 +117,9 @@ The first 2 are regular shell commands - when both of these complete (without er
     () => console.log('Tasks completed!'),
  ]);
  ```
+ 
+{{inc src="video-list.hbs" videos=page.videos.[4]}}
+ 
 ---
  
 Getting excited yet? Next up we'll see how to [Pass options to tasks](/docs/pass-options-to-tasks) 
