@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<head>
+    <!-- META -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Watching</title>
+
+    <!-- ICONS -->
+            <link rel="preload" href="/js/dist/7e68e5e90715158f45e32ad539461bd149a5058b.js" as="script"/>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#ffffff">
+
+    <!-- CSS Includes (PRODUCTION TEST) -->
+        <style>/*! normalize.css v4.1.1 | MIT License | github.com/necolas/normalize.css */html{font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%}body{margin:0}article,aside,details,figcaption,figure,footer,header,main,menu,nav,section,summary{display:block}audio,canvas,progress,video{display:inline-block}audio:not([controls]){display:none;height:0}progress{vertical-align:baseline}[hidden],template{display:none}a{background-color:transparent;-webkit-text-decoration-skip:objects}a:active,a:hover{outline-width:0}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:inherit;font-weight:bolder}dfn{font-style:italic}h1{font-size:2em;margin:.67em 0}mark{background-color:#ff0;color:#000}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}svg:not(:root){overflow:hidden}code,kbd,pre,samp{font-family:monospace,monospace;font-size:1em}figure{margin:1em 40px}hr{box-sizing:content-box;height:0;overflow:visible}button,input,select,textarea{font:inherit;margin:0}optgroup{font-weight:700}button,input{overflow:visible}button,select{text-transform:none}[type=reset],[type=submit],button,html [type=button]{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-cancel-button,[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-input-placeholder{color:inherit;opacity:.54}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}*,:after,:before{box-sizing:border-box}blockquote,caption,dd,dl,fieldset,form,h1,h2,h3,h4,h5,h6,hr,legend,ol,p,pre,table,td,th,ul{margin:0;padding:0}abbr[title],dfn[title]{cursor:help}a,ins,u{text-decoration:none}ins{border-bottom:1px solid}img{font-style:italic}button,input,label,option,select,textarea{cursor:pointer}.text-input:active,.text-input:focus,textarea:active,textarea:focus{cursor:text;outline:none}html{overflow-y:scroll;min-height:100%;font:100%/1.5 -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;-webkit-font-smoothing:antialiased}body,html{overflow-x:hidden;max-width:100%;background:#fff}body{color:#333;text-rendering:optimizeLegibility}.warning.lede{font-size:14px;font-size:.875rem;color:red}hr{clear:both;margin-bottom:24px;border:none;border-bottom:1px dashed rgba(52,58,71,.1);padding-bottom:12px;height:1px}img{display:block;max-width:100%}blockquote p{display:block;border-left:3px solid #343a47;padding-left:12px;font-style:italic;color:rgba(0,0,0,.5);padding-top:6px;padding-bottom:6px;margin-bottom:24px}.wrapper{clear:both;width:100%;padding-top:24px;padding-bottom:24px}@media only screen and (min-width:700px){.wrapper{padding-top:48px;padding-bottom:48px}}.container{margin:0 auto;padding-right:12px;padding-left:12px;width:auto;max-width:1000px;list-style:none}@media only screen and (min-width:700px){.container{padding-right:24px;padding-left:24px}}.container--skinny{max-width:800px}.layout-2col>.container{zoom:1}.layout-2col>.container:after,.layout-2col>.container:before{content:"";display:table}.layout-2col>.container:after{clear:both}.site-body{background:#fff}.svg-icon{display:inline-block;fill:currentColor!important;height:1em;width:1em;vertical-align:middle}.video-list{margin-left:0;list-style:none}.video-list__video{padding:12px;margin-top:12px;margin-bottom:24px}.video-list__video iframe{max-width:100%}.youtube-icon{display:inline-block;width:20px;position:relative;top:1px;margin-right:5px}.youtube-icon svg{max-width:100%}address,blockquote,details,dl,fieldset,figcaption,figure,h1,h2,h3,h4,h5,h6,hgroup,ol,p,pre,table,ul{margin-bottom:12px}.h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{font-weight:700;line-height:1;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Fira Sans,Droid Sans,Helvetica Neue,sans-serif;-webkit-font-smoothing:antialiased}.h1 small,.h2 small,.h3 small,.h4 small,.h5 small,.h6 small,h1 small,h2 small,h3 small,h4 small,h5 small,h6 small{font-size:inherit;font-weight:400}.h1,h1{font-size:36px;font-size:2.25rem}.h1,.h2,h1,h2{margin-bottom:24px;padding-top:24px}.h2,h2{font-size:24px;font-size:1.5rem}.h3,h3{padding-top:12px;font-size:18px;font-size:1.125rem}.lede{font-size:24px;font-size:1.5rem}a{color:#00b4ff;-webkit-transition:border .3s ease,background .3s ease,color .3s ease;transition:border .3s ease,background .3s ease,color .3s ease;text-decoration:underline}a:focus,a:hover{color:#000}a [class*=" icon-"],a [class^=icon-]{text-decoration:none}ol,ul{margin-left:24px;margin-bottom:24px}.button{outline:0;border:2px solid #00b4ff;text-transform:uppercase;font-weight:700;display:inline-block;padding:1em 2em;text-decoration:none;color:#fff}.button:focus,.button:hover{color:#fff;background:#002433}.button--invert{color:#000;border:2px solid #000}.button--invert:focus,.button--invert:hover{color:#00b4ff;background:transparent;border-color:#00b4ff}.site-header{position:relative;padding-top:12px;padding-bottom:12px;background:#000}.site-header>*{position:relative;z-index:1}.site-header__content{padding-bottom:72px}@media only screen and (min-width:700px){.site-header__content{padding-top:48px}}.hero{background:#000;color:#fff}.hero,.hero>*{position:relative}.hero>*{z-index:1}.logo{display:block;max-width:320px;font-size:0;margin:0 auto}.logo,.logo:hover{color:#fff}.logo svg{width:100%}.logo--small{width:30px}.logo--small svg{max-height:24px}.tagline{padding-top:12px;color:#00b4ff;text-align:center;text-transform:uppercase;font-weight:700;letter-spacing:1px;font-size:.8em}@media only screen and (min-width:700px){.tagline{font-size:1.2em}}.site-nav__items{margin-left:0;list-style:none;display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:0}@media only screen and (min-width:700px){.site-nav__items{-webkit-box-pack:end;-ms-flex-pack:end;justify-content:flex-end}}.site-nav__item--current>.site-nav__link{color:#00b4ff}.site-nav__item--logo{max-width:180px}@media only screen and (min-width:700px){.site-nav__item--logo{margin-right:auto}}.site-nav__item--text{width:100%;-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2;margin-top:12px;text-align:center}@media only screen and (min-width:700px){.site-nav__item--text{margin-top:0;width:auto;-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;margin-left:12px}}.site-nav__item--icons{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1;display:-webkit-box;display:-ms-flexbox;display:flex;margin-left:auto}@media only screen and (min-width:700px){.site-nav__item--icons{margin-left:inherit}}.site-nav__link{display:block;color:#fff;text-decoration:none}.site-nav__link:focus,.site-nav__link:hover{color:#00b4ff}.site-nav__link--text{padding:12px;display:inline-block;font-size:.9em;text-transform:uppercase;letter-spacing:1px;text-shadow:1px 1px 3px rgba(0,0,0,.4)}.site-nav__link--icon{display:block;width:50px;height:50px;position:relative;font-size:0}.site-nav__link--icon .svg-icon{position:absolute;width:24px;height:24px;top:50%;left:50%;-webkit-transform:translateX(-50%) translateY(-50%);transform:translateX(-50%) translateY(-50%)}.tab-content{display:none}.tab-content--active{display:block}.tab-nav{display:-webkit-box;display:-ms-flexbox;display:flex;padding-left:6px}@media only screen and (min-width:700px){.tab-nav{padding-left:12px}}.tab-nav__button{display:inline-block;background:transparent;border:1px solid #ccc;text-decoration:none;padding:.3em .5em;color:#343a47;text-align:center;font-family:monospace,monospace;font-size:.8em;margin-right:4px;border-bottom:0;-webkit-transform:scale(.9);transform:scale(.9);-webkit-transform-origin:bottom;transform-origin:bottom;border-top-left-radius:3px;border-top-right-radius:3px}@media only screen and (min-width:700px){.tab-nav__button{padding:.6em 1.2em}}.tab-nav__button--active{background:#343a47;color:#f7df1e;z-index:1;-webkit-transform:scale(1);transform:scale(1);border-color:#343a47}.tab-nav__button--active:active,.tab-nav__button--active:focus,.tab-nav__button--active:hover{color:#f7df1e}.intro{text-align:center}.intro__content ul{list-style:none}.demo{padding-top:24px}@media only screen and (min-width:900px){.demo{padding-top:48px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}}.demo__snippet{margin-bottom:24px;position:relative;text-align:center}@media only screen and (min-width:900px){.demo__snippet{text-align:center;width:25%}.demo__snippet:nth-child(2){width:40%}}.demo__snippet code{display:inline-block;background:#343a47;color:#fff;padding:1em 1.5em}.demo__snippet .highlight{text-align:left}.demo__snippet__title{color:#000;display:block;text-align:center;margin-bottom:12px}.cta{text-align:center}.cta,.tool-list{padding-top:24px}.tool-list{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}@media only screen and (min-width:700px){.tool-list{padding-top:48px}}.tool-list svg{height:74px;max-width:40px}@media only screen and (min-width:700px){.tool-list svg{max-width:74px}}.tool-list__item{position:relative;padding-right:48px}.tool-list__item:after{position:absolute;display:block;top:calc(50% - 12px);font-weight:700;color:#00b4ff;line-height:1;right:18px;content:'+'}.tool-list__item:last-child{padding-right:0}.tool-list__item:last-child:after{display:none}.home-block__text{text-align:center}@media only screen and (min-width:900px){.home-block__text{padding-left:96px;padding-right:96px}}@media only screen and (min-width:900px){.home-block__media{width:100%}}@media only screen and (min-width:700px){.sidebar{float:left;width:30%}}.sidebar__toggle{display:block;text-align:center;padding:.5em;border-radius:3px;border:1px solid #cecece;color:#000;text-transform:uppercase}@media only screen and (min-width:700px){.sidebar__toggle{display:none}}.sidebar__toggle.active{background:#f7f7f7;border-color:#f7f7f7;color:#999}.sidebar__lists{padding-top:24px;display:none}@media only screen and (min-width:700px){.sidebar__lists{display:block}}.sidebar__lists.active{display:block}.sidebar__list{margin-left:0;list-style:none}.sidebar__heading{font-weight:700;font-size:20px;font-size:1.25rem;border-bottom:1px dashed #ccc}.sidebar__link{color:#000;display:block;padding:6px 12px;text-decoration:none}.sidebar__link:hover{background:#f2f2f2}.sidebar__link--current{cursor:default}.sidebar__link--current,.sidebar__link--current:hover{background:#f7f7f7;color:#999}@media only screen and (min-width:700px){.content{width:70%;float:right;padding-left:24px}}.hljs-comment,.hljs-quote{color:#898ea4}.hljs-attribute,.hljs-link,.hljs-name,.hljs-regexp,.hljs-selector-class,.hljs-selector-id,.hljs-tag,.hljs-template-variable,.hljs-variable{color:#c94922}.hljs-built_in,.hljs-builtin-name,.hljs-literal,.hljs-meta,.hljs-number,.hljs-params,.hljs-type{color:#c76b29}.hljs-bullet,.hljs-string,.hljs-symbol{color:#f7df1e}.hljs-section,.hljs-title{color:#00b4ff}.hljs-keyword,.hljs-selector-tag{color:#8ca1ff}.hljs{display:block;overflow-x:auto;background:#202746;color:#979db4;padding:.5em}.hljs-emphasis{font-style:italic}.hljs-strong{font-weight:700}code,samp{font-size:16px;font-size:1rem;font-family:monospace;background:#f2f2f2;padding:2px 4px;border-radius:3px}.highlight,pre{padding:12px 18px;line-height:1.4;background:#343a47;border-radius:3px;color:#ccc;overflow:auto;text-shadow:1px 1px 1px rgba(0,0,0,.5);margin-bottom:24px;border:1px solid rgba(0,0,0,.04)}.highlight code,pre code{border:0;padding:0;margin:0;background:#343a47}@media only screen and (min-width:700px){.highlight,pre{margin-left:0;margin-right:0}}.lang-bash{position:relative}.lang-bash:after{position:absolute}.opts__value{padding-left:12px}.footer{background:#fff;color:#666;text-align:center}.copyright{font-size:.8em;color:#666;text-decoration:none}.copyright:hover{color:#ef990e}
+               /*# sourceMappingURL=core.min.css.map */
+</style>
+
+</head>
+<body id="page-top">
+
+
+    <?xml version="1.0" encoding="utf-8"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
+        <symbol id="svg-github" viewBox="0 0 32 32">
+      <path clip-rule="evenodd" d="M16.003 0C7.17 0 .008 7.162.008 15.997c0 7.067 4.582 13.063 10.94 15.18.8.145 1.052-.33 1.052-.753 0-.38.008-1.442 0-2.777-4.45.967-5.37-2.107-5.37-2.107-.728-1.848-1.776-2.34-1.776-2.34-1.452-.992.11-.973.11-.973 1.604.113 2.45 1.65 2.45 1.65 1.427 2.442 3.743 1.736 4.654 1.328.146-1.034.56-1.74 1.017-2.14C9.533 22.663 5.8 21.29 5.8 15.16c0-1.747.622-3.174 1.645-4.292-.165-.404-.715-2.03.157-4.234 0 0 1.343-.43 4.398 1.64 1.276-.354 2.645-.53 4.005-.537 1.36.006 2.727.183 4.005.538 3.055-2.07 4.396-1.64 4.396-1.64.872 2.202.323 3.83.16 4.233 1.022 1.118 1.643 2.545 1.643 4.292 0 6.146-3.74 7.498-7.305 7.893C19.48 23.548 20 24.508 20 26v4.428c0 .428.258.9 1.07.746C27.422 29.054 32 23.062 32 15.997 32 7.162 24.838 0 16.003 0z" fill-rule="evenodd"/>
+    </symbol>
+    <symbol id="svg-twitter" viewBox="0 5.9 39.8 32">
+      <path d="M38.3 10.4c-1.4.7-2.9 1-4.4 1.3 1.6-1 2.7-2.5 3.3-4.3-1.5.8-3.2 1.6-4.8 1.9-1.4-1.6-3.3-2.5-5.7-2.5-4.3 0-7.6 3.3-7.6 7.6 0 .7.2 1.1.3 1.8-6.5-.3-12-3.5-15.8-8.1-.5 1.2-.8 2.6-.8 3.9 0 2.6 1.4 4.9 3.3 6.3-1.3 0-2.5-.5-3.5-1.1v.2c0 3.7 2.6 6.7 6 7.4-.7.2-1.4.3-1.9.3s-1 0-1.6-.2c1 3.1 3.7 5.3 7.2 5.4-2.6 1.9-5.9 3.3-9.5 3.3-.7 0-1.3 0-1.9-.2 3.3 2.1 7.3 3.5 11.7 3.5 14 0 21.7-11.5 21.7-21.7v-1c1.5-.9 2.9-2.2 4-3.8z"/>
+    </symbol>
+
+    </svg>
+
+    <header class="wrapper site-header" role="banner">
+        <div class="container">
+
+            <nav class="site-nav">
+                <ul class="site-nav__items">
+                    <li class="site-nav__item site-nav__item--logo">
+                        <a href="/" class="site-nav__link logo">
+                            <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 237.43 28.7">
+                                <defs>
+                                    <style>
+                                        .cls-1 {
+                                            fill: currentColor;
+                                        }
+                                    </style>
+                                </defs>
+                                <path class="cls-1"
+                                      d="M286.83,217.5c.4-.4.9-.8,1.3-1.2a5.37,5.37,0,0,0-.1-7.6,6.71,6.71,0,0,0-4.6-2.2c-4-.2-8-.2-12-.2-.1,0-.1,0-.2.1v26.4a9.15,9.15,0,0,1,1.7.1c3.8-.1,7.6,0,11.4-.3a7.21,7.21,0,0,0,6.5-4.8,7.56,7.56,0,0,0-1.4-8.1A27.47,27.47,0,0,0,286.83,217.5Zm-4.6-6.4a2.38,2.38,0,0,1,2.3,2.3,2.44,2.44,0,0,1-2.2,2.3,62.6,62.6,0,0,1-6.3.4c0-1.9,0-3.6-.1-5.4C278,210.9,280.13,210.8,282.23,211.1Zm4,13.6a3.38,3.38,0,0,1-3.3,3.2c-2.2.2-4.5.2-6.9.3v-7.7c2.6.1,5.2-.5,7.7.6C285.43,221.9,286.43,223.2,286.23,224.7Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1"
+                                      d="M203.73,205.7A13.91,13.91,0,0,0,191,219.5a13.27,13.27,0,0,0,2.6,8.1c3.5,4.9,10.2,6.9,16.5,5.1a13.83,13.83,0,0,0,6.1-23C212.83,206.3,208.43,205.3,203.73,205.7Zm1.8,22.9c-5.6,0-9.6-3.9-9.5-9.2s4.2-9.1,9.7-9.1,9.4,3.9,9.4,9.3C215.13,224.8,210.93,228.6,205.53,228.6Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1"
+                                      d="M312.13,205.5a23,23,0,0,0-3.2.5,13.81,13.81,0,0,0-8.3,22.1c3.5,4.4,8.3,5.7,13.7,5.1a13.86,13.86,0,0,0,11-20.1C322.73,207.9,318.13,205.8,312.13,205.5Zm0,23.1c-5.6,0-9.6-3.9-9.5-9.3,0-5.2,4.2-9.1,9.7-9s9.5,3.9,9.4,9.3C321.73,224.8,317.63,228.6,312.13,228.6Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1"
+                                      d="M178.83,220.7c3.3-1.9,4.8-4.9,4.2-8.3a7.2,7.2,0,0,0-6.9-6,74.82,74.82,0,0,0-8.2-.2h-2.2v26.5h4.7V221.9a2.77,2.77,0,0,1,3.3,1.3c2.4,3,4.8,5.9,7.2,8.9.3.3.5.7.8.7h6c-3.3-4-6.4-7.8-9.5-11.7A2.09,2.09,0,0,1,178.83,220.7Zm-2-4.4c-1.9,1.2-4.1.8-6.3.9v-6.3c1.9,0,3.9-.3,5.8.4a2.67,2.67,0,0,1,2,2.5A3,3,0,0,1,176.83,216.3Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1"
+                                      d="M155.83,207.2a18.25,18.25,0,0,0-15-.2,13.41,13.41,0,0,0-5.2,21.3c5,5.6,14.5,6.4,20.7,3a.75.75,0,0,0,.5-.7v-5a13.73,13.73,0,0,1-13.3,2.2c-3.2-1.4-5.3-3.7-5.7-7.3s1.2-6.5,4.4-8.4a11.86,11.86,0,0,1,6.6-1.7,12.15,12.15,0,0,1,8,2.9c0-1.7-.1-3.1,0-4.5A1.47,1.47,0,0,0,155.83,207.2Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1"
+                                      d="M260.53,218.8a64.91,64.91,0,0,0-5.5-3.6,16.29,16.29,0,0,1-1.7-1.1,2.26,2.26,0,0,1-.8-2.3,1.73,1.73,0,0,1,1.7-1.6,8.74,8.74,0,0,1,3.6.5,18.26,18.26,0,0,1,2.6,1.6c.8-1.2,1.6-2.5,2.3-3.7-2.9-2.4-5.6-3.4-8.8-3-2.9.4-5.1,1.8-6.1,4.7a6.52,6.52,0,0,0,2,7.4c1.2,1,2.6,1.8,3.9,2.7s2.8,1.7,4.1,2.7a3,3,0,0,1,.9,3.7,3.27,3.27,0,0,1-3.3,1.9,6.13,6.13,0,0,1-4.4-1.9c-.5-.5-1-1.1-1.6-1.7-1.1,1.2-2,2.3-3.3,3.5,1.4,1.1,2.7,2.3,4.1,3.2a9,9,0,0,0,8.1,1,7.7,7.7,0,0,0,5.4-6C264.43,223.5,263.13,220.8,260.53,218.8Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1"
+                                      d="M238,217.8c-1.2-.8-2.6-1.6-3.9-2.4-.4-.3-.9-.5-1.4-.8-1.3-.8-1.8-1.8-1.4-2.9a2.57,2.57,0,0,1,3-1.5c1.7.5,3.3,1.3,5.1,2,.6-1,1.3-2.3,2.1-3.5a10.75,10.75,0,0,0-9-3c-2.8.4-5.1,1.8-6,4.7a6.52,6.52,0,0,0,2,7.3c1.2,1,2.6,1.8,3.9,2.7a45.26,45.26,0,0,1,4,2.6,2.89,2.89,0,0,1,1,3.7,3.48,3.48,0,0,1-3.5,2,7.3,7.3,0,0,1-4.4-2.1c-.5-.5-.9-1.1-1.4-1.7-1.2,1.4-2.2,2.5-3.2,3.6,3,3.3,6.3,5.5,10.9,4.6a7.6,7.6,0,0,0,6.4-5.6,7.35,7.35,0,0,0-2.2-8A16.32,16.32,0,0,0,238,217.8Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1"
+                                      d="M205.53,216.4c-1.1,1-2.1,2.1-3.2,3.1,1.1,1,2.2,2.1,3.1,3,1.1-1.1,2.2-2.1,3.2-3C207.53,218.5,206.53,217.4,205.53,216.4Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1" d="M312.23,216.6c-1,.9-2.1,2-3,2.9l3,3c1-1,2-2,3-2.9Z" transform="translate(-132.3 -205.3)"/>
+                                <path class="cls-1"
+                                      d="M365.33,205.3c-2.6,6-5.2,11.8-7.9,17.9-1.4-3.1-2.8-6.1-4.1-9.2l-3-6.3s-6,13.6-6.8,15.6c-2.6-6.1-5.2-11.9-7.8-17.8-1.5.6-2.9,1.4-4.4,2,3.9,8.8,7.7,16.5,11.6,26.5h1.3c2.1-5,4.1-9.3,6.3-14.2,2.1,4.8,4.2,9.2,6.2,14.2h1.5c.1,0,.2-.9.3-1.2,2.6-6,5.3-12.2,7.9-18.2,1.1-2.4,2.2-4.9,3.3-7.4C368.23,206.6,366.83,206,365.33,205.3Z"
+                                      transform="translate(-132.3 -205.3)"/>
+                            </svg>
+
+                        </a>
+                    </li>
+                    <li class="site-nav__item site-nav__item--text">
+                        <a href="/docs/installation" class="site-nav__link site-nav__link--text">Documentation</a>
+                    </li>
+                    <li class="site-nav__item site-nav__item--icons">
+                        <a href="https://github.com/Crossbow-js/crossbow" class="site-nav__link site-nav__link--icon" title="Crossbow on Github">
+                            <svg class="svg-icon">
+                                <use xlink:href="#svg-github"></use>
+                            </svg>
+                        </a>
+                        <a href="https://twitter.com/crossbow_io" class="site-nav__link site-nav__link--icon" title="@crossbow_io on Twitter">
+                            <svg class="svg-icon">
+                                <use xlink:href="#svg-twitter"></use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+    <div class="wrapper site-body layout-2col" role="main">
+        <div class="container">
+            <section class="sidebar">
+                <a href="#sidebar-lists" class="sidebar__toggle" data-toggle>Menu</a>
+                <div class="sidebar__lists" id="sidebar-lists">
+                    <ul class="sidebar__list">
+                        <li>
+                            <p class="sidebar__heading">Getting Started</p>
+                            <ul class="sidebar__list sidebar__list--nested">
+                                <li><a href="/docs/installation" class="sidebar__link ">Installation</a></li>
+                                <li><a href="/docs/run-your-first-task" class="sidebar__link ">Run your first task</a></li>
+                                <li><a href="/docs/define-tasks-in-files" class="sidebar__link ">Define tasks in files</a></li>
+                                <li><a href="/docs/use-task-aliases" class="sidebar__link ">Use task aliases</a></li>
+                                <li><a href="/docs/other-ways-of-defining-tasks" class="sidebar__link ">Other ways of defining tasks</a></li>
+                                <li><a href="/docs/pass-options-to-tasks" class="sidebar__link ">Pass options to tasks</a></li>
+                                <li><a href="/docs/sub-tasks" class="sidebar__link ">Sub Tasks</a></li>
+                                <li><a href="/docs/running-tasks-in-parallel" class="sidebar__link ">Running tasks in Parallel</a></li>
+                                <li><a href="/docs/task-groups" class="sidebar__link ">Task Groups</a></li>
+                                <li><a href="/docs/environment-variables" class="sidebar__link ">Environment Variables</a></li>
+                                <li><a href="/docs/file-watching" class="sidebar__link sidebar__link--current">File Watching</a></li>
+                                <li><a href="/docs/files-and-directories" class="sidebar__link ">Files and Directories</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="sidebar__list">
+                        <li>
+                            <p class="sidebar__heading">Tasks</p>
+                            <ul class="sidebar__list sidebar__list--nested">
+                                <li><a href="/docs/tasks/how-to-write-tasks" class="sidebar__link ">How to write tasks</a></li>
+                                <li><a href="/docs/tasks/task-properties" class="sidebar__link ">Task properties</a></li>
+                                <li><a href="/docs/tasks/adaptor-tasks" class="sidebar__link ">Adaptor Tasks (@npm, @sh etc)</a></li>
+                                <li><a href="/docs/using-the-bin-option" class="sidebar__link ">Using the `bin` option</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="sidebar__list">
+                        <li>
+                            <p class="sidebar__heading">CLI Commands</p>
+                            <ul class="sidebar__list sidebar__list--nested">
+                                <li><a href="/docs/cli-options" class="sidebar__link ">Global Options</a></li>
+                                <li><a href="/docs/commands/init" class="sidebar__link ">init</a></li>
+                                <li><a href="/docs/commands/run" class="sidebar__link ">run</a></li>
+                                <li><a href="/docs/commands/watch" class="sidebar__link ">watch</a></li>
+                                <li><a href="/docs/commands/tasks" class="sidebar__link ">tasks</a></li>
+                                <li><a href="/docs/commands/docs" class="sidebar__link ">docs</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="sidebar__list">
+                        <li>
+                            <p class="sidebar__heading">Input files</p>
+                            <ul class="sidebar__list sidebar__list--nested">
+                                <li><a href="/docs/examples/gulp" class="sidebar__link "><code>cbfile.js</code> (Gulp style)</a></li>
+                                <li><a href="/docs/examples/yaml" class="sidebar__link "><code>crossbow.yaml</code></a></li>
+                                <li><a href="/docs/examples/module-exports" class="sidebar__link "><code>crossbow.js</code> (module.exports)</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <main class="content">
+                <h1 class="page-title">File Watching</h1>
+                <p>A modern, advanced task running system would not be complete without modern, advanced file-watching
+                to back it up.</p>
+                <p>In your input files, you can define which files/directories to watch &amp; then 
+                trigger a task to be run when they change </p>
+                <div class="context">
+                    <div class="tab-nav">
+                        <a href="#file-watching-01-yml" class="tab-nav__button tab-nav__button--active">crossbow.yml</a>
+                        <a href="#file-watching-01-cbfile" class="tab-nav__button">cbfile.js</a>
+                        <a href="#file-watching-01-js" class="tab-nav__button">crossbow.js</a>
+                    </div>
+                    <div class="tab-content" id="file-watching-01-cbfile">
+        <pre class='highlight'><code class="js"><span class="hljs-keyword">const</span> cb = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#39;crossbow&#39;</span>);
+
+cb.task(<span class="hljs-string">&#39;serve&#39;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    cb.watch(<span class="hljs-string">&#39;./app/scss&#39;</span>, [<span class="hljs-string">&#39;css&#39;</span>]);
+});
+
+cb.task(<span class="hljs-string">&#39;css&#39;</span>, {
+    tasks: <span class="hljs-string">&#39;my-scss-module&#39;</span>,
+    options: {
+        input: <span class="hljs-string">&#39;./app/scss/core.scss&#39;</span>,
+        output: <span class="hljs-string">&#39;./dist/css&#39;</span>
+    }
+});
+</code></pre>
+                    </div>
+                    <div class="tab-content tab-content--active" id="file-watching-01-yml">
+        <pre class='highlight'><code class="yml"><span class="hljs-attr">watch:</span>
+<span class="hljs-attr">  default:</span>
+<span class="hljs-attr">    watchers:</span>
+<span class="hljs-attr">      - patterns:</span> <span class="hljs-string">&#39;./app/scss&#39;</span>
+<span class="hljs-attr">        tasks:</span> css
+
+<span class="hljs-attr">tasks:</span>
+<span class="hljs-attr">  css:</span>
+<span class="hljs-attr">    tasks:</span> my-scss-module
+<span class="hljs-attr">    options:</span>
+<span class="hljs-attr">      input:</span> <span class="hljs-string">&#39;./app/scss/core.scss&#39;</span>
+<span class="hljs-attr">      output:</span> <span class="hljs-string">&#39;./dist/css&#39;</span></code></pre>
+                    </div>
+                    <div class="tab-content" id="file-watching-01-js">
+        <pre class='highlight'><code class="js"><span class="hljs-built_in">module</span>.exports = {
+    watch: {
+        <span class="hljs-keyword">default</span>: {
+            watchers: [
+                {
+                    patterns: <span class="hljs-string">&#39;./app/scss&#39;</span>,
+                    tasks: <span class="hljs-string">&#39;css&#39;</span>
+                }
+            ]
+        }
+    },
+    tasks: {
+        css: {
+            tasks: <span class="hljs-string">&#39;my-scss-module&#39;</span>,
+            options: {
+                input: <span class="hljs-string">&#39;./app/scss/core.scss&#39;</span>,
+                output: <span class="hljs-string">&#39;./dist/css&#39;</span>
+            }
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+
+                <p>In that example, any time a file within the <code>./app/scss</code> directory changes, the <code>css</code> task
+                will run.</p>
+                <p>You&#39;re not limited to a single pattern or task to run however,
+                both <code>patterns</code> &amp; <code>tasks</code> accept arrays &amp; their can be multiple watchers too.</p>
+                <div class="context">
+                    <div class="tab-nav">
+                        <a href="#file-watching-02-yml" class="tab-nav__button tab-nav__button--active">crossbow.yml</a>
+                        <a href="#file-watching-02-cbfile" class="tab-nav__button">cbfile.js</a>
+                        <a href="#file-watching-02-js" class="tab-nav__button">crossbow.js</a>
+                    </div>
+                    <div class="tab-content" id="file-watching-02-cbfile">
+        <pre class='highlight'><code class="js"><span class="hljs-keyword">const</span> cb = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#39;crossbow&#39;</span>);
+
+cb.task(<span class="hljs-string">&#39;serve&#39;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    cb.watch([<span class="hljs-string">&#39;./app/scss&#39;</span>, <span class="hljs-string">&#39;./legacy/scss&#39;</span>], [<span class="hljs-string">&#39;css&#39;</span>, <span class="hljs-string">&#39;autoprefixer&#39;</span>]);
+    cb.watch([<span class="hljs-string">&#39;**/*.php&#39;</span>], [<span class="hljs-string">&#39;browser:reload&#39;</span>]);
+    cb.watch([<span class="hljs-string">&#39;**/*.php&#39;</span>], [<span class="hljs-string">&#39;browser:reload&#39;</span>]);
+});
+
+cb.task(<span class="hljs-string">&#39;css&#39;</span>, {
+    tasks: <span class="hljs-string">&#39;my-scss-module&#39;</span>,
+    options: {
+        input: <span class="hljs-string">&#39;./app/scss/core.scss&#39;</span>,
+        output: <span class="hljs-string">&#39;./dist/css&#39;</span>
+    }
+});
+</code></pre>
+                    </div>
+                    <div class="tab-content tab-content--active" id="file-watching-02-yml">
+        <pre class='highlight'><code class="yml"><span class="hljs-attr">watch:</span>
+<span class="hljs-attr">  default:</span>
+<span class="hljs-attr">    watchers:</span>
+<span class="hljs-attr">      - patterns:</span> [<span class="hljs-string">&#39;./app/scss&#39;</span>, <span class="hljs-string">&#39;./legacy/scss&#39;</span>]
+<span class="hljs-attr">        tasks:</span> [css, autoprefixer]
+<span class="hljs-attr">      - patterns:</span> <span class="hljs-string">&#39;./app/**/*.php&#39;</span>
+<span class="hljs-attr">        tasks:</span> browser:reload
+
+<span class="hljs-attr">tasks:</span>
+<span class="hljs-attr">  css:</span>
+<span class="hljs-attr">    tasks:</span> my-scss-module
+<span class="hljs-attr">    options:</span>
+<span class="hljs-attr">      input:</span> <span class="hljs-string">&#39;./app/scss/core.scss&#39;</span>
+<span class="hljs-attr">      output:</span> <span class="hljs-string">&#39;./dist/css&#39;</span></code></pre>
+                    </div>
+                    <div class="tab-content" id="file-watching-02-js">
+        <pre class='highlight'><code class="js"><span class="hljs-built_in">module</span>.exports = {
+    watch: {
+        <span class="hljs-keyword">default</span>: {
+            watchers: [
+                {
+                    patterns: [<span class="hljs-string">&#39;./app/scss&#39;</span>, <span class="hljs-string">&#39;./legacy/scss&#39;</span>],
+                    tasks: [<span class="hljs-string">&#39;css&#39;</span>, <span class="hljs-string">&#39;autoprefixer&#39;</span>]
+                },
+                {
+                    patterns: [<span class="hljs-string">&#39;**/*.php&#39;</span>],
+                    tasks: [<span class="hljs-string">&#39;browser:reload&#39;</span>]
+                }
+            ]
+        }
+    },
+    tasks: {
+        css: {
+            tasks: <span class="hljs-string">&#39;my-scss-module&#39;</span>,
+            options: {
+                input: <span class="hljs-string">&#39;./app/scss/core.scss&#39;</span>,
+                output: <span class="hljs-string">&#39;./dist/css&#39;</span>
+            }
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+
+
+                <h2 id="short-hand-watchers">Short hand watchers</h2>
+                <p>The format above, whilst explicit, can get a little verbose, so there&#39;s also a short-hand style you can 
+                use instead if you prefer. You can skip the <code>watchers</code> key altogether and provide as many <code>&lt;pattern[]&gt;:&lt;task[]&gt;</code>
+                items as you need.</p>
+                <div class="context">
+                    <div class="tab-nav">
+                        <a href="#file-watching-03-yml" class="tab-nav__button tab-nav__button--active">crossbow.yml</a>
+                        <a href="#file-watching-03-js" class="tab-nav__button">crossbow.js</a>
+                    </div>
+                    <div class="tab-content tab-content--active" id="file-watching-03-yml">
+        <pre class='highlight'><code class="yml"><span class="hljs-attr">watch:</span>
+<span class="hljs-attr">  default:</span>
+    <span class="hljs-string">&#39;./app/scss:./legacy/scss&#39;</span>: [css, autoprefixer]
+    <span class="hljs-string">&#39;./app/**/*.php&#39;</span>: browser:reload
+
+<span class="hljs-attr">tasks:</span>
+<span class="hljs-attr">  css:</span>
+<span class="hljs-attr">    tasks:</span> my-scss-module
+<span class="hljs-attr">    options:</span>
+<span class="hljs-attr">      input:</span> <span class="hljs-string">&#39;./app/scss/core.scss&#39;</span>
+<span class="hljs-attr">      output:</span> <span class="hljs-string">&#39;./dist/css&#39;</span></code></pre>
+                    </div>
+                    <div class="tab-content" id="file-watching-03-js">
+        <pre class='highlight'><code class="js"><span class="hljs-built_in">module</span>.exports = {
+    watch: {
+        <span class="hljs-keyword">default</span>: {
+            watchers: [
+                {
+                    patterns: [<span class="hljs-string">&#39;./app/scss&#39;</span>, <span class="hljs-string">&#39;./legacy/scss&#39;</span>],
+                    tasks: [<span class="hljs-string">&#39;css&#39;</span>, <span class="hljs-string">&#39;autoprefixer&#39;</span>]
+                },
+                {
+                    patterns: [<span class="hljs-string">&#39;**/*.php&#39;</span>],
+                    tasks: [<span class="hljs-string">&#39;browser:reload&#39;</span>]
+                }
+            ]
+        }
+    },
+    tasks: {
+        css: {
+            tasks: <span class="hljs-string">&#39;my-scss-module&#39;</span>,
+            options: {
+                input: <span class="hljs-string">&#39;./app/scss/core.scss&#39;</span>,
+                output: <span class="hljs-string">&#39;./dist/css&#39;</span>
+            }
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+
+                <h2 id="starting-watchers">Starting watchers</h2>
+                <p>Whether you use the long or short version for defining watchers, if they are all under the <code>default</code> key, you can start 
+                them all via the following the command:</p>
+<pre><code class="lang-bash">cb watch
+</code></pre>
+                <p>If you&#39;ve defined multiple watchers with different names, such as ...</p>
+                <div class="context">
+                    <div class="tab-nav">
+                        <a href="#file-watching-04-yml" class="tab-nav__button tab-nav__button--active">crossbow.yml</a>
+                        <a href="#file-watching-04-js" class="tab-nav__button">crossbow.js</a>
+                    </div>
+                    <div class="tab-content tab-content--active" id="file-watching-04-yml">
+        <pre class='highlight'><code class="yml"><span class="hljs-attr">watch:</span>
+<span class="hljs-attr">  css:</span>
+    <span class="hljs-string">&#39;./app/scss:./legacy/scss&#39;</span>: [css, autoprefixer]
+<span class="hljs-attr">  php:</span>
+    <span class="hljs-string">&#39;./app/**/*.php&#39;</span>: browser:reload</code></pre>
+                    </div>
+                    <div class="tab-content" id="file-watching-04-js">
+        <pre class='highlight'><code class="js"><span class="hljs-built_in">module</span>.exports = {
+    watch: {
+        css: {
+            <span class="hljs-string">&#39;./app/scss:./legacy/scss&#39;</span>: [<span class="hljs-string">&#39;css&#39;</span>, <span class="hljs-string">&#39;autoprefixer&#39;</span>]
+        },
+        php: {
+            <span class="hljs-string">&#39;**/*.php&#39;</span>: [<span class="hljs-string">&#39;browser:reload&#39;</span>]
+        }
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+
+                <p>... then you can start only the ones you actually want by providing a name, or multiple names.</p>
+<pre><code class="lang-bash">cb watch css php
+</code></pre>
+                <h2 id="global-options">Global Options</h2>
+                <p>Options for file watchers are split into 2 sections. There are <a href="/docs/options/watch">Crossbow-specific options</a> and then
+                there are options that will be passed whole-sale through to the file-watching library 
+                <a href="https://github.com/paulmillr/chokidar">chokidar</a> - either way, they can be applied to all watchers at once, by supplying the
+                options at the top level, or per watcher by nesting them within each one.</p>
+                <p>For example, if you wanted to apply a global &#39;debounce&#39; option to all watchers, you&#39;d place an &#39;options&#39; key at the 
+                same level at the watcher names. (notice how in the <code>cbfile.js</code> version this is not possible currently)</p>
+                <div class="context">
+                    <div class="tab-nav">
+                        <a href="#file-watching-05-yml" class="tab-nav__button tab-nav__button--active">crossbow.yml</a>
+                        <a href="#file-watching-05-cbfile" class="tab-nav__button">cbfile.js</a>
+                        <a href="#file-watching-05-js" class="tab-nav__button">crossbow.js</a>
+                    </div>
+                    <div class="tab-content" id="file-watching-05-cbfile">
+        <pre class='highlight'><code class="js"><span class="hljs-keyword">const</span> cb = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#39;crossbow&#39;</span>);
+
+cb.task(<span class="hljs-string">&#39;serve&#39;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    cb.watch(
+        [<span class="hljs-string">&#39;./app/scss&#39;</span>, <span class="hljs-string">&#39;./legacy/scss&#39;</span>],
+        [<span class="hljs-string">&#39;css&#39;</span>, <span class="hljs-string">&#39;autoprefixer&#39;</span>],
+        {debounce: <span class="hljs-number">500</span>}
+    );
+});</code></pre>
+                    </div>
+                    <div class="tab-content tab-content--active" id="file-watching-05-yml">
+        <pre class='highlight'><code class="yml"><span class="hljs-attr">watch:</span>
+<span class="hljs-attr">  options:</span>
+<span class="hljs-attr">    debounce:</span> <span class="hljs-number">500</span> <span class="hljs-comment"># &lt;-- this will affect all watchers</span>
+<span class="hljs-attr">  css:</span>
+    <span class="hljs-string">&#39;./app/scss:./legacy/scss&#39;</span>: [css, autoprefixer]
+<span class="hljs-attr">  php:</span>
+    <span class="hljs-string">&#39;./app/**/*.php&#39;</span>: browser:reload</code></pre>
+                    </div>
+                    <div class="tab-content" id="file-watching-05-js">
+        <pre class='highlight'><code class="js"><span class="hljs-built_in">module</span>.exports = {
+    watch: {
+        options: {
+            debounce: <span class="hljs-number">500</span> <span class="hljs-comment">// &lt;-- this will affect all watchers</span>
+        },
+        css: {
+            <span class="hljs-string">&#39;./app/scss:./legacy/scss&#39;</span>: [<span class="hljs-string">&#39;css&#39;</span>, <span class="hljs-string">&#39;autoprefixer&#39;</span>]
+        },
+        php: {
+            <span class="hljs-string">&#39;**/*.php&#39;</span>: [<span class="hljs-string">&#39;browser:reload&#39;</span>]
+        }
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+
+                <h2 id="watcher-specific-options">Watcher specific options</h2>
+                <p>When you want some options to only affect an individual watcher, just nest the &#39;options&#39; key. </p>
+                <div class="context">
+                    <div class="tab-nav">
+                        <a href="#file-watching-06-yml" class="tab-nav__button tab-nav__button--active">crossbow.yml</a>
+                        <a href="#file-watching-06-js" class="tab-nav__button">crossbow.js</a>
+                    </div>
+                    <div class="tab-content tab-content--active" id="file-watching-06-yml">
+        <pre class='highlight'><code class="yml"><span class="hljs-attr">watch:</span>
+<span class="hljs-attr">  css:</span>
+<span class="hljs-attr">    watchers:</span>
+<span class="hljs-attr">      - patterns:</span> [<span class="hljs-string">&#39;./app/scss&#39;</span>, <span class="hljs-string">&#39;./legacy/scss&#39;</span>]
+<span class="hljs-attr">        tasks:</span> [css, autoprefixer]
+<span class="hljs-attr">    options:</span>
+<span class="hljs-attr">      debounce:</span> <span class="hljs-number">500</span> <span class="hljs-comment"># &lt;-- this will ONLY affect the <code>css</code> watcher</span>
+<span class="hljs-attr">  php:</span>
+    <span class="hljs-string">&#39;./app/**/*.php&#39;</span>: browser:reload</code></pre>
+                    </div>
+                    <div class="tab-content" id="file-watching-06-js">
+        <pre class='highlight'><code class="js"><span class="hljs-built_in">module</span>.exports = {
+    watch: {
+        css: {
+            options: {
+                debounce: <span class="hljs-number">500</span> <span class="hljs-comment">// &lt;-- this will affect all watchers</span>
+            },
+            watchers: [
+                {
+                    patterns: [<span class="hljs-string">&#39;./app/scss&#39;</span>, <span class="hljs-string">&#39;./legacy/scss&#39;</span>],
+                    tasks: [<span class="hljs-string">&#39;css&#39;</span>, <span class="hljs-string">&#39;autoprefixer&#39;</span>]
+                }
+            ]
+        },
+        php: {
+            <span class="hljs-string">&#39;**/*.php&#39;</span>: [<span class="hljs-string">&#39;browser:reload&#39;</span>]
+        }
+    }
+}</code></pre>
+                    </div>
+                </div>
+
+
+                <h2 id="running-tasks-before-watchers-begin">Running tasks before watchers begin</h2>
+                <p>This is an extremely handy feature as it allows you to perform a run of tasks before any watchers
+                begin. An example being where you want to watch some template files and re-compile them when they change.
+                But, before any of that, you need an initial compile step so that you have something to see in the 
+                browser. </p>
+                <p>To solve this, any watcher can have a <code>before</code> key which can be any valid Crossbow task definition.</p>
+                <div class="context">
+                    <div class="tab-nav">
+                        <a href="#file-watching-07-yml" class="tab-nav__button tab-nav__button--active">crossbow.yml</a>
+                        <a href="#file-watching-07-cbfile" class="tab-nav__button">cbfile.js</a>
+                        <a href="#file-watching-07-js" class="tab-nav__button">crossbow.js</a>
+                    </div>
+                    <div class="tab-content" id="file-watching-07-cbfile">
+        <pre class='highlight'><code class="js"><span class="hljs-keyword">const</span> cb = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#39;crossbow&#39;</span>);
+
+cb.task(<span class="hljs-string">&#39;watch&#39;</span>, [<span class="hljs-string">&#39;markdown&#39;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+    cb.watch(<span class="hljs-string">&#39;./app/*.md&#39;</span>, [<span class="hljs-string">&#39;markdown&#39;</span>]);
+}]);
+
+cb.task(<span class="hljs-string">&#39;markdown&#39;</span>, {
+    tasks: <span class="hljs-string">&#39;my-md-module&#39;</span>,
+    options: {
+        input: <span class="hljs-string">&#39;app/**/*.md&#39;</span>
+    }
+});</code></pre>
+                    </div>
+                    <div class="tab-content tab-content--active" id="file-watching-07-yml">
+        <pre class='highlight'><code class="yml"><span class="hljs-attr">watch:</span>
+<span class="hljs-attr">  html:</span>
+<span class="hljs-attr">    before:</span> markdown
+<span class="hljs-attr">    watchers:</span>
+<span class="hljs-attr">      - patterns:</span> <span class="hljs-string">&#39;./app/*.md&#39;</span>
+<span class="hljs-attr">        tasks:</span> markdown
+
+<span class="hljs-attr">tasks:</span>
+<span class="hljs-attr">  markdown:</span>
+<span class="hljs-attr">    tasks:</span> my-md-module
+<span class="hljs-attr">    options:</span>
+<span class="hljs-attr">      input:</span> <span class="hljs-string">&#39;app/**/*.md&#39;</span></code></pre>
+                    </div>
+                    <div class="tab-content" id="file-watching-07-js">
+        <pre class='highlight'><code class="js"><span class="hljs-built_in">module</span>.exports = {
+    watch: {
+        html: {
+            watchers: [
+                {
+                    patterns: [<span class="hljs-string">&#39;./app/*.md&#39;</span>],
+                    tasks: [<span class="hljs-string">&#39;markdown&#39;</span>]
+                }
+            ]
+        }
+    },
+    tasks: {
+        markdown: {
+            tasks: <span class="hljs-string">&#39;my-md-module&#39;</span>,
+            options: {
+                input: <span class="hljs-string">&#39;app/**/*.md&#39;</span>
+            }
+        }
+    }
+};</code></pre>
+                    </div>
+                </div>
+
+
+                <p>If you have multiple watchers, that all have `before&#39; tasks defined, Crossbow will collate them into a single 
+                run and ensure they all complete successfully before any watchers begin.</p>
+                <h2 id="watcher-micro-syntax">Watcher micro syntax</h2>
+                <p>There&#39;s one more way to define watchers in Crossbow, which was born out of the desire to have an on-demand 
+                watcher system that required no config and was perfect for tinkering.</p>
+<pre><code class="lang-bash">cb watch <span class="hljs-string">'./app/scss -&gt; my-task'</span>
+</code></pre>
+                <p>As seen above, you prove a string where the left hand side of <code>-&gt;</code> is the colon separated list of patterns to 
+                watch, and the right hand side is the task to run. This means that example above translates directly into the following</p>
+<pre><code class="lang-yml"><span class="hljs-attr">watch:</span> 
+<span class="hljs-attr">  default:</span> 
+    <span class="hljs-string">'./app/scss'</span>: my-task
+</code></pre>
+                <p>This works for any valid way fo defining tasks for Crossbow, so even if you didn&#39;t have any configuration files, you 
+                could still use this feature to do something like compile Webpack on file save, which would allow you to tinker
+                with configuration to see what output you get</p>
+<pre><code class="lang-bash">cb watch <span class="hljs-string">'webpack.config.js -&gt; @npm webpack'</span>
+</code></pre>
+                <p>With this, every time you change the <code>webpack.config.js</code> file, Crossbow will invoke Webpack from your node_modules
+                directory. Neat! </p>
+                <p>For something like Webpack, which could take anywhere from a few seconds up to a minute to compile, you&#39;ll want to use the 
+                <code>--block</code> flag to stop subsequent runs from overlapping   </p>
+<pre><code class="lang-bash">cb watch <span class="hljs-string">'webpack.config.js -&gt; @npm webpack'</span> --block
+</code></pre>
+                <h2 id="watch-event-context-in-tasks">Watch event context in tasks</h2>
+                <p>When authoring your own tasks, it&#39;s often very useful to know what triggered the execution of that current task. 
+                This bugged me in other systems, and in the case of responding to file-change events it&#39;s especially important.</p>
+                <p>In Crossbow we have a simple solution to this. If you provide a Javascript function either inline, or within a 
+                separate file, we&#39;ll place the information about what trigger the tasks in the current context</p>
+                <p>So, with the following input</p>
+<pre><code class="lang-yaml"><span class="hljs-attr">watch:</span> 
+<span class="hljs-attr">  default:</span>
+    <span class="hljs-string">'*.json'</span>: my-task.js
+</code></pre>
+                <p>Every time a JSON file changes or is added in the current directory, the function exported from <code>my-task.js</code> will be
+                executed with the second argument containing information in the <code>watchEvent</code> and <code>watcher</code> properties</p>
+<pre><code class="lang-js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">options, context</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(context.watchEvent); <span class="hljs-comment">// this will contain file path + event type</span>
+    <span class="hljs-built_in">console</span>.log(context.watcher); <span class="hljs-comment">// this will contain information about the actual watcher </span>
+}
+</code></pre>
+                <hr>
+                <p>At this point you&#39;ve seen the core features of Crossbow and some realistic examples of how you&#39;d use it. I now 
+                encourage you to check out the other sections of the docs to learn more about options, input files, commands and more.</p>
+
+            </main>
+        </div>
+    </div>
+
+    <footer class="wrapper footer">
+        <div class="container">
+            <a href="https://twitter.com/shaneosbourne" class="copyright">© Shane Osbourne</a>
+        </div>
+    </footer>
+
+
+
+            <script src="/js/dist/7e68e5e90715158f45e32ad539461bd149a5058b.js"></script>
+
+</body>
+</html>
+
