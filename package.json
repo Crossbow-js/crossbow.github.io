@@ -14,7 +14,7 @@
     "bs-html-injector": "^3.0.3",
     "bs-latency": "1.0.0",
     "crossbow": "latest",
-    "crossbow-sass": "latest",
+    "crossbow-sass": "4.2.0",
     "crossbow-sites": "1.0.1",
     "easy-svg": "1.0.5",
     "highlight.js": "^9.9.0",
